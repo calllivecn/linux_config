@@ -1,0 +1,23 @@
+消除登陆界面白点
+
+sudo xhost +SI:localuser:lightdm
+sudo su lightdm -s /bin/bash
+gsettings set com.canonical.unity-greeter draw-grid false
+
+关闭来宾账户命令：
+sudo sh -c 'echo "allow-guest=false" >> /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf'
+sudo service lightdm restart
+
+显示手动输入用户名
+vim /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
+加入 greeter-show-manual-login=true
+
+隐藏用户列表
+greeter-hide-users=true
+
+修改nautilus默认shell脚本运行
+gsetings set org.gnome.nautilus.preferences executable-test-activation ask
+
+
+修改/usr/share/glib-2.0/schema/*.xml后用glib-complie-schema编译
+glib-compile-schemas /usr/share/glib-2.0/schemas

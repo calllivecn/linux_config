@@ -1,0 +1,59 @@
+extundelete
+testdisk
+
+wodim
+
+w3m
+
+openssh-server
+
+fbterm
+fcitx-frontend-fbterm
+fcitx-table-wubi
+
+lupin-casper
+
+vim
+git
+python3-pip
+lftp
+sysstat
+tmux
+# 锁定终端
+vlock
+
+tree
+# 查看cpu温度
+lm-sensors
+
+parallel
+pbzip2
+pxz
+plzip
+pigz
+
+p7zip
+p7zip-full
+p7zip-rar
+
+
+
+
+vlc
+gimp
+
+## 终端录制工具   pip3 install termrecord
+$ TremRecord -o output.html
+
+## 屏幕录像工具
+kazam
+
+### filesystem support bfs jfs xfs
+jfsutils
+xfsprogs
+
+### 磁盘加密工具
+cryptsetup-bin
+
+## Linux中安装xdotool模拟击键和鼠标移动
+xdotool

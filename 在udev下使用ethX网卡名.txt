@@ -1,0 +1,1 @@
+在grub 引导 kernel参数中添加 net.ifnames=0 biosdevnames=0
