@@ -1,0 +1,27 @@
+$ sudo add-apt-repository ppa:pitti/systemd
+
+$ sudo apt-get update
+
+$ sudo apt-get dist-upgrade 
+
+Optional: Update the /etc/default/grub file before you edit it, just in case you break something:
+
+$ sudo cp /etc/default/grub /etc/default/grub.bak
+
+Next, open the /etc/default/grub file, with sudo permissions:
+
+$ sudo vim /etc/default/grub
+
+Edit the GRUB_CMDLINE_LINUX_DEFAULT line, so that it looks like this:
+
+GRUB_CMDLINE_LINUX_DEFAULT = "init=/lib/systemd/systemd" 
+
+And upgrade the grub, in order to get the latest changes applied:
+
+$ sudo update-grub
+
+Optional: If you break something (but you have performed the backup step), do:
+
+$ sudo mv /etc/default/grub.bak /etc/default/grub
+
+$ sudo update-grub
