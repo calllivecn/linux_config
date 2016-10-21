@@ -57,3 +57,7 @@ cryptsetup-bin
 
 ## Linux中安装xdotool模拟击键和鼠标移动
 xdotool
+
+# debsums
+
+debsums
