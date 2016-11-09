@@ -64,3 +64,7 @@ debsums
 
 # nes 游戏模拟器
 fceux
+
+# 查看每个进程的网络使用情况
+nethogs
+
