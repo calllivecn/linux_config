@@ -61,3 +61,6 @@ xdotool
 # debsums
 
 debsums
+
+# nes 游戏模拟器
+fceux
