@@ -12,6 +12,7 @@ fcitx-frontend-fbterm
 fcitx-table-wubi
 
 lupin-casper
+squashfs-tools
 
 vim
 git
