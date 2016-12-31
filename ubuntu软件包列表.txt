@@ -59,6 +59,12 @@ cryptsetup-bin
 ## Linux中安装xdotool模拟击键和鼠标移动
 xdotool
 
+## Linux GTK+ 的图形工具
+zenity
+
+# 命令行 tui
+dailog
+
 # debsums
 
 debsums
