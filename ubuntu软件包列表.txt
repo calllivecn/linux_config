@@ -43,8 +43,8 @@ p7zip-rar
 vlc
 gimp
 
-## 终端录制工具   pip3 install termrecord
-$ TremRecord -o output.html
+## 终端录制工具   pip3 install termrecord example: TremRecord -o output.html
+termrecord
 
 ## 屏幕录像工具
 kazam
