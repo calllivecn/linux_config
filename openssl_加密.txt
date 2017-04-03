@@ -5,3 +5,8 @@
 2、使用tar对加密文件解压：
 # dd if=pma.des3 |openssl des3 -d -k password|tar zxf -
 注意：命令最后有”-”，它将释放所有的文件。其中-k password可以不使用，这样执行完命令后会提示你输入密码，加上-k参数表示在程序中自动验证密码
+
+
+
+加密算法和模式:
+openssl aes-256-cbc
