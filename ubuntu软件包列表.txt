@@ -19,6 +19,7 @@ git
 python3-pip
 lftp
 sysstat
+pv
 tmux
 # 锁定终端
 vlock
