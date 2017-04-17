@@ -1,0 +1,27 @@
+
+用uefi装了几次次archlinux,搞的uefi启动选项下多出来好多启动项。。这东西重格硬盘也是不好用的。发现以下方法可以解决。
+efibootmgr   //显示efi的启动项
+删除一个引导项
+# efibootmgr -b 0001 -B
+其中 0001是要删除的引导项编号，通过 efibootmgr命令可以直接查看。输出如下所示：
+# efibootmgr
+BootCurrent: 0001
+Timeout: 1 seconds
+BootOrder: 0001,000B,0000,0080,0087,0088,0089
+Boot0000* Windows Boot Manager
+Boot0001* ubuntu
+Boot000B* Clover start legacy at
+Boot0080* Mac OS X
+Boot0087* ubuntu
+Boot0088* Windows Boot Manager
+Boot0089* ubuntu
+其中， Boot0001中的 0001就是编号，对应的引导项是 ubuntu
+添加一个引导项
+#efibootmgr -c -w -L "BootOptionName" -d /dev/sda -p 1 -l
+\\EFI\\asianux\\elilo.efi
+其中-d 参数后面是系统所在的硬盘设备名称，例如/dev/hda、/dev/hdb
+-p 参数是vfat 分区的分区编号/dev/hda1 用-p 1
+/dev/sda2 用-p 2
+-l 参数后面是该引导项指向的efi 启动文件在该分区上的位置。请注意使用“\\”来表示目录的分级。
+例如：/EFI/asianux/elilo.efi
+应写成：\\EFI\\asianux\\elilo.efi。
