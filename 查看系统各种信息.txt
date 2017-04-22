@@ -1,3 +1,19 @@
+# BAT0 表示第一地电池。
 cat /sys/class/power_supply/BAT0/capacity
 
-# BAT0 表示第一地电池。
+
+# 查看CPU温度 thermal_zone1 表示 ...
+cat /sys/class/thermal/thermal_zone1/temp
+
+
+# 查看，调整，显示器亮度
+cat /sys/class/backlight/intel_backlight/brightness #查看
+echo '500' |sudo tee /sys/class/backlight/intel_backlight/brightness #调整
+cat /sys/class/backlight/intel_backlight/max_brightness #最大亮度
+
+
+# 只是读取CPU状态信息，还要自己计算。
+cat /proc/stat
+
+
+
