@@ -44,6 +44,10 @@ p7zip-rar
 vlc
 gimp
 
+# 自动调节屏幕亮度和色温以保护眼睛。
+redshift
+redshift-gtk
+
 ## 终端录制工具   pip3 install termrecord example: TremRecord -o output.html
 termrecord
 
@@ -72,7 +76,4 @@ debsums
 
 # nes 游戏模拟器
 fceux
-
-# 查看每个进程的网络使用情况
-nethogs
 
