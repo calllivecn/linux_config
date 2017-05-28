@@ -1,0 +1,3 @@
+hometmux.conf	-->	~/.tmux.conf
+tmux/			--> ~/.tmux/	
+tmux.conf		--> /etc/tmux.conf
