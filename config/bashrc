@@ -127,15 +127,15 @@ alias d='date +%F-%u-%R'
 PS1='${?:NO}-'"$PS1"
 
 p(){
-ps aux |grep "$1"
+ps -ef |grep "$1"
 }
 
 pu(){
-ps aux |awk '{if($5!=0) print $0}'
+ps -ef |awk '{if($5!=0) print $0}'
 }
 
 pk(){
-ps aux |awk '{if($5==0) print $0}'
+ps -ef |awk '{if($5==0) print $0}'
 }
 
 #### define tmux 
