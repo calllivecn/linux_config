@@ -1,4 +1,16 @@
-user.email=c-all@qq.com
-user.name=calllivecn
-push.default=simple
-core.quotepath=false #设置 git status  时 , git add ubuntu\123\123124\14 的中文乱码.
+[user]
+	email = c-all@qq.com
+	name = calllivecn
+[push]
+	default = simple
+[alias]
+[core]
+	quotepath = false
+	editor = vim
+[alias]
+	s = status
+	cm = commit
+	b = branch
+	lg = log --graph
+	lgo = log --graph --pretty=oneline --abbrev-commit
+	ch = checkout
