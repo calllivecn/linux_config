@@ -126,6 +126,7 @@ fi
 alias ..='cd ..'
 alias j='jobs -l'
 alias d='date +%F-%u-%R'
+alias top='top -d 1'
 
 alias ll='ls -lFh --time-style=long-iso'
 alias lla='ls -AlFh --time-style=long-iso'
@@ -147,6 +148,8 @@ mcd(){ mkdir -p "$1" && cd "$1"; }
 cls(){ cd "$1" && ls -CF; }
 
 bak(){ cp "$1"{,.bak}; }
+
+mbak(){ mv "$1"{,.bak}; }
 
 hp(){ history |grep "$1"; }
 
