@@ -127,6 +127,9 @@ alias ..='cd ..'
 alias j='jobs -l'
 alias d='date +%F-%u-%R'
 alias top='top -d 1'
+alias temp='watch -n 1 sensors'
+
+alias scl='systemctl'
 
 alias ll='ls -lFh --time-style=long-iso'
 alias lla='ls -AlFh --time-style=long-iso'
@@ -153,7 +156,7 @@ mbak(){ mv "$1"{,.bak}; }
 
 hp(){ history |grep "$1"; }
 
-duh(){ du -xmd 1 |sort -k 1 -nr |head -n 10; }
+duh(){ du -xmd 1 |sort -k 1 -nr |head -n 20; }
 
 mem(){ free -mhlt; }
 
