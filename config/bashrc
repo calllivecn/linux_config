@@ -179,3 +179,4 @@ fi
 
 export PYTHONSTARTUP=~/.python
 export PIP_CACHE=~/work/py3_library-cache
+alias py='python3'
