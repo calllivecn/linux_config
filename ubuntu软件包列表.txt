@@ -39,7 +39,8 @@ p7zip-full
 p7zip-rar
 
 
-
+## 命令行音乐播放器
+cmus
 
 vlc
 gimp
