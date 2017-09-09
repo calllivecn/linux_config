@@ -1,6 +1,6 @@
 # Copyright (c) 2014-2017, racaljk.
 # https://github.com/racaljk/hosts
-# Last updated: 2017-08-22
+# Last updated: 2017-09-02
 
 # https://laod.cn/hosts/2017-google-hosts.html
 
@@ -3171,19 +3171,24 @@
 
 # Gmail SMTP/POP/IMAP Start
 64.233.188.14	gmr-smtp-in.l.google.com
-64.233.188.16	googlemail-imap.l.google.com
-64.233.188.16	googlemail-smtp.l.google.com
+64.233.188.14	gmail-smtp-in.l.google.com
+64.233.188.14	alt1.gmail-smtp-in.l.google.com
+64.233.188.14	alt2.gmail-smtp-in.l.google.com
+64.233.188.14	alt3.gmail-smtp-in.l.google.com
+64.233.188.14	alt4.gmail-smtp-in.l.google.com
+64.233.188.14	googlemail-imap.l.google.com
+64.233.188.14	googlemail-smtp.l.google.com
+64.233.188.14	googlemail-pop.l.google.com
+64.233.188.14	pop.googlemail.com
+64.233.188.14	imap.googlemail.com
+64.233.188.14	smtp.googlemail.com
+64.233.188.16	gmail-imap.l.google.com
+64.233.188.16	imap.gmail.com
 64.233.188.16	googlemail-pop.l.google.com
 64.233.188.16	pop.googlemail.com
-64.233.188.16	imap.googlemail.com
-64.233.188.16	smtp.googlemail.com
-203.208.41.181	gmail-imap.l.google.com
-203.208.41.181	imap.gmail.com
-203.208.41.181	gmail-pop.l.google.com
-203.208.41.181	pop.gmail.com
-203.208.41.181	gmail-smtp.l.google.com
-108.177.112.109	smtp.gmail.com
-108.177.112.109	gmail-smtp-msa.l.google.com
+64.233.188.16	gmail-smtp.l.google.com
+64.233.189.108	smtp.gmail.com
+64.233.189.108	gmail-smtp-msa.l.google.com
 # Gmail SMTP/POP/IMAP End
 
 # Google:stun Server Start
