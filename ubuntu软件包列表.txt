@@ -72,9 +72,10 @@ zenity
 dailog
 
 # debsums
-
 debsums
 
 # nes 游戏模拟器
 fceux
 
+# proxychains " proxychains wget https://www.youtube.com"
+proxychains
