@@ -138,6 +138,15 @@ alias l='ls -CF'
 
 alias grep='grep --color=auto'
 
+## docker command
+
+alias dk='docker'
+alias di='dk images'
+alias dp='dk ps'
+alias dh='dk history'
+alias da='dk attach'
+
+
 PS1='${?:NO}-'"$PS1"
 
 p(){ ps -ef |grep "$1"; }
@@ -178,5 +187,6 @@ fi
 
 
 export PYTHONSTARTUP=~/.python
-export PIP_CACHE=~/work/py3_library-cache
+export PIP_DOWNLOAD_CACHE=~/work/py3_library-cache
 alias py='python3'
+alias ipy='ipython3'
