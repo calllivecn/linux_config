@@ -126,6 +126,7 @@ fi
 alias ..='cd ..'
 alias j='jobs -l'
 alias d='date +%F-%u-%R'
+alias caly='cal `date +%Y`'
 alias top='top -d 1'
 alias temp='watch -n 1 sensors'
 
@@ -145,7 +146,8 @@ alias di='dk images'
 alias dp='dk ps'
 alias dh='dk history'
 alias da='dk attach'
-
+alias dl='dk logs'
+alias dlf='dl -f'
 
 PS1='${?:NO}-'"$PS1"
 
