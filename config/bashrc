@@ -188,7 +188,7 @@ if [ "$TERM"x == "linux"x ];then
 fi
 
 
-export PYTHONSTARTUP=~/.python
+export PYTHONSTARTUP=~/.pythonrc
 export PIP_DOWNLOAD_CACHE=~/work/py3_library-cache
 alias py='python3'
 alias ipy='ipython3'

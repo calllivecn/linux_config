@@ -1,0 +1,18 @@
+
+import sys
+
+major = sys.version_info.major
+minor = sys.version_info.minor
+
+
+if major == 3:
+	import socket,struct,threading,time,os,subprocess,multiprocessing,fileinput,re
+	import ctypes
+	import hashlib
+	import selectors,asyncio
+	imprt math
+
+
+	from array import array
+
+del major,minor
