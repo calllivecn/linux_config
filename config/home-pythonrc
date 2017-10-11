@@ -10,7 +10,7 @@ if major == 3:
 	import ctypes
 	import hashlib
 	import selectors,asyncio
-	imprt math
+	import math
 
 
 	from array import array
