@@ -165,6 +165,8 @@ bak(){ cp "$1"{,.bak}; }
 
 mbak(){ mv "$1"{,.bak}; }
 
+ubak(){ mv "$1" ${1%.bak}; }
+
 hp(){ history |grep "$1"; }
 
 duh(){ du -xmd 1 |sort -k 1 -nr |head -n 20; }
