@@ -16,7 +16,7 @@ vim /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf
 greeter-hide-users=true
 
 修改nautilus默认shell脚本运行
-gsetings set org.gnome.nautilus.preferences executable-test-activation ask
+gsetings set org.gnome.nautilus.preferences executable-text-activation ask
 
 
 修改/usr/share/glib-2.0/schema/*.xml后用glib-complie-schema编译
