@@ -16,3 +16,17 @@
 
 4 update-grub
 
+
+
+ESP 分区注意问题
+	ESP/Boot/bootx64.efi # 为 UEFI 启动默认执行的项。
+
+	多系统的ESP一般都是这种目录树：
+		ESP/Microsoft/boot/bootwfmgr.efi,***略
+		ESP/ubuntu/grubx64.efi,****略
+
+	用那个用默认引导项就cp对应引导项到ESP目录下为ESP/Boot/bootx64.efi:
+		cp ESP/ubuntu/grubx64.efi ESP/Boot/bootx64.efi
+
+
+
