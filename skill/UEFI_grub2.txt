@@ -1,0 +1,18 @@
+
+1	查看系统是否是efi启动
+	# efibootmgr 或者 ll /sys/class/firmware/efi 存在不
+
+2	uefi 依赖包 grub-efi-amd64-bin
+	UEFI --> grub-efi-amd64 
+	BIOS --> grub-pc
+
+
+3 重装UEFI 
+	grub-install --efi-directory /boot/efi # /boot/efi 是ESP分区
+
+	grub-install --boot-directory /boot/grub /dev/sda
+
+	注意如果是UEFI启动的需要根据当前系统用对应的 --target=x86_64-efi | x86_64-pc
+
+4 update-grub
+
