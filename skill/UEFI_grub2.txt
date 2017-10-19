@@ -1,6 +1,6 @@
 
 1	查看系统是否是efi启动
-	# efibootmgr 或者 ll /sys/class/firmware/efi 存在不
+	# efibootmgr 或者 ll /sys/firmware/efi 存在不
 
 2	uefi 依赖包 grub-efi-amd64-bin
 	UEFI --> grub-efi-amd64 
