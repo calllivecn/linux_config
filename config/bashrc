@@ -180,7 +180,7 @@ port(){ ss -tulanp |column -t; }
 #校验合函数生成
 for hashsum in md5sum sha1sum sha224dum sha256sum sha384sum sha512sum
 do
-	eval "${hashsum%sum}check"'(){ '"$hashsum"' "$1" | grep "$2" ; }'
+	eval "${hashsum%sum}check"'(){ '"$hashsum"' "$1" | grep -i "$2" ; }'
 done
 
 
