@@ -179,7 +179,7 @@ listen(){ lsof -P -i -n; }
 
 port(){ ss -tulanp |column -t; }
 
-cpaync(){ cp "$1" "$2" && sync -d "$2"; }
+cpsync(){ cp "$1" "$2" && sync -d "$2"; }
 
 #校验合函数生成
 for hashsum in md5sum sha1sum sha224dum sha256sum sha384sum sha512sum
