@@ -1,8 +1,6 @@
 extundelete
 testdisk
 
-wodim
-
 w3m
 
 openssh-server
@@ -11,8 +9,22 @@ fbterm
 fcitx-frontend-fbterm
 fcitx-table-wubi
 
+################
+#
+# mini linux depends
+#
+###############
 lupin-casper
 squashfs-tools
+syslinux-utils
+syslinux-efi
+syslinux-common
+isolinux
+genisoimage
+debootstrap
+
+# 刻录光盘 wodim
+wodim
 
 vim
 git
