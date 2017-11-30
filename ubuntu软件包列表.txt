@@ -1,5 +1,3 @@
-extundelete
-testdisk
 
 w3m
 
@@ -11,7 +9,7 @@ fcitx-table-wubi
 
 ################
 #
-# mini linux depends
+# mini linux depends,begin
 #
 ###############
 lupin-casper
@@ -36,7 +34,22 @@ tmux
 # 锁定终端
 vlock
 
+# 文件恢复工具包
+extundelete
+testdisk
+
+# 查看SSD使用寿命和健康状况
+# smartctl -l devstat /dev/sdX
+smartmontools
+
 tree
+################
+#
+# mini linux depends,end
+#
+###############
+
+
 # 查看cpu温度
 lm-sensors
 
