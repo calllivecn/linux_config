@@ -2,8 +2,8 @@ set shiftwidth=4
 set tabstop=4
 set autoindent
 set number
-set expandtab
-set softtabstop=4
+"set expandtab
+"set softtabstop=4
 
 
 "source ~/.vim/test.vim
@@ -39,6 +39,7 @@ function File_sh()
 	call setline(1,"#!/bin/bash")
 	call setline(2,'# date ' . strftime("%Y-%m-%d %H:%M:%S"))
 	call setline(3,'# author calllivecn <c-all@qq.com>')
+	:$
 endfunction
 
 autocmd BufNewFile *.sh :call File_sh()
@@ -48,6 +49,9 @@ function File_py()
 	call setline(2,"#coding=utf-8")
 	call setline(3,'# date ' . strftime("%Y-%m-%d %H:%M:%S"))
 	call setline(4,'# author calllivecn <c-all@qq.com>')
+    set expandtab
+    set softtabstop=4
+	:$
 endfunction
 autocmd BufNewFile *.py :call File_py()
 
