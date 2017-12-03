@@ -1,0 +1,13 @@
+1、需求：挂载fat32格式的U盘
+2、挂载U盘所需要的包
+1)komd-usb-ohci kmod-usb2 kmod-usb-storage kmod-usb-core 这些是USB驱动包
+2) kmod-nls-base kmod-nls-cp437 kmod-nls-iso8859-1 这些是语言包
+3) kmod-fs-vfat 文件系统支持vfat 类型
+
+
+  以上包在openwrt configuration选择的位置分别位于：
+  1） Kernel modules  ---> USB Support
+  2） Kernel modules  --->  Native Language Support
+  3） Kernel modules  --->  Filesystems 
+  3、编译烧写固件
+  4、烧写完成后即可用mount命令尝试挂载
