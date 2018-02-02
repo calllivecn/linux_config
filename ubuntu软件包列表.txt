@@ -99,6 +99,8 @@ dailog
 # debsums
 debsums
 
+manpages-zh
+
 # nes 游戏模拟器
 fceux
 
