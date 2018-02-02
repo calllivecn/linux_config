@@ -21,6 +21,8 @@ isolinux
 genisoimage
 debootstrap
 
+kpartx
+
 # 刻录光盘 wodim
 wodim
 
