@@ -130,14 +130,17 @@ alias caly='cal `date +%Y`'
 alias top='top -d 1'
 alias temp='watch -n 1 sensors'
 
-alias scl='systemctl'
+alias scl='sudo systemctl'
 
+alias ls='ls --color'
 alias ll='ls -lFh --time-style=long-iso'
 alias lla='ls -AlFh --time-style=long-iso'
 alias la='ls -AF'
 alias l='ls -CF'
 
 alias grep='grep --color=auto'
+
+alias less='less -R'
 
 ## docker command
 
@@ -149,7 +152,7 @@ alias da='dk attach'
 alias ds='dk start'
 alias dt='dk stop'
 alias dl='dk logs'
-alias dlf='dl -f'
+alias dlf='dl --tail 30 -f'
 
 PS1='${?:NO}-'"$PS1"
 
@@ -180,6 +183,18 @@ listen(){ lsof -P -i -n; }
 port(){ ss -tulanp |column -t; }
 
 cpsync(){ cp "$1" "$2" && sync -d "$2"; }
+
+weather(){ wget -qO- http://wttr.in; }
+
+io(){ iostat -m 1; }
+
+bcl(){
+	if [ -n "$1" ];then
+		echo "$1" |bc -l
+	else
+		echo "Using: bcl <expr>"
+	fi
+}
 
 #校验合函数生成
 for hashsum in md5sum sha1sum sha224dum sha256sum sha384sum sha512sum
