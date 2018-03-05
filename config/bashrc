@@ -66,7 +66,7 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \W\a\]$PS1"
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \W\a\]\$ "
     ;;
 *)
     ;;
@@ -106,16 +106,6 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
-fi
 #########
 
 # ZhangXu Sun Dec 27 00:30:18 CST 2015
@@ -154,7 +144,7 @@ alias dt='dk stop'
 alias dl='dk logs'
 alias dlf='dl --tail 30 -f'
 
-PS1='${?:NO}-'"$PS1"
+PS1='${?:NO}-\u@\h:\W\$ '
 
 p(){ ps -ef |grep "$1"; }
 
