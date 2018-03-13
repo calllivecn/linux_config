@@ -1,0 +1,5 @@
+ty的Ubuntu版本中。
+
+解决方法是，将所有程序列入白名单：
+
+gsettings set com.canonical.Unity.Panel systray-whitelist "['all']" #显示所有托盘图标
