@@ -144,6 +144,9 @@ alias dt='dk stop'
 alias dl='dk logs'
 alias dlf='dl --tail 30 -f'
 
+alias dn='dk network'
+alias dnl='dk network ls'
+
 PS1='${?:NO}-\u@\h:\W\$ '
 
 p(){ ps -ef |grep "$1"; }
@@ -205,3 +208,4 @@ export PYTHONSTARTUP=~/.pythonrc
 export PIP_DOWNLOAD_CACHE=~/work/py3_library-cache
 alias py='python3'
 alias ipy='ipython3'
+
