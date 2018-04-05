@@ -8,13 +8,6 @@ set number
 
 "source ~/.vim/test.vim
 
-map! <F5> <ESC>:w<CR>:!python3 %<CR>
-map <F5> :w<CR>:!python3 %<CR>
-
-
-" Go lang 
-map! <F6> <ESC>:w<CR>:!go run %<CR>
-map <F6> :w<CR>:!go run %<CR>
 
 map! <C-A> <ESC>I
 
@@ -33,8 +26,24 @@ map! <C-E> <ESC>A
 
 
 "autocmd BufReadPost *.py,*.c,*.go :set tabstop=4 sw=4
+autocmd BufReadPost *.py,*.c,*.go :set expandtab softtabstop=4
+
+" bash
+autocmd BufReadPost *.sh :map! <F5> <ESC>:w<CR>:!bash %<CR>
+autocmd BufReadPost *.sh :map <F5> :w<CR>:!bash %<CR>
+
+" python 
+autocmd BufReadPost *.py :map! <F5> <ESC>:w<CR>:!python3 %<CR>
+autocmd BufReadPost *.py :map <F5> :w<CR>:!python3 %<CR>
+
+" Go lang 
+autocmd BufReadPost *.go :map! <F5> <ESC>:w<CR>:!go run %<CR>
+autocmd BufReadPost *.go :map <F5> :w<CR>:!go run %<CR>
 
 
+
+
+" auto insert file header
 function File_sh()
 	call setline(1,"#!/bin/bash")
 	call setline(2,'# date ' . strftime("%Y-%m-%d %H:%M:%S"))
@@ -49,8 +58,7 @@ function File_py()
 	call setline(2,"#coding=utf-8")
 	call setline(3,'# date ' . strftime("%Y-%m-%d %H:%M:%S"))
 	call setline(4,'# author calllivecn <c-all@qq.com>')
-    set expandtab
-    set softtabstop=4
+	:set expandtab softtabstop=4
 	:$
 endfunction
 autocmd BufNewFile *.py :call File_py()
