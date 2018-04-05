@@ -5,11 +5,32 @@ Host wrt
 	IdentityFile ~/.ssh/common
 
 
-
-Host git
-	User git
-	HostName github.com
+Host ddv
+	User root
+	HostName ladder.ddvudo.cf
 	Port 22
-	IdentityFile ~/.ssh/github
+	IdentityFile ~/.ssh/common
 
+Host ddvhk
+	User ubuntu
+	HostName proxy.ddvudo.cn
+	Port 22
+	IdentityFile ~/.ssh/common
 
+Host meizu
+	User zx
+	HostName 192.168.2.4
+	Port 8022
+	IdentityFile ~/.ssh/common
+
+Host pi
+	User pi
+	HostName 192.168.2.5
+	Port 22
+	IdentityFile ~/.ssh/common
+
+Host pi6
+	User pi
+	HostName 192.168.2.6
+	Port 22
+	IdentityFile ~/.ssh/common
