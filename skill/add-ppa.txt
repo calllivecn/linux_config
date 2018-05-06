@@ -1,6 +1,3 @@
-sudo add-apt-repository ppa:jonathonf/python-3.6
-
-
 
 #1.通过命令添加官方Wine库：
 
@@ -13,3 +10,11 @@ sudo apt-add-repository 'deb https://dl.winehq.org/wine-builds/ubuntu/ xenial ma
 #2。安装GPG密钥以能够接收软件更新：
 
 wget -nc https://dl.winehq.org/wine-builds/Release.key && sudo apt-key add Release.key
+
+
+
+# install transmission client
+sudo add-apt-repository ppa:transmissionbt/ppa
+
+# uninstall ppa
+sudo apt-get install ppa-purge && sudo ppa-purge ppa:transmissionbt/ppa
