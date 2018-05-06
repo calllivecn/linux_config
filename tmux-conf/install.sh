@@ -2,12 +2,12 @@
 
 set -e
 
-cp tmux.conf /etc/
+cp -v tmux.conf /etc/
 
-cp hometmux.conf ~/.tmux.conf
+cp -v hometmux.conf ~/.tmux.conf
 
 [ -d ~/.tmux ] || mkdir ~/.tmux
 
-cp tmux/*.conf ~/.tmux/
+cp -v tmux/*.conf ~/.tmux/
 
 

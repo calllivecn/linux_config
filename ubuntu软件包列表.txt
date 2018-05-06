@@ -96,7 +96,7 @@ xdotool
 zenity
 
 # 命令行 tui
-dailog
+dialog
 
 # debsums
 debsums
