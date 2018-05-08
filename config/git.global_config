@@ -12,5 +12,6 @@
 	cm = commit
 	b = branch
 	lg = log --graph
+	l = log -n 10 --graph
 	lgo = log --graph --pretty=oneline --abbrev-commit
 	ch = checkout
