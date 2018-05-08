@@ -119,6 +119,7 @@ alias d='date +%F-%u-%R'
 alias caly='cal `date +%Y`'
 alias top='top -d 1'
 alias temp='watch -n 1 sensors'
+alias cdwork='cd ~/work/'
 
 # systemctl alias
 alias scl='sudo systemctl'
@@ -148,6 +149,7 @@ alias dn='dk network'
 alias dnl='dk network ls'
 
 PS1='${?:NO}-\u@\h:\W\$ '
+PS1='\[\033[01;32m\]${?:-No}-\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
 
 p(){ ps -ef |grep "$1"; }
 
