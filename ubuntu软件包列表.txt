@@ -71,6 +71,7 @@ cmus
 
 vlc
 gimp
+qBittorrent
 
 # 自动调节屏幕亮度和色温以保护眼睛。
 redshift
