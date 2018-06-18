@@ -1,0 +1,3 @@
+诊断启动问题
+使用如下内核参数引导：
+systemd.log_level=debug systemd.log_target=kmsg log_buf_len=1M
