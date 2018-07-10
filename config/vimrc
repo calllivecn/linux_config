@@ -26,7 +26,7 @@ map! <C-E> <ESC>A
 
 
 "autocmd BufReadPost *.py,*.c,*.go :set tabstop=4 sw=4
-autocmd BufReadPost,BufNewFile *.py,*.c,*.go :set expandtab softtabstop=4
+autocmd BufReadPost,BufNewFile *.py,*.c,*.go,*.yml,*.yaml :set expandtab softtabstop=4
 
 " bash
 autocmd BufReadPost,BufNewFile *.sh :map! <F5> <ESC>:w<CR>:!bash %<CR>
