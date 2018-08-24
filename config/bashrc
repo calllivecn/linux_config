@@ -151,7 +151,7 @@ alias dnl='dk network ls'
 PS1='${?:NO}-\u@\h:\W\$ '
 PS1='\[\033[01;32m\]${?:-No}-\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
 
-p(){ ps -ef |grep "$1"; }
+p(){ ps -ef |grep -v grep |grep "$1"; }
 
 pu(){ ps aux |awk '{if($5 != 0) print $0}'; }
 
@@ -199,6 +199,12 @@ battery(){
 	upower -i $(upower -e |grep BAT)
 }
 
+wifi(){
+nmcli device wifi rescan
+sleep 1
+nmcli device wifi list
+}
+
 
 #校验合函数生成
 for hashsum in md5sum sha1sum sha224dum sha256sum sha384sum sha512sum
@@ -217,6 +223,6 @@ fi
 
 export PYTHONSTARTUP=~/.pythonrc
 export PIP_DOWNLOAD_CACHE=~/work/py3_library-cache
-alias py='python3'
-alias ipy='ipython3'
 
+# added by Anaconda3 installer
+#export PATH="/home/zx/anaconda3/bin:$PATH"
