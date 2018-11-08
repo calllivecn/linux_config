@@ -77,8 +77,8 @@ qBittorrent
 redshift
 redshift-gtk
 
-## 终端录制工具   pip3 install termrecord example: TremRecord -o output.html
-termrecord
+## 终端录制工具   pip3 install termtosvg, example: termtosvg output.svg
+termtosvg
 
 ## 屏幕录像工具
 kazam

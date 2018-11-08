@@ -119,11 +119,11 @@ alias d='date +%F-%u-%R'
 alias caly='cal `date +%Y`'
 alias top='top -d 1'
 alias temp='watch -n 1 sensors'
-alias cdwork='cd ~/work/'
 
 # systemctl alias
 alias scl='sudo systemctl'
 alias scls='scl status'
+alias jl='journalctl'
 
 alias ls='ls --color=auto'
 alias ll='ls -lFh --time-style=long-iso'
