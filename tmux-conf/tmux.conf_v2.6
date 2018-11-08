@@ -21,7 +21,11 @@ bind-key -r C-h resize-pane -L
 bind-key -r C-l resize-pane -R
 
 bind-key -nr M-q next-window
-#bind-key % split-window -v -c "#{pane_current_path}"
+
+unbind-key %
+unbind-key '"'
+bind-key % split-window -c "#{pane_current_path}"
+bind-key '"' split-window -h -c "#{pane_current_path}"
 
 
 bind-key -n M-1 select-window -t :1
