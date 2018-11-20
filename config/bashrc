@@ -116,7 +116,6 @@ fi
 alias ..='cd ..'
 alias j='jobs -l'
 alias d='date +%F-%u-%R'
-alias caly='cal `date +%Y`'
 alias top='top -d 1'
 alias temp='watch -n 1 sensors'
 
