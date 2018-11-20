@@ -1,0 +1,15 @@
+docker
+evdev
+ipython
+numba
+pika
+psutil
+PyAudio
+pyinotify
+PyInstaller
+python-etcd
+redis
+termtosvg
+trash-cli
+virtualenv
+youtube-dl
