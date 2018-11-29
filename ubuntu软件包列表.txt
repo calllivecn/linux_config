@@ -73,9 +73,12 @@ vlc
 gimp
 qBittorrent
 
+# markdown 编辑器 （去官网下deb包安装）
+#remarkable
+
 # 自动调节屏幕亮度和色温以保护眼睛。
-redshift
-redshift-gtk
+#redshift
+#redshift-gtk
 
 ## 终端录制工具   pip3 install termtosvg, example: termtosvg output.svg
 termtosvg
@@ -102,10 +105,10 @@ dialog
 # debsums
 debsums
 
-manpages-zh
+#manpages-zh
 
 # nes 游戏模拟器
 fceux
 
-# proxychains " proxychains wget https://www.youtube.com"
+# proxychains 例子："proxychains wget https://www.youtube.com"
 proxychains
