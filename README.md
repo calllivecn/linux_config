@@ -1,2 +1,2 @@
-# linux_config
+# linux\_config
 linux的一些配置 和 一些小技巧

@@ -1,15 +1,11 @@
-docker
 evdev
 ipython
 numba
-pika
 psutil
 PyAudio
+PyAutoGUI
 pyinotify
 PyInstaller
-python-etcd
-redis
 termtosvg
-trash-cli
 virtualenv
 youtube-dl
