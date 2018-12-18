@@ -24,8 +24,8 @@ bind-key -nr M-q next-window
 
 unbind-key %
 unbind-key '"'
-bind-key % split-window -c "#{pane_current_path}"
-bind-key '"' split-window -h -c "#{pane_current_path}"
+bind-key % split-window -h -c "#{pane_current_path}"
+bind-key '"' split-window -c "#{pane_current_path}"
 
 
 bind-key -n M-1 select-window -t :1
