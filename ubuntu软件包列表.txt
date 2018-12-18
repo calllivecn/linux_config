@@ -19,6 +19,7 @@ syslinux-efi
 syslinux-common
 isolinux
 genisoimage
+xorriso
 debootstrap
 
 kpartx
