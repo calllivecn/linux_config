@@ -1,0 +1,2 @@
+#ACTION=="add",KERNEL=="sd[a-z]*",RUN="/monitor_usb_storage.sh zx%n $env{ID_SERIAL}"
+ACTION=="remove",ENV{ID_SERIAL}=="SanDisk_Cruzer_Facet_4C530011471216105152-0:0",RUN="/monitor_usb_storage.sh zx%n $env{ID_SERIAL}",NAME="zx%n"
