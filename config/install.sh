@@ -12,11 +12,10 @@ cp -v bashrc ~/.bashrc
 
 cp -v profile ~/.profile
 
-if [ -d ~/.pip ];then
-	cp -v pip.conf ~/.pip/
+if [ -f /etc/pip.conf ];then
+	:
 else
-	mkdir -v ~/.pip
-	cp -v pip.conf ~/.pip/
+	cp -v pip.conf /etc/pip.conf
 fi
 
 cp -v home-pythonrc ~/.pythonrc
