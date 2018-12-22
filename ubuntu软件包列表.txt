@@ -103,6 +103,9 @@ zenity
 # 命令行 tui
 dialog
 
+# 说话
+espeak
+
 # debsums
 debsums
 
