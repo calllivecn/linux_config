@@ -1,0 +1,6 @@
+deb [arch=amd64] https://mirrors.aliyun.com/ubuntu/ cosmic main
+deb [arch=amd64] https://mirrors.aliyun.com/ubuntu/ cosmic-updates main
+deb [arch=amd64] https://mirrors.aliyun.com/ubuntu/ cosmic universe
+deb [arch=amd64] https://mirrors.aliyun.com/ubuntu/ cosmic-updates universe
+deb [arch=amd64] https://mirrors.aliyun.com/ubuntu cosmic-security main
+deb [arch=amd64] https://mirrors.aliyun.com/ubuntu cosmic-security universe
