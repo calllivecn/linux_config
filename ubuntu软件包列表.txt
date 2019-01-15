@@ -66,6 +66,11 @@ p7zip
 p7zip-full
 p7zip-rar
 
+# 一个好的进程io查看工具(apt install iotop)
+iotop
+
+# GNU stow 工具，管理源码安装软件。(apt install stow)
+stow
 
 ## 命令行音乐播放器
 cmus
@@ -77,9 +82,6 @@ qBittorrent
 # markdown 编辑器 （去官网下deb包安装）
 #remarkable
 
-# 自动调节屏幕亮度和色温以保护眼睛。
-#redshift
-#redshift-gtk
 
 ## 终端录制工具   pip3 install termtosvg, example: termtosvg output.svg
 termtosvg
@@ -108,8 +110,6 @@ espeak
 
 # debsums
 debsums
-
-#manpages-zh
 
 # nes 游戏模拟器
 fceux
