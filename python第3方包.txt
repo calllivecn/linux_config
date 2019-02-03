@@ -9,3 +9,6 @@ PyInstaller
 termtosvg
 virtualenv
 youtube-dl
+
+#查看CPU频率、温度、功率、
+s-tui
