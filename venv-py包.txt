@@ -2,3 +2,4 @@ docker
 pika
 python-etcd
 redis
+ansible
