@@ -189,6 +189,8 @@ bcl(){
 
 io(){ iostat -m 1; }
 
+iop(){ pidstat --human -d 1; }
+
 cpufreq(){
 	watch -n 1 'grep "cpu MHz" /proc/cpuinfo'
 }
