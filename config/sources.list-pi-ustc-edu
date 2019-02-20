@@ -1,0 +1,4 @@
+deb https://mirrors.ustc.edu.cn/raspbian/raspbian/ stretch main contrib rpi
+
+# Uncomment line below then 'apt-get update' to enable 'apt-get source'
+#deb-src http://archive.raspbian.org/raspbian/ stretch main contrib non-free rpi
