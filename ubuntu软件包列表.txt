@@ -89,6 +89,9 @@ termtosvg
 ## 屏幕录像工具
 kazam
 
+# 字典 翻译 添加youdao翻译url http://dict.youdao.com/search?q=%GDWORD%ue=utf8
+goldendict
+
 ### filesystem support bfs jfs xfs
 jfsutils
 xfsprogs
