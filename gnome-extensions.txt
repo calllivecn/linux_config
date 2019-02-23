@@ -1,0 +1,31 @@
+# URL https://extensions.gnome.org/
+# 手机安装过程：
+# 
+# 1. 解压下载的文件，将该文件夹复制到 ~/.local/share/gnome-shell/extensions 目录。到主目录下并按 Ctrl+H 显示隐藏的文件夹，在这里找到 .local 文件夹，你可以找到你的路径，直至 extensions 目录。
+# 
+# 2. 一旦你将文件复制到正确的目录后，进入它并打开 metadata.json 文件，寻找 uuid 的值。
+# 
+# 3. 确保该扩展的文件夹名称与 metadata.json 中的 uuid 值相同。如果不相同，请将目录重命名为 uuid 的值。
+# 
+# 4. 差不多了！现在重新启动 GNOME Shell。 按 Alt+F2 并输入 r 重新启动 GNOME Shell。
+# 
+# 移除 GNOME Shell 扩展：
+#
+# 1. 你可能想要删除一个已安装的 GNOME Shell 扩展，这是完全可以理解的。
+# 
+# 2. 如果你是通过 Web 浏览器安装的，你可以到 GNOME 网站的以安装的扩展部分 那移除它（如前面的图片所示）。
+# 
+# 3. 如果你是手动安装的，可以从 ~/.local/share/gnome-shell/extensions 目录中删除扩展文件来删除它。
+# 
+# 特别提示：获得 GNOME Shell 扩展更新的通知
+#
+# 到目前为止，你已经意识到除了访问 GNOME 扩展网站之外，无法知道更新是否可用于 GNOME Shell 扩展。
+# 
+# 幸运的是，有一个 GNOME Shell 扩展可以通知你是否有可用于已安装扩展的更新。你可以从下面的链接中获得它：
+# 
+# Extension Update Notifier (https://extensions.gnome.org/extension/1166/extension-update-notifier/)
+
+
+
+# gnome-shell-extension 列表
+netspeed
