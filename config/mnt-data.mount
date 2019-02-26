@@ -1,0 +1,12 @@
+[Unit]
+Description=mount /dev/sda1 /mnt/data
+
+[Mount]
+What=UUID=33064e53-9f80-4e95-a100-4b73f906210f
+#Where=/mnt/data
+Type=ext4
+Options=discard,noatime
+
+#[Install]
+#WantedBy=local-fs.target
+

@@ -1,0 +1,9 @@
+[Unit]
+Description="automount /dev/sda1 /mnt/data"
+
+[Automount]
+Where=/mnt/data
+TimeoutIdleSec=1h 30m
+
+[Install]
+WantedBy=multi-user.target
