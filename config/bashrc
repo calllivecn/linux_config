@@ -169,6 +169,8 @@ hp(){ history |grep "$1"; }
 
 duh(){ du -xmd 1 |sort -k 1 -nr |head -n 20; }
 
+dfh(){ df -lh |grep '^/' |sort -k 1; }
+
 mem(){ free -mhlt; }
 
 listen(){ lsof -P -i -n; }
@@ -201,7 +203,7 @@ battery(){
 
 wifi(){
 nmcli device wifi rescan
-sleep 1
+sleep 0.5
 nmcli device wifi list
 }
 

@@ -22,6 +22,10 @@ cp -v home-pythonrc ~/.pythonrc
 
 cp -v git.global_config ~/.gitconfig
 
+#cp -v vimrc ~/.vimrc
+echo '"zx add' >> /etc/vim/vimrc
+cat vimrc >> /etc/vim/vimrc
+
 
 # /etc/
 cp -v iptables.rules /etc/ && chmod 600 /etc/iptables.rules
