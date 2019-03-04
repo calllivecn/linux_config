@@ -1,0 +1,25 @@
+Acquire::http::proxy "http://127.0.0.1:8000/";
+Acquire::ftp::proxy "ftp://127.0.0.1:8000/";
+Acquire::https::proxy "https://127.0.0.1:8000/";
+
+所以我研究了一下，发现那个代理设置修改了两个文件，一个是“/etc/environment”，这个是系统的环境变量，里面定义了“http_proxy”等代理环境变量。
+另一个是“/etc/apt/apt.conf”，这个就是apt的配置，内容如下：
+
+Acquire::http::proxy "http://127.0.0.1:8000/";
+Acquire::ftp::proxy "ftp://127.0.0.1:8000/";
+Acquire::https::proxy "https://127.0.0.1:8000/";
+
+很明显的代理设置代码，我看了下apt-get的手册，发现可以用“-c”选项来指定使用配置文件，也就是复制一份为“~/apt_proxy.conf”，然后“网络代理”那里重置回直接连接，以后使用
+
+sudo apt-get -c ~/apt_proxy.conf update
+就可以使用代理了，apt-get也有一个“-o”选项，直接跟apt-get的设置变量，就不用指定配置文件了，比如
+
+sudo apt-get -o Acquire::http::proxy="http://127.0.0.1:8000/" update
+
+
+＃ 设置对一个域名的代理
+Acquire::http::Proxy::mega.nz "http://127.0.0.1:1081";
+Acquire::https::Proxy::mega.nz "http://127.0.0.1:1081";
+通过以上设置，apt更新时，对mega.nz网址的访问，将通过127.0.0.1：1081端口，走http流量访问。
+
+
