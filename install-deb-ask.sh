@@ -13,7 +13,7 @@ do
 	if [ "$yesno"x = "y"x ];then
 		apt show $deb > /dev/null 2>&1
 		if [ $? -eq 0 ];then
-			INSTALL_LIST="$INSTALL_LISTS $deb"
+			INSTALL_LISTS="$INSTALL_LISTS $deb"
 		else
 			echo "当前仓库没有: $deb"
 		fi
