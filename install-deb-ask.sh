@@ -11,7 +11,7 @@ do
 	read -n 1 yesno
 	echo ''
 	if [ "$yesno"x = "y"x ];then
-		apt show $deb 2>&1 > /dev/null
+		apt show $deb > /dev/null 2>&1
 		if [ $? -eq 0 ];then
 			INSTALL_LIST="$INSTALL_LISTS $deb"
 		else
