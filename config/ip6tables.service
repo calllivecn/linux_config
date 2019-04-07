@@ -1,0 +1,9 @@
+[Unit]
+Description="my iptables list"
+Before=network.target
+
+[Service]
+ExecStart=/bin/sh -c "/sbin/ip6tables-restore < /etc/ip6tables.rules"
+
+[Install]
+WantedBy=network.target
