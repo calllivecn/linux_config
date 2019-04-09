@@ -2,6 +2,8 @@
 # 
 
 
+INSTALL_LISTS=""
+
 install_for_file(){
 for deb in $(grep -Ev '^#|^$' "$1")
 do
@@ -9,11 +11,19 @@ do
 	read -n 1 yesno
 	echo ''
 	if [ "$yesno"x = "y"x ];then
-		sudo apt install "$deb"
+		apt show $deb > /dev/null 2>&1
+		if [ $? -eq 0 ];then
+			INSTALL_LISTS="$INSTALL_LISTS $deb"
+		else
+			echo "当前仓库没有: $deb"
+		fi
+		#sudo apt install "$deb"
 	else
 		echo "不安装$deb"
 	fi
 done
+
+apt install $INSTALL_LISTS
 }
 
 
