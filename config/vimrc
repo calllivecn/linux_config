@@ -1,9 +1,9 @@
-" zx add
-set shiftwidth=4
+" My vim config
 set tabstop=4
+set shiftwidth=4
 set autoindent
 set number
-set expandtab
+"set expandtab
 set softtabstop=4
 
 
@@ -41,6 +41,8 @@ autocmd BufReadPost,BufNewFile *.py :map <F5> :w<CR>:!python3 %<CR>
 autocmd BufReadPost,BufNewFile *.go :map! <F5> <ESC>:w<CR>:!go run %<CR>
 autocmd BufReadPost,BufNewFile *.go :map <F5> :w<CR>:!go run %<CR>
 
+autocmd BufReadPost,BufNewFile *.go :map! <F6> <ESC>:w<CR>:!gofmt %<CR>
+autocmd BufReadPost,BufNewFile *.go :map <F6> :w<CR>:!gofmt %<CR>
 
 
 
@@ -49,7 +51,6 @@ function File_sh()
 	call setline(1,"#!/bin/bash")
 	call setline(2,'# date ' . strftime("%Y-%m-%d %H:%M:%S"))
 	call setline(3,'# author calllivecn <c-all@qq.com>')
-	call setline(4,'# https://github.com/calllivecn')
 	:$
 endfunction
 
@@ -60,9 +61,17 @@ function File_py()
 	call setline(2,"# coding=utf-8")
 	call setline(3,'# date ' . strftime("%Y-%m-%d %H:%M:%S"))
 	call setline(4,'# author calllivecn <c-all@qq.com>')
-	call setline(4,'# https://github.com/calllivecn')
 	:set expandtab softtabstop=4
 	:$
 endfunction
 autocmd BufNewFile *.py :call File_py()
 
+function File_go()
+	call setline(1, "/*")
+	call setline(2,'# date ' . strftime("%Y-%m-%d %H:%M:%S"))
+	call setline(3,'# author calllivecn <c-all@qq.com>')
+	call setline(4, "*/")
+	:$
+endfunction
+
+autocmd BufNewFile *.go :call File_go()

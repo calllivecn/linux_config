@@ -1,0 +1,14 @@
+[Unit]
+Description="my iptables list"
+Wants=network-online.target
+Before=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c '/sbin/iptables-restore < /etc/iptables.rules'
+ExecReload=/bin/sh -c '/sbin/iptables-save > /tmp/iptables.tmp;/sbin/iptables-restore < /tmp/iptables.tmp'
+ExecStop=/sbin/iptables -F
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
