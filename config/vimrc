@@ -33,8 +33,8 @@ autocmd BufReadPost,BufNewFile *.sh :map! <F5> <ESC>:w<CR>:!bash %<CR>
 autocmd BufReadPost,BufNewFile *.sh :map <F5> :w<CR>:!bash %<CR>
 
 " python 
-autocmd BufReadPost,BufNewFile *.py :map! <F5> <ESC>:w<CR>:!py3 %<CR>
-autocmd BufReadPost,BufNewFile *.py :map <F5> :w<CR>:!py3 %<CR>
+autocmd BufReadPost,BufNewFile *.py :map! <F5> <ESC>:w<CR>:!python3 %<CR>
+autocmd BufReadPost,BufNewFile *.py :map <F5> :w<CR>:!python3 %<CR>
 
 " Go lang 
 autocmd BufReadPost,BufNewFile *.go :map! <F5> <ESC>:w<CR>:!go run %<CR>
@@ -55,7 +55,7 @@ endfunction
 autocmd BufNewFile *.sh :call File_sh()
 
 function File_py()
-	call setline(1,"#!/usr/bin/env py3")
+	call setline(1,"#!/usr/bin/env python3")
 	call setline(2,"# coding=utf-8")
 	call setline(3,'# date ' . strftime("%Y-%m-%d %H:%M:%S"))
 	call setline(4,'# author calllivecn <c-all@qq.com>')
