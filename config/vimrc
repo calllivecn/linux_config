@@ -103,8 +103,8 @@ autocmd BufReadPost,BufNewFile *.py :map <F5> :w<CR>:!python3 %<CR>
 autocmd BufReadPost,BufNewFile *.go :map! <F5> <ESC>:w<CR>:!go run %<CR>
 autocmd BufReadPost,BufNewFile *.go :map <F5> :w<CR>:!go run %<CR>
 
-autocmd BufReadPost,BufNewFile *.go :map! <F6> <ESC>:w<CR>:!gofmt %<CR>
-autocmd BufReadPost,BufNewFile *.go :map <F6> :w<CR>:!gofmt %<CR>
+autocmd BufReadPost,BufNewFile *.go :map! <F6> <ESC>:w<CR>:%!gofmt %<CR>
+autocmd BufReadPost,BufNewFile *.go :map <F6> :w<CR>:%!gofmt %<CR>
 
 
 
