@@ -29,6 +29,8 @@ apt install $INSTALL_LISTS
 
 install_for_file "ubuntu软件包列表.txt"
 
+echo "添加python包了～"
+
 pip_install_for_file(){
 for deb in $(grep -Ev '^#|^$' "$1")
 do

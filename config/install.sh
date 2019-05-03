@@ -6,7 +6,7 @@ etc="ip6tables.rules iptables.rules"
 
 home="bashrc git.global_config home-pythonrc pip.conf profile vimrc"
 
-set -e
+set -ex
 
 cp -v bashrc ~/.bashrc
 
