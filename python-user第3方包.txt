@@ -22,5 +22,5 @@ s-tui
 mycli
 
 # 查看进程内存，http://github.com/pixelb/scripts/commits/master/scripts/ps_mem.py
-ps_mem.py
+# Usage: ps_mem.py
 
