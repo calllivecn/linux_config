@@ -1,14 +1,19 @@
-evdev
 ipython
 numba
 psutil
+ansible
 PyAudio
 PyAutoGUI
 pyinotify
 PyInstaller
 termtosvg
-virtualenv
 youtube-dl
+
+# 格式化代码的工具
+black
+
+# check py代码
+pylint
 
 #查看CPU频率、温度、功率、
 s-tui
@@ -17,7 +22,7 @@ s-tui
 mycli
 
 # 查看进程内存，http://github.com/pixelb/scripts/commits/master/scripts/ps_mem.py
-ps_mem.py
+# Usage: ps_mem.py
 
 
 # SymPy是符号数学的Python库。 它旨在成为一个全功能的计算机代数系统（CAS），同时保持代码尽可能简单，以便易于理解和扩展。
