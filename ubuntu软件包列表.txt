@@ -1,5 +1,6 @@
 
 w3m
+curl
 
 openssh-server
 
@@ -58,7 +59,8 @@ lm-sensors
 
 parallel
 pbzip2
-pxz
+#pxz
+pixz
 plzip
 pigz
 
