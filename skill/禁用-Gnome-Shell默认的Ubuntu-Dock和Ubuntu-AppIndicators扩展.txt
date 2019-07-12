@@ -1,0 +1,6 @@
+把它们禁掉，首先要找到它们所在的目录：
+
+$ cd /usr/share/gnome-shell/extensions/
+$ sudo mv ubuntu-dock@ubuntu.com .bak.ubuntu-dock@ubuntu.com
+$ sudo mv ubuntu-appindicators@ubuntu.com .bak.ubuntu-appindicators@ubuntu.com
+只要把文件夹改成 gnome shell 不认识的名字，或者把里面的 metadata.json 改掉也可以，启动时就不会去加载这两个默认的扩展了。
