@@ -123,7 +123,8 @@ espeak
 # debsums
 debsums
 
-# nes 游戏模拟器
+# nes 游戏模拟器 还有一个 efp 
+#efp
 fceux
 
 # proxychains 例子："proxychains wget https://www.youtube.com"
