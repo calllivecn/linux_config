@@ -1,2 +1,0 @@
-Commandline: apt-get install -y -qq --no-install-recommends docker-ce
-Install: containerd.io:amd64 (1.2.0-1, automatic), docker-ce:amd64 (5:18.09.0~3-0~ubuntu-bionic), docker-ce-cli:amd64 (5:18.09.0~3-0~ubuntu-bionic, automatic)

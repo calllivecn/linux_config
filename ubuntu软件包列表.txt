@@ -26,7 +26,7 @@ debootstrap
 kpartx
 
 # 刻录光盘 wodim
-wodim
+#wodim
 
 vim
 git
@@ -44,7 +44,7 @@ testdisk
 
 # 查看SSD使用寿命和健康状况
 # smartctl -l devstat /dev/sdX
-smartmontools
+#smartmontools
 
 tree
 ################
@@ -59,8 +59,10 @@ lm-sensors
 
 parallel
 pbzip2
+
 #pxz
 pixz
+
 plzip
 pigz
 
@@ -79,13 +81,13 @@ cmus
 
 vlc
 gimp
-qBittorrent
+#qBittorrent
 
 remmina
 
 gnome-tweaks
 
-# markdown 编辑器 （去官网下deb包安装）(https://remarkableapp.github.io/linux/download.html)
+# markdown 编辑器 （去官网下deb包安装）(https://remarkableapp.github.io/linux/download.html) 不支持 19.04。。。
 #remarkable
 
 
@@ -98,7 +100,7 @@ kazam
 # onlyoffice desktop 需要去官网下载deb包安装.
 
 # 字典 翻译 添加youdao翻译url http://dict.youdao.com/search?q=%GDWORD%ue=utf8
-goldendict
+#goldendict
 
 ### filesystem support bfs jfs xfs
 jfsutils
@@ -109,6 +111,11 @@ cryptsetup-bin
 
 ## Linux中安装xdotool模拟击键和鼠标移动
 xdotool
+
+
+# sqlite3 GUI tools
+sqlitebrowser
+sqlite3
 
 ## Linux GTK+ 的图形工具
 zenity
