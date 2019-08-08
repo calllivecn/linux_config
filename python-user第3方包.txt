@@ -28,3 +28,6 @@ mycli
 # SymPy是符号数学的Python库。 它旨在成为一个全功能的计算机代数系统（CAS），同时保持代码尽可能简单，以便易于理解和扩展。
 sympy
 
+
+aiohtt
+aiomultiprocess
