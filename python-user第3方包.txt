@@ -2,7 +2,6 @@ ipython
 numba
 psutil
 ansible
-PyAudio
 PyAutoGUI
 pyinotify
 PyInstaller

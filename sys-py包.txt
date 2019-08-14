@@ -1,4 +1,10 @@
+
 # 
 libevent
 
+# sudo pip3 install libevdev
 libevdev
+
+
+# sudo pip3 install PyAudio OR sudo apt install python3-pyaudio
+PyAudio
