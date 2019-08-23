@@ -1,8 +1,12 @@
 docker
 pika
 python-etcd
+PyMySQL
 redis
-evdev
+libevdev
+
+# 一个模板渲染模块
+jinja
 
 # 
 jupyter
