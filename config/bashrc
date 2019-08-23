@@ -211,6 +211,10 @@ battery(){
 	upower -i $(upower -e |grep BAT)
 }
 
+tmuxnew(){
+	tmux new -s "$(hostname)"
+}
+
 wifi(){
 nmcli device wifi rescan
 sleep 0.5
