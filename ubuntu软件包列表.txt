@@ -88,7 +88,7 @@ remmina
 gnome-tweaks
 ffmpeg
 
-# markdown 编辑器 （去官网下deb包安装）(https://remarkableapp.github.io/linux/download.html) 不支持 19.04。。。
+# markdown 编辑器（去官网下deb包安装）(https://remarkableapp.github.io/linux/download.html) 不支持 19.04。。。
 #remarkable
 
 
@@ -116,6 +116,7 @@ xdotool
 
 # sqlite3 GUI tools
 sqlitebrowser
+
 sqlite3
 
 ## Linux GTK+ 的图形工具
