@@ -146,8 +146,18 @@ alias dlf='dl --tail 30 -f'
 alias dn='dk network'
 alias dnl='dk network ls'
 
+recode(){
+	local ok='☺ ' err='☹ ' prompt='☘ ' returncode
+	if [ $1 -eq 0 ];then
+		returncode="$ok"
+	else
+		returncode="$err"
+	fi
+	echo "$returncode"
+}
+
 PS1='${?:NO}-\u@\h:\W\$ '
-PS1='\[\033[01;32m\]${?:-No}-\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+PS1='\[\033[01;32m\]$(recode $?)-\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]☘ '
 
 p(){ ps -ef |grep -v grep |grep "$1"; }
 
@@ -199,6 +209,10 @@ cpufreq(){
 
 battery(){
 	upower -i $(upower -e |grep BAT)
+}
+
+tmuxnew(){
+	tmux new -s "$(hostname)"
 }
 
 wifi(){
