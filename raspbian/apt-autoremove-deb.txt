@@ -1,6 +1,0 @@
-avahi-daemon
-ifupdown
-
-
-dphys-swapfile
-dhcpcd5
