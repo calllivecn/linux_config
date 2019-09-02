@@ -15,10 +15,10 @@ bind-key h select-pane -L
 #right
 bind-key l select-pane -R
 
-bind-key -r M-k resize-pane -U
-bind-key -r M-j resize-pane -D
-bind-key -r M-h resize-pane -L
-bind-key -r M-l resize-pane -R
+bind-key -r C-k resize-pane -U
+bind-key -r C-j resize-pane -D
+bind-key -r C-h resize-pane -L
+bind-key -r C-l resize-pane -R
 
 bind-key -nr M-q next-window
 
