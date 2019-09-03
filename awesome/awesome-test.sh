@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 Xephyr -ac -br -reset :1 &
 
 sleep 2
