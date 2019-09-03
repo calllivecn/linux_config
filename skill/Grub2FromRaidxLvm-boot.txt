@@ -1,0 +1,53 @@
+这里已ubuntu 18.04 为例：
+	
+	0.	从ISO文件启动，try ubuntu（因为要先作一些工作）。
+		这里以Raid5 3个磁盘为例，
+		gidks /dev/sdx ，每个盘分两个区。分别为：
+		sda1 为EFI 分区（推荐512M），sda2 为raid分区。（EFI分区只能放在raid之外，每个磁盘都有EFI是作高可用）
+
+		(如果ISO live 系统没有mdadm、lvm2 安装之。)
+	
+	1.	创建Raid5：
+		mdadm --create --level 5 --raid-devices 3 /dev/md/raid5 /dev/sd{a,b,c}2
+
+		创建lvm：
+		pvcreate /dev/md/raid5
+		vgcreate vg0 /dev/md/raid5
+
+		# 这里可以你自己分区了，以下是我的。
+		lvcreate -L 16G -n root vg0
+		lvcreate -l +100%FREE -n home vg0
+
+	2.	启动iso的安装程序。（正常安装）
+		注意：正常安装时，指定一个EFI 分区， sda1。
+
+	3.	mkdir /target
+		mount -v /dev/md/raid5 /target
+		
+		mount -vt devtmpfs none /target/dev
+		mount -vt devpts none /target/dev/pts
+		mount -vt proc none /target/proc
+		mount -vt sysfs none /target/sys
+		mount -vt tmpfs none /target/run
+
+		# cp live 系统的/etc/resolv.conf to /target/etc/resolv.conf
+		cp -v /etc/resolv.conf /target/etc/resolv.conf
+
+		chroot /target apt update
+		chroot /target apt install mdadm lvm2
+
+	4.	mdadm --detail --scan >> /target/etc/mdadm/mdadm.conf
+
+	5.	在其他EFI分区分别安装GRUB2(raid5 3盘，只需要2个盘安装EFI。)：
+		mkdir /tmp/sdb1 /tmp/sdc1
+		mount -v /dev/sdb1 /tmp/sdb1
+		mount -v /dev/sdc1 /tmp/sdc1
+		grub-install --modules mdraid1x --modules lvm --efi-directory /tmp/sdb1 --boot-directory /target/boot/
+		grub-install --modules mdraid1x --modules lvm --efi-directory /tmp/sdc1 --boot-directory /target/boot/
+	
+	6.	vim /target/etc/fstab:
+		删除/boot/efi那行。（以后要修改EFI引导，手动挂载。不然有可能，这个盘挂了，导致系统引导不起来。）
+
+	7.	umount -v /target/run /target/sys /target/proc /target/dev/pts /target/dev /target
+
+	5.	reboot
