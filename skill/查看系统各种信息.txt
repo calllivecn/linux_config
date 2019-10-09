@@ -17,3 +17,5 @@ cat /proc/stat
 
 
 
+# 查看电源是否在线
+/sys/class/power_supply/AC/online
