@@ -87,6 +87,7 @@ remmina
 
 gnome-tweaks
 ffmpeg
+cpulimit
 
 # markdown 编辑器（去官网下deb包安装）(https://remarkableapp.github.io/linux/download.html) 不支持 19.04。。。
 #remarkable
