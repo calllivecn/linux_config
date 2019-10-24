@@ -1,0 +1,93 @@
+一般电脑用户使用的字体大部分属于TrueType字体，TrueType字体文件的扩展名是.ttf，ttf就是TrueType Font的首字母缩写。这篇教程将向读者介绍如何在Linux系统上安装TrueType字体。本文先介绍通用的安装方式，不管你用的是哪个Linux发行版，都可以用这种方法来安装。然后介绍Debian系和Redhat系发行版安装字体的一些捷径或特殊方法。
+
+安装TrueType字体的通用方法
+
+Ubuntu字体家族(Ubuntu Font Family)是Canonical公司在2010-2011年间开发的开源字体集合，包括Ubuntu Light, Ubuntu Regular, Ubuntu Medium, Ubuntu Bold, Ubuntu Mono等字体。Ubuntu的字体还是挺美观的，一般图形界面的字体我喜欢用Ubuntu Regular，而终端则使用Ubuntu Mono。现在我以Ubuntu字体为例介绍Linux系统安装TrueType字体的通用方法。
+
+Ubuntu字体家族下载地址：http://font.ubuntu.com/ 这是个英文网页，不习惯看英文的童鞋可以点击此链接直接下载。终端控可以打开终端输入下面的命令下载。
+
+wget http://font.ubuntu.com/download/ubuntu-font-family-0.80.zip
+下载完后，在终端里使用unzip命令解压下载好的字体文件。
+
+unzip ubuntu-font-family-0.80.zip
+unzip默认会将解压的文件存放在一个新的目录中，即ubuntu-font-family-0.80。现在使用cp命令将新建的目录及目录下的字体文件全部复制到/usr/share/fonts/truetype目录下。命令如下 ：
+
+sudo cp -r ubuntu-font-family-0.80/ /usr/share/fonts/truetype/
+/usr/share/fonts/目录及其子目录需要root权限来写入，所以上面的命令前面加上了sudo。这条命令执行完后，ubuntu-font-family-0.80这个目录被复制到了/usr/share/fonts/truetype目录下，成为/usr/share/fonts/truetype的一个子目录。命令的 -r 选项代表recursive，即递归复制，所以原来ubuntu-font-family-0.80目录下的所有字体文件都会被复制到/usr/share/fonts/truetype/ubuntu-font-family-0.80目录下。
+
+复制完成后，新安装的ubuntu字体家族只有root用户才能使用，我们需要更改字体的权限，以便其他用户也能使用。输入下面的命令。
+
+sudo chmod 755 /usr/share/fonts/truetype/ubuntu-font-family-0.80/ -R
+然后输入下面的命令刷新系统字体信息文件。
+
+fc-cache -f -v
+如果你使用LibreOffice Writer，那么这时你只要重新启动LibreOffice Writer就能使用新的ubuntu字体了。
+
+只限定当前用户使用新字体
+
+我们把字体文件复制到/usr/share/fonts/目录下，那么系统上的所有用户都可以使用新安装的字体。但如果你只想提供给当前登录的用户使用，那么我们只要把字体文件复制到~/.fonts目录下。如果没有~/.fonts这个目录，那么我们先创建这个目录。波浪号～代表当前用户的主目录，即/home/<username>。在终端中输入下面的命令
+
+mkdir ~/.fonts
+然后把字体文件复制到~/.fonts目录下。
+
+cp -r ubuntu-font-family-0.80/ ~/.fonts/
+复制完成后，输入下面的命令刷新字体信息文件。
+
+fc-cache -f -v
+这就是通用的安装字体方法。下面介绍Debian系统和Redhat系统发行版安装字体的一些捷径或特殊方法。
+
+Debian系和Redhat系Linux发行版安装Microsoft字体
+
+安装Microsoft核心字体集（Microsoft Core Fonts）
+
+Microsoft Core Fonts包含如下西文字体：
+
+* Andale Mono
+* Arial Black
+* Arial (Bold, Italic, Bold Italic)
+* Comic Sans MS (Bold)
+* Courier New (Bold, Italic, Bold Italic)
+* Georgia (Bold, Italic, Bold Italic)
+* Impact
+* Times New Roman (Bold, Italic, Bold Italic)
+* Trebuchet (Bold, Italic, Bold Italic)
+* Verdana (Bold, Italic, Bold Italic)
+* Webdings
+
+Debian系用户只要打开终端，然后输入命令
+
+sudo apt-get install ttf-mscorefonts-installer
+Redhat系用户输入下面的命令
+
+sudo yum install cabextract
+
+sudo yum install http://sourceforge.net/projects/mscorefonts2/files/rpms/msttcore-fonts-installer-2.6-1.noarch.rpm
+命令执行完成后，Microsoft Core Fonts就安装好了。但是怎么安装Windows系统上的中文字体呢？怎么安装那些宋体、黑体、隶书等字体呢？我们可以先点击此链接下载Microsoft中文字体集，然后按照通用的方法，将Microsoft中文字体集复制到/usr/share/fonts/truetype/目录下。
+
+小提示
+
+Windows系统的字体安装目录是C:\Windows\Fonts，这个目录下的字体文件分成3个扩展名，一个是.fon扩展名，是DOS系统的字体；一个是.ttf扩展名，这个是西文字体，还有一个是.TTF扩展名，是中文字体。DOS系统的字体我们用不上。如果你的电脑是Windows+Linux双系统的话，那么可以先将Windows的C盘挂载到Linux系统下。然后直接将C:\Windows\Fonts目录下的.tff和.TTF字体文件全部复制到/usr/share/fonts/truetype目录下。
+
+比如，我的Windows系统C盘设备号是/dev/sdb1，执行下面的命令挂载C盘
+
+sudo mount /dev/sdb1 /mnt
+为Windows字体新建一个目录
+
+sudo mkdir /usr/share/fonts/truetype/WindowsFonts
+然后将.ttf和.TTF扩展名的Windows字体文件复制到/usr/share/fonts/truetype/WindowsFonts目录下
+
+sudo cp -r /mnt/Windows/Fonts/*.ttf /usr/share/fonts/truetype/WindowsFonts/
+
+sudo cp -r /mnt/Windows/Fonts/*.TTF /usr/share/fonts/truetype/WindowsFonts/
+这样Windows西文和中文字体就安装好了。从法律的角度来说，这样做违反了微软的最终用户协议。因为Windows系统C盘里的字体只是授权用户在Windows系统上使用，在Linux系统上使用是不合法的。
+
+安装开源中文字体
+
+在终端中输入下面的命令，安装开源的文泉驿微米黑和文泉驿正黑字体
+
+Debian系用户
+
+sudo apt-get install ttf-wqy-microhei ttf-wqy-zenhei
+Redhat系用户
+
+sudo yum install wqy-microhei-fonts wqy-zenhei-fonts
