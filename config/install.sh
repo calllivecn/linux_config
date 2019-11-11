@@ -4,6 +4,8 @@
 
 etc="ip6tables.rules iptables.rules"
 
+ETC="nftables.conf"
+
 home="bashrc git.global_config home-pythonrc pip.conf profile vimrc"
 
 set -ex
@@ -28,6 +30,9 @@ cat vimrc >> /etc/vim/vimrc
 
 
 # /etc/
-cp -v iptables.rules /etc/ && chmod 600 /etc/iptables.rules
 
-cp -v ip6tables.rules /etc/ && chmod 600 /etc/ip6tables.rules
+for e in $ETC
+do
+	cp -vf "$e" /etc/
+done
+
