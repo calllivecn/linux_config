@@ -73,6 +73,9 @@ p7zip-rar
 # 一个好的进程io查看工具(apt install iotop)
 iotop
 
+# nftables
+nftables
+
 # GNU stow 工具，管理源码安装软件。(apt install stow)
 stow
 
