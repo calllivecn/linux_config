@@ -1,0 +1,49 @@
+
+## 设置密码，和测试。
+
+1.	设置密码。
+	x11vnc -storepasswd
+
+2.	x11vnc -usepw
+	单次启动。
+	～～～
+	可以连接了。
+
+
+# 用户登陆后自动启动
+
+1.	设置密码。
+	x11vnc -storepasswd
+
+2.	vim ~/.config/sudostart/x11vnc.desktop #如果没有 ~/.config/autostart/ 创建之。
+	
+	[Desktop Entry]
+	Name=x11vnc 
+	Comment=远程桌面 server
+	Exec=x11vnc -auth guess -usepw -forever -rfbport 5900
+	Terminal=false
+	Type=Application
+
+
+###########################
+#	没用。。。只能有X session 会话之后才能用。
+#	也就是要用户登陆之后
+#
+#
+## 设置开机启动，参考文档：https://wiki.archlinux.org/index.php/X11vnc
+#
+#1.	设定远端桌面登入时使用的密码，设定完后直接回车确认储存密码到~/.vnc/passwd 档案里，
+#	“~/ ”是你当前使用者的根目录如：/home/user/ 
+#	须藤x11vnc -storepasswd 
+#
+#2.	设定x11vnc通用的密码储存位置 
+#	在/etc/x11vnc.pass中的sudo x11vnc -storepasswd 
+#
+#3.	将使用者目录下的passwd档案内容copy到/etc/x11vnc.pass下 
+#	须藤cp /home/user/.vnc/passwd /etc/x11vnc.pass 
+#	
+#4.	配置x11vnc为跟随系统自动启动 
+#	x11vnc -display :0 -aut
+#	h /var/run/lightdm/root/:0 -forever -bg -o /var/log/x11vnc.log -rfbauth /etc/x11vnc.pass -rfbport 5900 
+#
+###########################
