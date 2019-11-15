@@ -20,7 +20,7 @@
 	[Desktop Entry]
 	Name=x11vnc 
 	Comment=远程桌面 server
-	Exec=x11vnc -auth guess -usepw -forever -rfbport 5900
+	Exec=x11vnc -auth guess -usepw -forever -shared -rfbport 5900
 	Terminal=false
 	Type=Application
 
