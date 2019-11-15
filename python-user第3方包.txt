@@ -1,6 +1,7 @@
 ipython
 numba
 psutil
+ps_mem
 ansible
 PyAutoGUI
 pyinotify
