@@ -1,0 +1,15 @@
+1. 修改配置文件/etc/gitlab/gitlab.rb
+
+[root@gitlab gitlab] vim  /etc/gitlab/gitlab.rb
+
+external_url 'https://mygit.cnyunwei.cc'  #这里就填写您申请的gitlab证书域名地址
+
+nginx['redirect_http_to_https']=true
+nginx['ssl_certificate'] = "/etc/gitlab/ssl/gitlab.pem"
+nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/gitlab.key"
+
+2. 更新Gitlab配置：
+
+[root@gitlab ~] gitlab-ctl reconfigure
+
+[root@gitlab ~] gitlab-ctl restart
