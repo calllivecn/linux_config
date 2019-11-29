@@ -31,8 +31,7 @@ certonly 表示插件，Certbot 有很多插件。不同的插件都可以申请
 #### 执行完这一步之后，就是命令行的输出，请根据提示输入相应内容：
 
 ```shell
-uthenticator could not be determined or is not installed                                                                                                                                                          
-☹ -zx@hthl:~☘ certbot certonly --config-dir .certbot/ --work-dir .certbot/ --logs-dir .certbot/ --manual --preferred-challenges dns-01 -d www.calllive.cc                                                          
+zx@hthl:~$ certbot certonly --config-dir .certbot/ --work-dir .certbot/ --logs-dir .certbot/ --manual --preferred-challenges dns-01 -d www.calllive.cc                                                          
 Saving debug log to /home/zx/.certbot/letsencrypt.log                                                                                                                                                              
 Plugins selected: Authenticator manual, Installer None                                                                                                                                                             
 Enter email address (used for urgent renewal and security notices) (Enter 'c' to                                                                                                                                   
