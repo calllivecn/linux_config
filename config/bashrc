@@ -189,7 +189,7 @@ port(){ ss -tulanp |column -t; }
 
 cpsync(){ cp "$1" "$2" && sync -d "$2"; }
 
-weather(){ wget -qO- http://wttr.in; }
+weather(){ wget -qO- https://wttr.in; }
 
 bcl(){
 	if [ -n "$1" ];then
