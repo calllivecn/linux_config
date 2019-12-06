@@ -42,6 +42,12 @@ vlock
 extundelete
 testdisk
 
+
+# 虚拟化
+virt-manager
+# libvirtd 虚拟机 UEFI 引导包
+ovmf
+
 # 查看SSD使用寿命和健康状况
 # smartctl -l devstat /dev/sdX
 #smartmontools
