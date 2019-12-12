@@ -13,7 +13,7 @@ HandleLidSwitch=ignore
 
 最后重启服务
 
-service systemd-logind restart
+systemctl restart systemd-logind
 
 注：在Ubuntu18.04和Ubuntu16.04笔记本电脑，下面测试可以使用。
 
