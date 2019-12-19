@@ -20,12 +20,11 @@ syslinux-efi
 syslinux-common
 isolinux
 genisoimage
-xorriso
 debootstrap
-
 kpartx
+xorriso
 
-# 刻录光盘 wodim
+# 刻录光盘 wodim, 或者使用 xorriso -as cdrecord -eject -v dev=/dev/sr0 your.iso
 #wodim
 
 vim
