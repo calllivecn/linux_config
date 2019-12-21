@@ -17,7 +17,7 @@ do
 		else
 			echo "当前仓库没有: $deb"
 		fi
-		#sudo apt install "$deb"
+		sudo apt install "$deb"
 	else
 		echo "不安装$deb"
 	fi
