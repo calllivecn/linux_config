@@ -8,3 +8,7 @@ libevdev
 
 # sudo pip3 install PyAudio OR sudo apt install python3-pyaudio
 PyAudio
+
+
+# like to stow, sudo pip3 install dploy
+dploy

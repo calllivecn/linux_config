@@ -1,0 +1,3 @@
+$ gsettings get org.gnome.desktop.lockdown disable-lock-screen
+true
+$ gsettings set org.gnome.desktop.lockdown disable-lock-screen false
