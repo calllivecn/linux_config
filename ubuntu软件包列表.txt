@@ -30,6 +30,7 @@ xorriso
 vim
 git
 python3-pip
+python3-tk
 lftp
 sysstat
 pv
@@ -125,6 +126,9 @@ remmina
 gnome-tweaks
 ffmpeg
 cpulimit
+
+# 中、日、韩字体
+fonts-noto-cjk-extra
 
 # markdown 编辑器（去官网下deb包安装）(https://remarkableapp.github.io/linux/download.html) 不支持 19.04。。。
 #remarkable
