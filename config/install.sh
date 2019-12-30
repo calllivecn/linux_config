@@ -17,7 +17,7 @@ cp -v profile ~/.profile
 if [ -f /etc/pip.conf ];then
 	echo "/etc/pip.conf already exists"
 else
-	cp -v pip.conf /etc/pip.conf
+	sudo cp -v pip.conf /etc/pip.conf
 fi
 
 cp -v home-pythonrc ~/.pythonrc
@@ -25,14 +25,13 @@ cp -v home-pythonrc ~/.pythonrc
 cp -v git.global_config ~/.gitconfig
 
 #cp -v vimrc ~/.vimrc
-echo '"zx add' >> /etc/vim/vimrc
-cat vimrc >> /etc/vim/vimrc
-
+echo '"zx add' |sudo tee -a /etc/vim/vimrc
+cat vimrc |sudo tee -a /etc/vim/vimrc
 
 # /etc/
 
 for e in $ETC
 do
-	cp -vf "$e" /etc/
+	sudo cp -vf "$e" /etc/
 done
 
