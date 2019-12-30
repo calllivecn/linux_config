@@ -12,22 +12,12 @@
 	l = log -n 20 --graph
 	lgo = log --graph --pretty=oneline --abbrev-commit
 	ch = checkout
+	tree = lg --decorate --oneline --simplify-by-decoration --all
 [push]
 	default = simple
 [log]
 	date = format:%Y-%m-%d %H:%M:%S
-
 #[http]
 #	proxy = socks5://192.168.13.137:10000
 #[https]
 #	proxy = socks5://192.168.13.137:10000
-
-# 配置git ssh 代理，
-# 1. apt install ncat
-# 
-# 2. vim ~/.ssh/config 
-# Host github.com
-# 	User    git
-# 	Hostname        github.com
-# 	Port    22
-# 	Proxycommand    /usr/bin/ncat --proxy 127.0.0.1:1081 --proxy-type socks5 %h %p
