@@ -9,6 +9,8 @@ libevdev
 # sudo pip3 install PyAudio OR sudo apt install python3-pyaudio
 PyAudio
 
+# python 蓝牙库，需要 apt install libbluetooth-dev
+pybluez
 
 # like to stow, sudo pip3 install dploy
 dploy
