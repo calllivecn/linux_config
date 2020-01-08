@@ -10,6 +10,7 @@
 	b = branch
 	lg = log --graph
 	l = log -n 20 --graph
+	la = l --all
 	lgo = log --graph --pretty=oneline --abbrev-commit
 	ch = checkout
 	tree = lg --decorate --simplify-by-decoration --all
