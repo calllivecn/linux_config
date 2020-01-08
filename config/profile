@@ -34,10 +34,7 @@ PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 #export GOROOT=$HOME/ProgramLanguage/go1.10
 #export PATH=$PATH:$GOROOT/bin
 
-# go work dirs
-export GOPATH=$HOME/work/gowork
-
-gopath="${GOPATH//://bin:}/bin"
-
-export PATH=$PATH:${gopath}
-unset gopath
+# go path work dirs
+export GOPATH=$HOME/work/gopath
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
