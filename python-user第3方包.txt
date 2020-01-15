@@ -33,5 +33,5 @@ sympy
 
 
 #异步IO库
-aiohtt
+aiohttp
 aiomultiprocess
