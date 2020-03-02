@@ -3,7 +3,6 @@ pika
 python-etcd
 PyMySQL
 redis
-libevdev
 
 # 一个模板渲染模块
 jinja
