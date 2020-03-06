@@ -32,6 +32,6 @@ mycli
 sympy
 
 
-#异步IO库
+#异步IO库 pip install aiohttp[speedups] 这样可以一直安装aiohttp的一些加速依赖包。
 aiohttp
 aiomultiprocess
