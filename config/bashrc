@@ -191,6 +191,14 @@ cpsync(){ cp "$1" "$2" && sync -d "$2"; }
 
 weather(){ wget -qO- https://wttr.in; }
 
+psmem() {
+	if type -p ps_mem >/dev/null 2>&1;then
+		ps_mem -p $(pgrep -d, "$1")
+	else
+		echo "请安装：pip3 install ps-mem"
+	fi
+}
+
 bcl(){
 	if [ -n "$1" ];then
 		echo "$1" |bc -l
@@ -220,6 +228,22 @@ nmcli device wifi rescan
 sleep 0.5
 nmcli device wifi list
 }
+
+xiyou(){
+	set -x
+	if [ -n "$http_proxy" ];then
+		unset http_proxy
+	else
+		export http_proxy="http://127.0.0.1:9999"
+	fi
+	if [ -n "$https_proxy" ];then
+		unset https_proxy
+	else
+		export https_proxy="http://127.0.0.1:9999"
+	fi
+	set +x
+}
+
 
 
 #校验合函数生成
