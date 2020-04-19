@@ -1,0 +1,12 @@
+# 创建文件存储GIT用户名和密码
+
+1. 首先在全局配置保存你的密码， ~/.git-credentials （没有就创建）内添加 https://{username}:{passwd}@git.coding.net
+
+	vim .git-credentials
+	
+	```shell
+	https://{username}:{password}@github.com       //这里是域名
+	```
+
+2. 然后配置 Git 命令存储认证
+	git config --global credential.helper store
