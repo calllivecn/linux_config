@@ -13,12 +13,14 @@
 	la = l --all
 	lgo = log --graph --pretty=oneline --abbrev-commit
 	ch = checkout
-	tree = lg --decorate --simplify-by-decoration --all
 [push]
 	default = simple
 [log]
 	date = format:%Y-%m-%d %H:%M:%S
+
 #[http]
 #	proxy = socks5://192.168.13.137:10000
 #[https]
 #	proxy = socks5://192.168.13.137:10000
+[credential]
+	helper = store
