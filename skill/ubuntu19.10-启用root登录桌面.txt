@@ -15,3 +15,4 @@
 	sudo gedit /etc/pam.d/gdm-password
 	注释掉 auth required pam_succeed_if.so user != root quiet_success这一行(第三行左右)
 
+4. 重启
