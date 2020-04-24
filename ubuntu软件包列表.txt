@@ -119,7 +119,8 @@ cmus
 
 vlc
 gimp
-#qBittorrent or transmission-gtk or transmission-cli
+#qBittorrent or transmission-gtk or 
+transmission-cli
 transmission-gtk
 
 remmina
