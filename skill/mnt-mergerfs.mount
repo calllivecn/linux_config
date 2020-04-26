@@ -1,0 +1,16 @@
+[Unit]
+Description=mount.fuse /dir1:/dir2:dir3 /mnt/mergerfs -t mergerfs
+After=-.mount home.mount
+Requires=-.mount home.mount
+
+[Mount]
+What=/:/home
+Where=/mnt/mergerfs
+Type=fuse.mergerfs
+Options=defaults,allow_other,noauto,use_ino,minfreespace=4G
+#User=zx
+#Group=zx
+
+[Install]
+WantedBy=multi-user.target
+
