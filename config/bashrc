@@ -130,6 +130,8 @@ alias lla='ls -AlFh --time-style=long-iso'
 alias la='ls -AF'
 alias l='ls -CF'
 
+alias ip='ip -c'
+
 alias grep='grep --color=auto'
 
 ## docker command
