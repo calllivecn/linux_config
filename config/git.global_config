@@ -1,1 +1,30 @@
-https://calllivecn:git%401597530.x@github.com
+[user]
+	email = c-all@qq.com
+	name = calllivecn
+[core]
+	editor = vim
+	quotepath = false
+[alias]
+	s = status
+	cm = commit
+	b = branch
+	lg = log --graph --name-status
+	l = log -n 20 --graph --name-status
+	la = l --all
+	lgo = log --graph --pretty=oneline --abbrev-commit
+	ch = checkout
+	tree = lg --decorate --simplify-by-decoration --all
+[push]
+	default = simple
+[log]
+	date = format:%Y-%m-%d %H:%M:%S
+	#date = local
+
+#[http]
+#	proxy = socks5://192.168.13.104:10000
+#[https]
+#	proxy = socks5://192.168.13.104:10002
+
+[credential]
+	#helper = store --file ~/.ssh/.git-credentials
+	helper = store.py --cfg ~/.ssh/.git-store.json
