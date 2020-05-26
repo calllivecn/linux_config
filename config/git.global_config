@@ -1,7 +1,6 @@
 [user]
-	#email = c-all@qq.com
-	email = zhangxu@hthl-tech.com
-	name = zhangxu
+	email = c-all@qq.com
+	name = calllivecn
 [core]
 	editor = vim
 	quotepath = false
@@ -9,8 +8,8 @@
 	s = status
 	cm = commit
 	b = branch
-	lg = log --graph
-	l = log -n 20 --graph
+	lg = log --graph --name-status
+	l = log -n 20 --graph --name-status
 	la = l --all
 	lgo = log --graph --pretty=oneline --abbrev-commit
 	ch = checkout
