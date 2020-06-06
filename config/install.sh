@@ -14,12 +14,6 @@ cp -v bashrc ~/.bashrc
 
 cp -v profile ~/.profile
 
-if [ -f /etc/pip.conf ];then
-	echo "/etc/pip.conf already exists"
-else
-	sudo cp -v pip.conf /etc/pip.conf
-fi
-
 cp -v home-pythonrc ~/.pythonrc
 
 cp -v git.global_config ~/.gitconfig
