@@ -16,6 +16,8 @@
 	tree = lg --decorate --simplify-by-decoration --all
 [push]
 	default = simple
+[pull]
+	rebase = false
 [log]
 	date = format:%Y-%m-%d %H:%M:%S
 	#date = local
@@ -23,7 +25,7 @@
 #[http]
 #	proxy = socks5://192.168.13.104:10000
 #[https]
-#	proxy = socks5://192.168.13.104:10002
+#	proxy = socks5://192.168.13.104:10000
 
 [credential]
 	#helper = store --file ~/.ssh/.git-credentials
