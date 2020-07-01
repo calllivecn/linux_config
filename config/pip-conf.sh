@@ -7,4 +7,4 @@
 sudo pip3 config --global set global.index-url https://mirrors.aliyun.com/pypi/simple/
 
 # 这是配置当前用户的源
-#pip3 config set trusted-host.index-url https://mirrors.aliyun.com/pypi/simple/
+#pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
