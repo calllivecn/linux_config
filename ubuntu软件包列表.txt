@@ -37,6 +37,7 @@ pv
 tmux
 # 锁定终端
 vlock
+mlocate
 
 # 文件恢复工具包
 extundelete
@@ -141,6 +142,9 @@ termtosvg
 
 ## 屏幕录像工具
 kazam
+
+# 一个好用的截图工具
+flameshot
 
 # onlyoffice desktop 需要去官网下载deb包安装.
 
