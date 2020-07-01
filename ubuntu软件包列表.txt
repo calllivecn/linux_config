@@ -146,6 +146,9 @@ kazam
 # 一个好用的截图工具
 flameshot
 
+# 利用rsync 的一个备份软件
+timeshift
+
 # onlyoffice desktop 需要去官网下载deb包安装.
 
 # 字典 翻译 添加youdao翻译url http://dict.youdao.com/search?q=%GDWORD%ue=utf8
