@@ -124,6 +124,9 @@ gimp
 transmission-cli
 transmission-gtk
 
+#查看Unicode表情的工具
+gnome-characters
+
 remmina
 
 gnome-tweaks
