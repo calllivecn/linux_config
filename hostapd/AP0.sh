@@ -4,8 +4,9 @@
 
 set -ex
 
+
 PHYICAL_WIFI="wlp7s0"
-VIRTUAL_WIFI="VirtualAP0"
+VIRTUAL_WIFI="VAP0"
 GATEWAY_IP="192.168.7.1/24"
 
 if [ -n "$(ip -br link |awk '{print $1}' |grep "$VIRTUAL_WIFI")" ];then
@@ -15,8 +16,15 @@ fi
 
 sleep 1
 
-iw dev "$PHYICAL_WIFI" interface add "$VIRTUAL_WIFI" type managed
+iw dev "$PHYICAL_WIFI" interface add "$VIRTUAL_WIFI" type managed addr "8c:c6:81:15:83:b8"
+
+sleep 1
 
 ip addr add dev "$VIRTUAL_WIFI" "$GATEWAY_IP"
+
+nft add rule inet filter postrouting oif "$PHYICAL_WIFI" ip saddr 192.168.7.0/24 counter masquerade
+
+nft add rule inet filter route iif "$VIRTUAL_WIFI" counter accept
+
 
 hostapd  /etc/hostapd/AP0.conf
