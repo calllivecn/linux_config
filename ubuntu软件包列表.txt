@@ -118,6 +118,9 @@ stow
 ## 命令行音乐播放器
 cmus
 
+# google emoji 字体
+#fonts-noto-color-emoji
+
 vlc
 gimp
 #qBittorrent or transmission-gtk or 
