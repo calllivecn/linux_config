@@ -1,0 +1,5 @@
+1. virt-manager 操作 kvm虚拟机中鼠标不同步的问题
+	在/etc/libvirt/qemu下找到对应的xml配置文件
+	
+	在<devices>标签下添加
+	<input type='tablet' bus='usb'/>
