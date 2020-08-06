@@ -43,6 +43,10 @@ mlocate
 extundelete
 testdisk
 
+# virtualbox 发行版仓库
+virtualbox
+virtualbox-ext-pack
+virtualbox-guest-additions-iso
 
 # 虚拟化
 virt-manager
