@@ -123,6 +123,8 @@ alias temp='watch -n 1 sensors'
 alias scl='sudo systemctl'
 alias scls='scl status'
 alias jl='journalctl'
+alias jlu='journalctl --user'
+alias scu='systemctl --user'
 
 alias ls='ls --color=auto'
 alias ll='ls -lFh --time-style=long-iso'
@@ -232,16 +234,17 @@ nmcli device wifi list
 }
 
 xiyou(){
+	local proxy="http://127.0.0.1:9999"
 	set -x
 	if [ -n "$http_proxy" ];then
 		unset http_proxy
 	else
-		export http_proxy="http://127.0.0.1:9999"
+		export http_proxy="$proxy"
 	fi
 	if [ -n "$https_proxy" ];then
 		unset https_proxy
 	else
-		export https_proxy="http://127.0.0.1:9999"
+		export https_proxy="$proxy"
 	fi
 	set +x
 }
