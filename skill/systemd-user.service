@@ -1,0 +1,12 @@
+[Unit]
+Description=test systemctl --user echo cmd
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/nc -lk 9989
+Restart=on-failure
+RestartSec=1s
+
+[Install]
+# 必须是 default.target 才会开机启动
+WantedBy=default.target
