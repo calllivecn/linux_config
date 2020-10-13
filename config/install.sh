@@ -2,9 +2,9 @@
 # date 2018-04-28 18:34:17
 # author calllivecn <c-all@qq.com>
 
-etc="ip6tables.rules iptables.rules"
+#etc="ip6tables.rules iptables.rules"
 
-ETC="nftables.conf"
+#ETC="nftables.conf"
 
 home="bashrc git.global_config home-pythonrc pip.conf profile vimrc"
 
