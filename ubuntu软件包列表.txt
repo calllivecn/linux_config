@@ -24,6 +24,12 @@ debootstrap
 kpartx
 xorriso
 
+
+# 一个在RAM和交换空间均低于10％，Earlyoom向oom_score最大的进程发出SIGTERM。
+# 如果RAM和交换空间都低于5％，则Earlyoom将SIGKILL发送给具有最大oom_score的进程。
+#这个想法是要尽快从内存不足的情况中恢复，而不是使用户不得不关闭电源而没有其他选择的典型的完整系统挂起。
+earlyoom
+
 # 刻录光盘 wodim, 或者使用 xorriso -as cdrecord -eject -v dev=/dev/sr0 your.iso
 #wodim
 
