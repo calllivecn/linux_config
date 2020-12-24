@@ -19,8 +19,13 @@ cp -v home-pythonrc ~/.pythonrc
 cp -v git.global_config ~/.gitconfig
 
 #cp -v vimrc ~/.vimrc
-echo '"zx add' |sudo tee -a /etc/vim/vimrc
-cat vimrc |sudo tee -a /etc/vim/vimrc
+VIMRC="/etc/vim/vimrc"
+if grep -qE '^"zx add' "$VIMRC";then
+	echo "已经安装 $VIMRC"
+else
+	echo '"zx add' |sudo tee -a "$VIMRC"
+	cat vimrc |sudo tee -a "$VIMRC"
+fi
 
 # /etc/
 
