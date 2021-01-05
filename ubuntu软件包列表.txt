@@ -112,6 +112,8 @@ pbzip2
 #pxz
 pixz
 
+zstd
+
 plzip
 pigz
 
