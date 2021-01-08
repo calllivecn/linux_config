@@ -1,0 +1,6 @@
+# 计娄是从零开始的
+
+
+$vim /etc/default/grub
+
+GRUB_DEFAULT="1>2"
