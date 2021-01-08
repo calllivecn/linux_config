@@ -33,6 +33,9 @@ earlyoom
 # 刻录光盘 wodim, 或者使用 xorriso -as cdrecord -eject -v dev=/dev/sr0 your.iso
 #wodim
 
+# 通过adb 连接安卓屏幕
+scrcpy
+
 vim
 git
 python3-pip
