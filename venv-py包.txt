@@ -7,6 +7,9 @@ redis
 # 一个模板渲染模块
 jinja
 
+# 读写 xlsx
+openpyxl
+
 # 
 jupyter
 
