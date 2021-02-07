@@ -1,0 +1,11 @@
+# /etc/systemd/system/home-swap4G.swap
+[Unit]
+Description=/home/swap4G swap file
+
+[Swap]
+What=/home/swap4G
+Priority=1
+Options=discard
+
+[Install]
+WantedBy=local-fs.target
