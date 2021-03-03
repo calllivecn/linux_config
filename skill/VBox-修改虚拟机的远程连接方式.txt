@@ -1,0 +1,8 @@
+
+1. VBoxManage setproperty vrdeextpack VNC
+
+2. VBoxManage modifyvm "VM name" --vrdeproperty VNCPassword="密码"
+
+3. VBoxManage setproperty vrdeextpack "Oralce VM VirtualBox Extension Pack"
+
+
