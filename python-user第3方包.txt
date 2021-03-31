@@ -18,6 +18,9 @@ pylint
 # 格式化代码to PEP8
 autopep8
 
+# VizTracer 可以跟踪并发的 Python 程序，以帮助记录、调试和剖析。
+viztracer
+
 #查看CPU频率、温度、功率、
 s-tui
 
