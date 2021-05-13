@@ -8,6 +8,7 @@ pyinotify
 PyInstaller
 termtosvg
 youtube-dl
+paramiko
 
 # 格式化代码的工具
 black

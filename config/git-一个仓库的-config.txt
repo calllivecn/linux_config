@@ -1,0 +1,4 @@
+
+# 加上这个，才能让非祼仓库接收push。
+[receive]
+        denyCurrentBranch = updateInstead
