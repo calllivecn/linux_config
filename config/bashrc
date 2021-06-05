@@ -132,23 +132,15 @@ alias lla='ls -AlFh --time-style=long-iso'
 alias la='ls -AF'
 alias l='ls -CF'
 
-alias ip='ip -c'
-
 alias grep='grep --color=auto'
+
+alias ip='ip -c'
 
 ## docker command
 
-alias dk='docker'
-alias di='dk images'
-alias dp='dk ps'
-alias dh='dk history'
-alias da='dk attach'
-alias ds='dk start'
-alias dt='dk stop'
-alias dl='dk logs'
-alias dlf='dl --tail 30 -f'
-alias dn='dk network'
-alias dnl='dk network ls'
+alias pm='podman'
+alias plf='dl --tail 30 -f'
+alias pd='dk network'
 
 recode(){
 	local ok='☺ ' err='☹ ' prompt='☘ ' returncode
@@ -234,8 +226,8 @@ nmcli device wifi list
 }
 
 xiyou(){
-	local proxy="http://127.0.0.1:9999"
 	set -x
+	local proxy="$(grep -oP '(?<=http_proxy=")(.*)(?=")' $HOME/.config/xiyou)"
 	if [ -n "$http_proxy" ];then
 		unset http_proxy
 	else
