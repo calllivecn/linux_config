@@ -12,7 +12,7 @@ do
 	echo ''
 	if [ "$yesno"x = "y"x ];then
 		#apt show $deb > /dev/null 2>&1
-		apt list $deb |grep -q $deb
+		apt list $deb 2> /dev/null |grep -q $deb 
 		if [ $? -eq 0 ];then
 			INSTALL_LISTS="$INSTALL_LISTS $deb"
 		else
