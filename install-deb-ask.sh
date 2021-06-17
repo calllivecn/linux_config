@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 
+# updated 2021-06-17 11:36:26 
 
 
 INSTALL_LISTS=""
@@ -11,13 +11,14 @@ do
 	read -n 1 yesno
 	echo ''
 	if [ "$yesno"x = "y"x ];then
-		apt show $deb > /dev/null 2>&1
+		#apt show $deb > /dev/null 2>&1
+		apt list $deb |grep -q $deb
 		if [ $? -eq 0 ];then
 			INSTALL_LISTS="$INSTALL_LISTS $deb"
 		else
 			echo "当前仓库没有: $deb"
 		fi
-		sudo apt install "$deb"
+		#sudo apt install "$deb"
 	else
 		echo "不安装$deb"
 	fi
