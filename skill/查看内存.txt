@@ -1,0 +1,9 @@
+问题	命令
+已安装的内存条有什么特点？
+sudo lshw -short -C memory
+
+这台计算机允许的最大内存是多少？
+sudo dmidecode -t memory | grep -i max
+
+有多少个内存插槽是空的？（没有输出意味着没有可用的）
+sudo lshw -short -C memory | grep -i empty

@@ -62,6 +62,8 @@ virt-manager
 # libvirtd 虚拟机 UEFI 引导包
 ovmf
 # virtio 驱动 https://docs.fedoraproject.org/en-US/quick-docs/creating-windows-virtual-machines-using-virtio-drivers/index.html
+# 新地址(手动下载)：https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md
+# 新地址直接下载ISO：https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso
 
 # ISO内容
 # ISO用于在Windows guest虚拟机中安装半虚拟驱动程序。该virtio-win/*.iso包含在RPM包含以下位：
