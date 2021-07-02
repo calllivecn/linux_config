@@ -1,1 +1,8 @@
-google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
+
+1. cp /usr/share/applications/chrome-xxx.desktop ~/.local/share/application/
+	修改几个对应的 Exec=
+	Exec=google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
+
+2. 更新桌面文件数据库
+	update-desktop-database ~/.local/share/applications
+
