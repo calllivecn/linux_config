@@ -52,6 +52,9 @@ mlocate
 extundelete
 testdisk
 
+# 查看 intel 核显使用率 gpu
+intel-gpu-tools
+
 # virtualbox 发行版仓库
 virtualbox
 virtualbox-ext-pack
