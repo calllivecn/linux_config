@@ -172,6 +172,9 @@ kazam
 # 一个好用的截图工具
 flameshot
 
+# tigervncserver from ubuntu packagename
+tigervnc-standalone-server
+
 # 利用rsync 的一个备份软件
 timeshift
 
