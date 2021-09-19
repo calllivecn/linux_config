@@ -1,6 +1,10 @@
 bind R source /etc/tmux.conf
 set-option -g status-keys vi
 set-option -g display-time 5000
+
+#set-option -g allow-rename off
+set-window-option -g automatic-rename off
+
 set-window-option -g mode-keys vi
 
 set-option -g base-index 1

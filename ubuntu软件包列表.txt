@@ -166,8 +166,11 @@ fonts-noto-cjk-extra
 ## 终端录制工具   pip3 install termtosvg, example: termtosvg output.svg
 termtosvg
 
-## 屏幕录像工具
+## 屏幕录像工具,只能在 Xorg 显示服务器上使用
 kazam
+
+## 屏幕录像工具,在 Wayland 和 Xorg 显示服务器上均可使用
+Kooha
 
 # 一个好用的截图工具
 flameshot
