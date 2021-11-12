@@ -8,6 +8,11 @@ fbterm
 fcitx-frontend-fbterm
 fcitx-table-wubi
 
+# 新的可以在wayland里使用的
+fcitx5
+fcitx5-module-wayland
+fcitx5-chinese-addons
+
 ################
 #
 # mini linux depends,begin
