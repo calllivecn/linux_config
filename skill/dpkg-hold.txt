@@ -1,0 +1,6 @@
+
+echo "package_name hold" | sudo dpkg --set-selections
+
+sudo dpkg --get-selections | grep "hold"
+
+echo "criu install" |sudo dpkg --set-selections
