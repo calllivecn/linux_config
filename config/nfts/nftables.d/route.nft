@@ -1,0 +1,19 @@
+set ports {
+	type inet_service
+	elements = { 22, 445, 5900, 6789, 9999,
+		     10000, 25565 }
+}
+
+set nets {
+	type ipv4_addr
+	flags interval
+	elements = {
+		192.168.9.0/24, 10.1.1.0/24, 10.1.2.0/24
+	}
+}
+
+chain route {
+	counter
+	ip saddr @nets tcp dport @ports counter accept
+	ip daddr 192.168.100.0/24 counter accept comment "这是iif virbr0 counter accept的代替,直接写iif virbr0, 在nft开机启动的时候会没有这个虚拟接口而报错"
+}

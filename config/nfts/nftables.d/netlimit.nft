@@ -21,7 +21,8 @@ table inet netlimit {
         }
 
         chain input {
-                type filter hook input priority 90; policy accept;
+                type filter hook input priority -10; policy accept;
+				iif lo accept
 				tcp dport @ports ct state established,related counter accept
 				tcp dport @ports ct state invalid counter drop
                 ip saddr @ips counter drop
