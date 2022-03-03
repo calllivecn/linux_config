@@ -1,8 +1,9 @@
-
+# 远程桌面修改为VNC协议
 1. VBoxManage setproperty vrdeextpack VNC
-
 2. VBoxManage modifyvm "VM name" --vrdeproperty VNCPassword="密码"
 
+# 修改回RDP协议
 3. VBoxManage setproperty vrdeextpack "Oralce VM VirtualBox Extension Pack"
 
-
+# 查看安装的拓展包
+4. vboxmanage list extpacks
