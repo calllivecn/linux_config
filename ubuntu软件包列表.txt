@@ -68,41 +68,6 @@ virtualbox
 virtualbox-ext-pack
 virtualbox-guest-additions-iso
 
-# 虚拟化
-virt-manager
-# libvirtd 虚拟机 UEFI 引导包
-ovmf
-# virtio 驱动 https://docs.fedoraproject.org/en-US/quick-docs/creating-windows-virtual-machines-using-virtio-drivers/index.html
-# 新地址(手动下载)：https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md
-# 新地址直接下载ISO：https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso
-
-# ISO内容
-# ISO用于在Windows guest虚拟机中安装半虚拟驱动程序。该virtio-win/*.iso包含在RPM包含以下位：
-# 
-# NetKVM/ -Virtio网络驱动程序
-# 
-# viostor/ -Virtio块驱动程序
-# 
-# vioscsi/ -Virtio小型计算机系统接口（SCSI）驱动程序
-# 
-# viorng/ -Virtio RNG驱动程序
-# 
-# vioser/ -Virtio串行驱动程序
-# 
-# Balloon/ -Virtio内存气球驱动程序
-# 
-# qxl/-适用于Windows 7和更低版本的QXL图形驱动程序。（构建virtio-win-0.1.103-1及更高版本）
-# 
-# qxldod/-适用于Windows 8和更高版本的QXL图形驱动程序。（构建virtio-win-0.1.103-2及更高版本）
-# 
-# pvpanic/- QEMU pvpanic设备驱动程序（编译为Virtio-WIN-0.1.103-2及更高版本）
-# 
-# guest-agent/ -QEMU Guest Agent 32位和64位MSI安装程序
-# 
-# qemupciserial/- QEMU PCI串行设备驱动程序
-# 
-# *.vfd 在Windows XP安装过程中使用的VFD软盘映像
-
 
 # 查看SSD使用寿命和健康状况
 # smartctl -l devstat /dev/sdX
