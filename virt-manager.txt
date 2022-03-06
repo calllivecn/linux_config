@@ -1,3 +1,6 @@
+# qemu-kvm-只安装virt-manager客户端
+apt install --no-install-recommends virt-manager
+
 # 虚拟化
 virt-manager
 

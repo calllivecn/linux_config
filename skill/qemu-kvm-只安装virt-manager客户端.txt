@@ -1,1 +1,0 @@
-apt install --no-install-recommends virt-manager
