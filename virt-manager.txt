@@ -60,3 +60,16 @@ ovmf
 	1) virsh define --file /etc/libvirt/qemu/<vm name>.xml # 可能需要sudo
 	2) 修改对应该的 网络，disk 路径，UEFI，等配置。
 
+
+
+
+
+#############
+#
+# 从virtualbox 迁移 win10 到 kvm, （不行还是启动不了）
+#
+##############
+
+1. 进行转换之前，您应该能够在Windows VM上运行sysprep。这告诉Windows在加载之前检查驱动程序，因为它们会更改。
+	使用什么选项运行sysprep？
+	注意：sysprep会删除计算机专用的ID，例如产品密钥和域成员身份。因此，sysprep主要用于克隆，但不适用于迁移。
