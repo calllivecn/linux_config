@@ -15,10 +15,10 @@ set nets {
 chain zx {
 	ct state established,related counter accept
 	ip6 nexthdr ipv6-icmp counter accept comment "这样也行 ip protocol ipv6-icmp counter accept; 需要在 ct state invalid 前面。"
+	ip daddr 192.168.100.0/24 counter accept comment "这是iif virbr0 counter accept的代替,直接写iif virbr0, 在nft开机启动的时候会没有这个虚拟接口而报错。也需要在 ct state invalid 前面。"
 	ct state invalid counter drop
 	iif "lo" counter accept
 	icmp type { echo-request, time-exceeded } counter accept
 
 	ip saddr @nets tcp dport @ports counter accept
-	ip daddr 192.168.100.0/24 counter accept comment "这是iif virbr0 counter accept的代替,直接写iif virbr0, 在nft开机启动的时候会没有这个虚拟接口而报错"
 }
