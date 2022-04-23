@@ -1,2 +1,4 @@
 ufw
+gnome-shell-extension-ubuntu-dock
+#gnome-shell-extension-appindicator
 

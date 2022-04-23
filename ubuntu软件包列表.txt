@@ -36,7 +36,7 @@ xorriso
 earlyoom
 
 # wireguard
-wiregaurd
+wireguard-tools
 
 # 刻录光盘 wodim, 或者使用 xorriso -as cdrecord -eject -v dev=/dev/sr0 your.iso
 #wodim
