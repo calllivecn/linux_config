@@ -188,7 +188,7 @@ espeak
 # debsums
 debsums
 
-# nes 游戏模拟器 还有一个 efp 
+# nes 游戏模拟器 还有一个 efp , fceux: https://fceux.com/web/home.html
 #efp
 fceux
 
