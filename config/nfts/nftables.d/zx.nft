@@ -14,6 +14,7 @@ set nets {
 
 chain zx {
 	ct state established,related counter accept
+	icmpv6 type { echo-request, time-exceeded } counter drop
 	ip6 nexthdr ipv6-icmp counter accept comment "这样也行 ip protocol ipv6-icmp counter accept; 需要在 ct state invalid 前面。"
 	ip daddr 192.168.100.0/24 counter accept comment "也需要在 ct state invalid 前面。(这里有128字符限制)"
 	ct state invalid counter drop
