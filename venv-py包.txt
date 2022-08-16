@@ -5,7 +5,7 @@ PyMySQL
 redis
 
 # 一个模板渲染模块
-jinja
+jinja2
 
 # 读写 xlsx
 openpyxl
