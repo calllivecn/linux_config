@@ -178,6 +178,9 @@ sqlite3
 ## Linux GTK+ 的图形工具
 zenity
 
+## 调节外接参数(我这里用做亮度调节)
+ddcutil
+
 # 命令行 tui whiptail 是 dialog 的简化版，一般ubuntu自带。
 whiptail
 dialog
