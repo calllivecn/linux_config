@@ -1,0 +1,33 @@
+
+1. 下载firefox-vxxxx.tar.bz2 
+
+2. tar -vxf firefox-vxxxx.tar.bz2 -C /opt/
+
+3. 更新 cd /opt/firefox/; ln -vs firefox-vXXXX firefox;
+
+4. 在/usr/local/share/applications/firefox.desktop 写下内容：
+```desktop
+[Desktop Entry]
+Version=1.0
+Name=Firefox Web Browser
+Comment=Browse the World Wide Web
+GenericName=Web Browser
+Keywords=Internet;WWW;Browser;Web;Explorer
+Exec=/opt/firefox/firefox-bin %u
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=/opt/firefox/browser/chrome/icons/default/default128.png
+Categories=GNOME;GTK;Network;WebBrowser;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;application/rss+xml;application/rdf+xml;image/gif;image/jpeg;image/png;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;video/webm;application/x-xpinstall;
+StartupNotify=true
+```
+
+5. update-desktop-database /usr/local/share/applications/
+
+
+## 更新后可以会遇到插件，书签不见的问题。解决方式如下：
+	1. 在新firefox 地址栏“about:support” --> 应用程序概要下：配置文件夹, 打开目录.
+	2. 退出firefox, 把之前旧fiefox的目录，mv 过来。
+
+	这样可能还不行,退出。删除目录下的lock文件
