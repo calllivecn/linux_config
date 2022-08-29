@@ -1,0 +1,4 @@
+# 配置路由
+nmcli connection modify TPlink6 ipv4.routes "10.1.1.0/24 192.168.8.10"
+# 增加路由
+nmcli connection modify TPlink6 +ipv4.routes "10.1.2.0/24 192.168.8.10"
