@@ -51,6 +51,9 @@ lars
 aiohttp
 aiomultiprocess
 
+# 可选安装依赖: http2, brotli
+httpx[cli]
+
 # 这玩意儿，是使用多线程模拟的异步IO
 aiofiles
 
