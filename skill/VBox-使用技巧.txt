@@ -1,0 +1,33 @@
+############################
+#
+# 远程桌面修改为VNC协议
+#
+############################
+
+1. VBoxManage setproperty vrdeextpack VNC
+2. VBoxManage modifyvm "VM name" --vrdeproperty VNCPassword="密码"
+
+# 修改回RDP协议
+3.1. VBoxManage setproperty vrdeextpack null
+
+# 这步不知道
+3. VBoxManage setproperty vrdeextpack "Oralce VM VirtualBox Extension Pack"
+
+# 查看安装的拓展包
+4. vboxmanage list extpacks
+
+
+############################
+#
+# virtualBox虚拟机文件过大，压缩节省空间
+#
+############################
+
+一、启动虚拟机
+    在虚拟机系统里执行：
+            碎片整理： sudo dd if=/dev/zero of=zero.fill
+            删除碎片文件： sudo rm -f zero.fill
+  完成指令后关闭虚拟机。
+二、宿主机以管理员模式打开命令提示符，执行以下命令：（）
+        cd 虚拟机安装的目录。
+        开始执行压缩命令： VboxManage modifyhd "虚拟机文件名.vdi" --compact 
