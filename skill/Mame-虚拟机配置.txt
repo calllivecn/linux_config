@@ -1,0 +1,9 @@
+
+0. 配置中文
+	1. apt install fonts-arphic-uming
+	2. 进入Mame
+	3. Configure Options --> Customize UI --> Fonts --> "AP PL UMing CN Light"
+	4. return to Previous Menu
+	5. language --> "Chinese (Simplified)"
+	6. return to Previous Menu
+	7. ESC （mame 会自动重启，中文成功）
