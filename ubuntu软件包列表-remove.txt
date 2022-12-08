@@ -2,3 +2,6 @@ ufw
 gnome-shell-extension-ubuntu-dock
 #gnome-shell-extension-appindicator
 
+software-properties-gtk
+ubuntu-release-upgrader-gtk
+ubuntu-release-upgrader-core
