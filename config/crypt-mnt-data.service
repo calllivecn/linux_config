@@ -1,0 +1,12 @@
+[Unit]
+Description=cryptsetup open <device>
+After=local-fs.target
+
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+Environment="UUID=2e865de8-ba45-4dba-9665-39b6f99e86ea" "NAME=data"
+ExecStart=/usr/sbin/cryptsetup -d /etc/luks/data.keyfile open /dev/disk/by-uuid/${UUID} ${NAME}
+ExecStop=/usr/sbin/cryptsetup close /dev/mapper/${NAME}
+
