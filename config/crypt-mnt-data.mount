@@ -1,5 +1,6 @@
 [Unit]
 Description=crypt disk data mnt-wind.mount
+DefaultDependencies=no
 After=crypt-mnt-data.service
 Requires=crypt-mnt-data.service
 
@@ -9,4 +10,4 @@ What=/dev/disk/by-uuid/c7bc3714-98a8-4901-b69a-faf6479f68df
 Type=ext4
 
 [Install]
-WantedBy=local-fs.target
+WantedBy=multi-user.target
