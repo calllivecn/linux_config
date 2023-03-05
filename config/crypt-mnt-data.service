@@ -2,6 +2,7 @@
 Description=cryptsetup open <device>
 After=local-fs.target
 Wants=local-fs.target
+PartOf=mnt-data.mount
 
 
 [Service]
