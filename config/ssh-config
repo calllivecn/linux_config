@@ -1,36 +1,34 @@
-Host wrt
+Host tenw
+	User zx
+	HostName 10.1.2.1
+	Port 8886
+
+Host ten4
+	User zx
+	#HostName 116.211.193.85
+	Hostname mc.calllive.cc
+	Port 8886
+
+Host ali6
+	User zx
+	HostName ipv6.calllive.cc
+	Port 8886
+
+Host aliw
+	User zx
+	HostName 10.1.1.1
+	Port 8886
+
+Host openwrt
 	User root
 	HostName 192.168.10.1
 	Port 22
-	IdentityFile ~/.ssh/common
+	KexAlgorithms +diffie-hellman-group1-sha1
 
-
-Host ddv
-	User root
-	HostName ladder.ddvudo.cf
-	Port 22
-	IdentityFile ~/.ssh/common
-
-Host ddvhk
-	User ubuntu
-	HostName proxy.ddvudo.cn
-	Port 22
-	IdentityFile ~/.ssh/common
-
-Host meizu
+Host route
 	User zx
-	HostName 192.168.2.4
-	Port 8022
-	IdentityFile ~/.ssh/common
+	#HostName 192.168.8.10
+	# ipv6 使用 local-link 地址
+	HostName fe80::1e55:58d1:cc6d:4515%%wlp3s0
+	Port 8886
 
-Host pi
-	User pi
-	HostName 192.168.2.5
-	Port 22
-	IdentityFile ~/.ssh/common
-
-Host pi6
-	User pi
-	HostName 192.168.2.6
-	Port 22
-	IdentityFile ~/.ssh/common
