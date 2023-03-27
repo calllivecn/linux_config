@@ -3,7 +3,10 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -22,13 +25,16 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
-  "iteration": 1653403042571,
+  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ppotlBBVz"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -37,10 +43,23 @@
       },
       "id": 12,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ppotlBBVz"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "运行时信息",
       "type": "row"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ppotlBBVz"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -48,6 +67,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -113,38 +134,30 @@
           ],
           "displayMode": "table",
           "placement": "right",
+          "showLegend": true,
           "sortBy": "Last",
           "sortDesc": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
+      "repeat": "job",
+      "repeatDirection": "h",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "(1 - avg(irate(node_cpu_seconds_total{job=\"$job\", mode=\"idle\"}[1m]))by(instance) * on(instance) group_left(nodename) node_uname_info{job=\"$job\"})*100",
-          "format": "time_series",
+          "expr": "(1 - avg(irate(node_cpu_seconds_total{mode=\"idle\"}[1m]))by(instance))*100 * on(instance) group_left(nodename)(node_uname_info)",
           "hide": false,
-          "instant": false,
           "interval": "",
           "legendFormat": "{{nodename}}",
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "EHJTk_Anz"
-          },
-          "exemplar": true,
-          "expr": "(1 - (node_memory_MemAvailable_bytes{job=\"$job\"} / node_memory_MemTotal_bytes{job=\"$job\"})) * 100 * on(instance) group_left(nodename) node_uname_info{job=\"$job\"}",
-          "hide": true,
-          "interval": "",
-          "legendFormat": "{{nodename}}-MEM",
+          "range": true,
           "refId": "C"
         }
       ],
@@ -153,6 +166,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ppotlBBVz"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -160,6 +177,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -220,42 +239,49 @@
       "options": {
         "legend": {
           "calcs": [
+            "mean",
             "max",
             "last"
           ],
           "displayMode": "table",
           "placement": "right",
-          "sortBy": "Last",
+          "showLegend": true,
+          "sortBy": "Mean",
           "sortDesc": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
-          "exemplar": true,
-          "expr": "(1 - (node_memory_MemAvailable_bytes{job=\"$job\"} / node_memory_MemTotal_bytes{job=\"$job\"})) * 100 * on(instance) group_left(nodename) node_uname_info{job=\"$job\"}",
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "(1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 * on(instance) group_left(nodename)(node_uname_info)",
+          "format": "time_series",
           "hide": false,
-          "interval": "",
+          "instant": false,
+          "interval": "1",
           "legendFormat": "{{nodename}}-MEM",
-          "refId": "C"
+          "range": true,
+          "refId": "B"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
-          "exemplar": true,
-          "expr": "(1 - (node_memory_SwapFree_bytes{job=\"$job\"} / node_memory_SwapTotal_bytes{job=\"$job\"})) * 100 * on(instance) group_left(nodename) node_uname_info{job=\"$job\"}",
+          "editorMode": "code",
+          "expr": "(1 - (node_memory_SwapFree_bytes / node_memory_SwapTotal_bytes)) * 100 * on(instance) group_left(nodename)(node_uname_info)",
           "hide": false,
-          "interval": "",
           "legendFormat": "{{nodename}}-SWAP",
-          "refId": "A"
+          "range": true,
+          "refId": "D"
         }
       ],
       "title": "MEM%",
@@ -263,6 +289,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ppotlBBVz"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -307,13 +337,14 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
+          "editorMode": "code",
           "exemplar": false,
           "expr": "node_memory_MemTotal_bytes{job=\"$job\"} * on(instance) group_left(nodename)(node_uname_info{job=\"$job\"})",
           "format": "time_series",
@@ -325,7 +356,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
           "exemplar": true,
           "expr": "node_memory_SwapTotal_bytes{job=\"$job\"} * on(instance) group_left(nodename)(node_uname_info{job=\"$job\"})",
@@ -340,6 +371,10 @@
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ppotlBBVz"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -347,6 +382,8 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -400,7 +437,7 @@
       },
       "gridPos": {
         "h": 11,
-        "w": 17,
+        "w": 24,
         "x": 0,
         "y": 23
       },
@@ -408,70 +445,51 @@
       "options": {
         "legend": {
           "calcs": [
+            "mean",
             "max",
-            "last"
+            "lastNotNull"
           ],
           "displayMode": "table",
           "placement": "right",
-          "sortBy": "Last",
+          "showLegend": true,
+          "sortBy": "Mean",
           "sortDesc": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
+      "repeat": "job",
+      "repeatDirection": "h",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "gpu_nvidia_usage{exported_job=\"$exported_job\"}",
           "hide": false,
           "interval": "",
           "legendFormat": "{{nodename}}-GPU",
+          "range": true,
           "refId": "B"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "(gpu_nvidia_memory_usage{exported_job=\"$exported_job\"} / gpu_nvidia_memory_total{exported_job=\"$exported_job\"}) * 100",
           "hide": false,
           "interval": "",
           "legendFormat": "{{nodename}}-MEM",
+          "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "EHJTk_Anz"
-          },
-          "exemplar": false,
-          "expr": "gpu_nvidia_memory_total{exported_job=\"$exported_job\"}",
-          "format": "time_series",
-          "hide": true,
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{nodename}}-MEM",
-          "refId": "C"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "EHJTk_Anz"
-          },
-          "exemplar": false,
-          "expr": "gpu_nvidia_power_usage{exported_job=\"$exported_job\"}",
-          "format": "time_series",
-          "hide": true,
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{nodename}}-PWR",
-          "refId": "D"
         }
       ],
       "title": "GPU%",
@@ -479,10 +497,45 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ppotlBBVz"
+      },
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -498,42 +551,83 @@
               }
             ]
           },
-          "unit": "none"
+          "unit": "watt"
         },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byRegexp",
-              "options": ".*-MEM_Total"
-            },
-            "properties": [
-              {
-                "id": "unit",
-                "value": "GiB"
-              }
-            ]
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 17,
+        "x": 0,
+        "y": 34
+      },
+      "id": 37,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ppotlBBVz"
           },
-          {
-            "matcher": {
-              "id": "byRegexp",
-              "options": ".*-PWR"
-            },
-            "properties": [
+          "editorMode": "code",
+          "expr": "gpu_nvidia_power_usage",
+          "legendFormat": "{{nodename}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "GPU功耗",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ppotlBBVz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
               {
-                "id": "unit",
-                "value": "W"
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           }
-        ]
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 11,
         "w": 7,
         "x": 17,
-        "y": 23
+        "y": 34
       },
-      "id": 27,
+      "id": 35,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -548,47 +642,49 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
-          "exemplar": false,
-          "expr": "gpu_nvidia_memory_total{exported_job=\"$exported_job\"}/1024",
-          "format": "time_series",
+          "editorMode": "code",
+          "expr": "gpu_nvidia_memory_total",
           "hide": false,
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{nodename}}-MEM_Total",
-          "refId": "B"
+          "legendFormat": "{{nodename}}-MEM",
+          "range": true,
+          "refId": "A"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
-          "exemplar": false,
-          "expr": "gpu_nvidia_power_usage{exported_job=\"$exported_job\"}",
-          "format": "time_series",
-          "instant": true,
-          "interval": "",
-          "legendFormat": "{{nodename}}-PWR",
-          "refId": "A"
+          "editorMode": "code",
+          "expr": "gpu_nvidia_power_cap",
+          "hide": false,
+          "legendFormat": "{{nodename}}-W",
+          "range": true,
+          "refId": "B"
         }
       ],
-      "title": "GPU-MEM总量-功耗",
-      "transformations": [],
+      "title": "GPU-MEM总量-最大功耗",
       "type": "stat"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ppotlBBVz"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -637,56 +733,78 @@
       },
       "gridPos": {
         "h": 11,
-        "w": 12,
+        "w": 24,
         "x": 0,
-        "y": 34
+        "y": 45
       },
       "id": 28,
       "options": {
         "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom"
+          "calcs": [
+            "mean"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
+      "repeat": "job",
+      "repeatDirection": "h",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "sum((irate(node_network_receive_bytes_total{job=\"$job\"}[$__rate_interval])) * on(instance) group_left(nodename)(node_uname_info{job=\"$job\"}))by(instance, nodename)",
-          "hide": false,
+          "hide": true,
           "interval": "",
           "legendFormat": "{{nodename}}-recv",
+          "range": true,
           "refId": "A"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "sum((irate(node_network_transmit_bytes_total{job=\"$job\"}[$__rate_interval])) * on(instance) group_left(nodename)(node_uname_info{job=\"$job\"}))by(instance, nodename)",
-          "hide": false,
+          "hide": true,
           "interval": "",
           "legendFormat": "{{nodename}}-send",
+          "range": true,
           "refId": "C"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
-          "exemplar": true,
-          "expr": "irate(node_network_transmit_bytes_total{job=\"node\"}[$__rate_interval]) * on(instance) group_left(nodename)(node_uname_info{job=\"$job\"})",
-          "hide": true,
-          "interval": "",
-          "legendFormat": "{{nodename}}-{{device}}-W",
+          "editorMode": "code",
+          "expr": "sum(irate(node_network_transmit_bytes_total[$__rate_interval]))by(instance) * on(instance) group_left(nodename)(node_uname_info)",
+          "hide": false,
+          "legendFormat": "{{nodename}}-send",
+          "range": true,
+          "refId": "D"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ppotlBBVz"
+          },
+          "editorMode": "code",
+          "expr": "sum(irate(node_network_receive_bytes_total[$__rate_interval]))by(instance)  * on(instance) group_left(nodename)(node_uname_info)",
+          "hide": false,
+          "legendFormat": "{{nodename}}-recv",
+          "range": true,
           "refId": "B"
         }
       ],
@@ -694,12 +812,18 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ppotlBBVz"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -747,45 +871,70 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 11,
-        "w": 12,
-        "x": 12,
-        "y": 34
+        "h": 14,
+        "w": 13,
+        "x": 0,
+        "y": 56
       },
       "id": 17,
       "options": {
         "legend": {
           "calcs": [],
           "displayMode": "list",
-          "placement": "bottom"
+          "placement": "bottom",
+          "showLegend": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
+          "editorMode": "code",
           "exemplar": true,
           "expr": "(node_network_receive_bytes_total{job=\"node\"} + node_network_transmit_bytes_total{job=\"node\"}) * on(instance) group_left(nodename)(node_uname_info{job=\"$job\"})",
+          "hide": true,
           "interval": "",
           "legendFormat": "{{nodename}}-{{device}}",
+          "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ppotlBBVz"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(node_network_receive_bytes_total{job=\"node\"} + node_network_transmit_bytes_total{job=\"node\"})by(instance) * on(instance) group_left(nodename)(node_uname_info)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "{{nodename}}",
+          "range": true,
+          "refId": "B"
         }
       ],
       "title": "流量使用总量",
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ppotlBBVz"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -829,51 +978,87 @@
               }
             ]
           },
-          "unit": "bytes"
+          "unit": "MBs"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "__systemRef": "hideSeriesFrom",
+            "matcher": {
+              "id": "byNames",
+              "options": {
+                "mode": "exclude",
+                "names": [
+                  "zxdiy-W"
+                ],
+                "prefix": "All except:",
+                "readOnly": true
+              }
+            },
+            "properties": [
+              {
+                "id": "custom.hideFrom",
+                "value": {
+                  "legend": false,
+                  "tooltip": false,
+                  "viz": false
+                }
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 14,
-        "w": 24,
+        "w": 8,
         "x": 0,
-        "y": 45
+        "y": 70
       },
       "id": 6,
       "options": {
         "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
           "sortBy": "Max",
           "sortDesc": true
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "single",
+          "sort": "none"
         }
       },
+      "repeat": "instance",
+      "repeatDirection": "h",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "irate(node_disk_read_time_seconds_total{job=\"node\"}[$__rate_interval]) * on(instance) group_left(nodename)(node_uname_info{job=\"$job\"})",
+          "expr": "sum(irate(node_disk_read_time_seconds_total[$__rate_interval]))by(instance) * on(instance) group_left(nodename)(node_uname_info)",
           "interval": "",
-          "legendFormat": "{{nodename}}_{{device}}_R",
+          "legendFormat": "{{nodename}}-R",
+          "range": true,
           "refId": "A"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
+          "editorMode": "code",
           "exemplar": true,
-          "expr": "irate(node_disk_write_time_seconds_total{job=\"node\"}[$__rate_interval]) * on(instance) group_left(nodename)(node_uname_info{job=\"$job\"})",
+          "expr": "sum(irate(node_disk_write_time_seconds_total[$__rate_interval]))by(instance) * on(instance) group_left(nodename)(node_uname_info)",
           "hide": false,
           "interval": "",
-          "legendFormat": "{{nodename}}_{{device}}_W",
+          "legendFormat": "{{nodename}}-W",
+          "range": true,
           "refId": "B"
         }
       ],
@@ -881,6 +1066,10 @@
       "type": "timeseries"
     },
     {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ppotlBBVz"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -888,8 +1077,11 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
-            "filterable": false
+            "cellOptions": {
+              "type": "auto"
+            },
+            "filterable": false,
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -926,11 +1118,12 @@
         "h": 16,
         "w": 24,
         "x": 0,
-        "y": 59
+        "y": 84
       },
       "id": 19,
       "options": {
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -945,15 +1138,16 @@
           }
         ]
       },
-      "pluginVersion": "8.3.3",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "node_filesystem_size_bytes{job=\"node\", device=~\"/dev/(sd.*|vd.*|hd.*|nvme.*)\"}",
+          "expr": "node_filesystem_size_bytes{job=\"node\", device=~\"/dev/(sd.*|vd.*|hd.*|nvme.*|mapper/.*)\"}",
           "format": "table",
           "instant": true,
           "interval": "",
@@ -963,10 +1157,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "node_filesystem_avail_bytes{job=\"node\", device=~\"/dev/(sd.*|vd.*|hd.*|nvme.*)\"}",
+          "expr": "node_filesystem_avail_bytes{job=\"node\", device=~\"/dev/(sd.*|vd.*|hd.*|nvme.*|mapper/.*)\"}",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -977,10 +1172,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "node_uname_info{job=\"$job\"}",
+          "expr": "node_uname_info",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -991,10 +1187,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "EHJTk_Anz"
+            "uid": "ppotlBBVz"
           },
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "(1 - (node_filesystem_avail_bytes{job=\"node\", device=~\"/dev/(sd.*|vd.*|hd.*|nvme.*)\"} / node_filesystem_size_bytes{job=\"node\", device=~\"/dev/(sd.*|vd.*|hd.*|nvme.*)\"}))*100",
+          "expr": "(1 - (node_filesystem_avail_bytes{job=\"node\", device=~\"/dev/(sd.*|vd.*|hd.*|nvme.*|mapper/.*)\"} / node_filesystem_size_bytes{job=\"node\", device=~\"/dev/(sd.*|vd.*|hd.*|nvme.*|mapper/.*)\"}))*100",
           "format": "table",
           "hide": false,
           "instant": true,
@@ -1055,449 +1252,31 @@
     },
     {
       "collapsed": true,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "ppotlBBVz"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 75
+        "y": 100
       },
       "id": 14,
       "panels": [
         {
-          "description": "",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "custom": {
-                "align": "auto",
-                "displayMode": "auto"
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ppotlBBVz"
           },
-          "gridPos": {
-            "h": 8,
-            "w": 24,
-            "x": 0,
-            "y": 2
-          },
-          "id": 10,
-          "options": {
-            "footer": {
-              "fields": "",
-              "reducer": [
-                "sum"
-              ],
-              "show": false
-            },
-            "showHeader": true
-          },
-          "pluginVersion": "8.3.3",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "EHJTk_Anz"
-              },
-              "exemplar": false,
-              "expr": "node_memory_MemTotal_bytes{job=\"$job\"}",
-              "format": "table",
-              "hide": false,
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "B"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "EHJTk_Anz"
-              },
-              "exemplar": false,
-              "expr": "node_uname_info{job=\"$job\"}",
-              "format": "table",
-              "hide": false,
-              "instant": true,
-              "interval": "",
-              "legendFormat": "",
-              "refId": "C"
-            }
-          ],
-          "title": "RAM Total",
-          "transformations": [
-            {
-              "id": "filterFieldsByName",
-              "options": {
-                "include": {
-                  "names": [
-                    "Time",
-                    "instance",
-                    "Value #B",
-                    "nodename"
-                  ]
-                }
-              }
-            },
-            {
-              "id": "merge",
-              "options": {}
-            },
-            {
-              "id": "organize",
-              "options": {
-                "excludeByName": {},
-                "indexByName": {
-                  "Time": 0,
-                  "Value #B": 3,
-                  "instance": 1,
-                  "nodename": 2
-                },
-                "renameByName": {
-                  "Value #B": "内存总量"
-                }
-              }
-            }
-          ],
-          "type": "table"
-        }
-      ],
-      "title": "基本配置信息",
-      "type": "row"
-    },
-    {
-      "collapsed": true,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 76
-      },
-      "id": 22,
-      "panels": [
-        {
           "fieldConfig": {
             "defaults": {
               "color": {
                 "mode": "palette-classic"
               },
               "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "decimals": 2,
-              "mappings": [],
-              "thresholds": {
-                "mode": "percentage",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "%"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 11,
-            "w": 12,
-            "x": 0,
-            "y": 66
-          },
-          "id": 8,
-          "options": {
-            "legend": {
-              "calcs": [
-                "max",
-                "last"
-              ],
-              "displayMode": "table",
-              "placement": "right",
-              "sortBy": "Max",
-              "sortDesc": true
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "EHJTk_Anz"
-              },
-              "exemplar": true,
-              "expr": "node_memory_MemAvailable_bytes{job=\"$job\"} * on(instance) group_left(nodename) node_uname_info{job=\"$job\"}",
-              "format": "time_series",
-              "hide": true,
-              "instant": false,
-              "interval": "",
-              "legendFormat": "{{nodename}}GB",
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "EHJTk_Anz"
-              },
-              "exemplar": true,
-              "expr": "(1 - (node_memory_MemAvailable_bytes{job=\"$job\"} / node_memory_MemTotal_bytes{job=\"$job\"})) * 100 * on(instance) group_left(nodename) node_uname_info{job=\"$job\"}",
-              "format": "time_series",
-              "hide": false,
-              "instant": false,
-              "interval": "",
-              "intervalFactor": 1,
-              "legendFormat": "{{nodename}}",
-              "refId": "B"
-            }
-          ],
-          "title": "内存使用%",
-          "type": "timeseries"
-        },
-        {
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 11,
-            "w": 12,
-            "x": 12,
-            "y": 66
-          },
-          "id": 16,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "EHJTk_Anz"
-              },
-              "exemplar": true,
-              "expr": "node_filesystem_size_bytes{job=\"$job\", device=~\"/dev/.*\"} * on(instance) group_left(nodename)(node_uname_info{job=\"$job\"})",
-              "interval": "",
-              "legendFormat": "{{nodename}}-{{device}}-Total",
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "EHJTk_Anz"
-              },
-              "exemplar": true,
-              "expr": "node_filesystem_avail_bytes{job=\"$job\", device=~\"/dev/.*\"} * on(instance) group_left(nodename)(node_uname_info{job=\"$job\"})",
-              "hide": false,
-              "interval": "",
-              "legendFormat": "{{nodename}}-{{device}}-Avail",
-              "refId": "B"
-            }
-          ],
-          "title": "磁盘使用&Toral",
-          "type": "timeseries"
-        },
-        {
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "decimals": 2,
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "bytes"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 11,
-            "w": 12,
-            "x": 0,
-            "y": 77
-          },
-          "id": 4,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom"
-            },
-            "tooltip": {
-              "mode": "single"
-            }
-          },
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "EHJTk_Anz"
-              },
-              "exemplar": true,
-              "expr": "irate(node_network_receive_bytes_total{job=\"node\"}[$__rate_interval]) * on(instance) group_left(nodename)(node_uname_info{job=\"$job\"})",
-              "interval": "",
-              "legendFormat": "{{nodename}}-{{device}}-R",
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "EHJTk_Anz"
-              },
-              "exemplar": true,
-              "expr": "irate(node_network_transmit_bytes_total{job=\"node\"}[$__rate_interval]) * on(instance) group_left(nodename)(node_uname_info{job=\"$job\"})",
-              "hide": false,
-              "interval": "",
-              "legendFormat": "{{nodename}}-{{device}}-W",
-              "refId": "B"
-            }
-          ],
-          "title": "网络速率(早期实验)",
-          "type": "timeseries"
-        },
-        {
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
+                "axisCenteredZero": false,
+                "axisColorMode": "text",
                 "axisLabel": "",
                 "axisPlacement": "auto",
                 "barAlignment": 0,
@@ -1544,25 +1323,27 @@
           "gridPos": {
             "h": 8,
             "w": 12,
-            "x": 12,
-            "y": 77
+            "x": 0,
+            "y": 101
           },
           "id": 30,
           "options": {
             "legend": {
               "calcs": [],
               "displayMode": "list",
-              "placement": "bottom"
+              "placement": "bottom",
+              "showLegend": true
             },
             "tooltip": {
-              "mode": "single"
+              "mode": "single",
+              "sort": "none"
             }
           },
           "targets": [
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "EHJTk_Anz"
+                "uid": "ppotlBBVz"
               },
               "exemplar": true,
               "expr": "rate(node_heartbeat{exported_job=\"win_machine\"}[$__rate_interval])",
@@ -1575,14 +1356,26 @@
           "type": "timeseries"
         }
       ],
-      "title": "测试区",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "ppotlBBVz"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "基本配置信息",
       "type": "row"
     }
   ],
   "refresh": "10s",
-  "schemaVersion": 34,
+  "revision": 1,
+  "schemaVersion": 38,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "zx"
+  ],
   "templating": {
     "list": [
       {
@@ -1590,6 +1383,10 @@
           "selected": false,
           "text": "node",
           "value": "node"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "ppotlBBVz"
         },
         "definition": "label_values(node_uname_info, job)",
         "hide": 0,
@@ -1618,12 +1415,16 @@
             "$__all"
           ]
         },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "ppotlBBVz"
+        },
         "definition": "label_values(node_uname_info{job=\"$job\"}, nodename)",
         "hide": 2,
         "includeAll": true,
-        "label": "nodename",
+        "label": "节点名",
         "multi": true,
-        "name": "nodename",
+        "name": "hostname",
         "options": [],
         "query": {
           "query": "label_values(node_uname_info{job=\"$job\"}, nodename)",
@@ -1644,6 +1445,10 @@
           "value": [
             "$__all"
           ]
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "ppotlBBVz"
         },
         "definition": "label_values(node_uname_info{job=\"$job\"}, instance)",
         "hide": 0,
@@ -1667,6 +1472,10 @@
           "selected": false,
           "text": "gpu_nvidia",
           "value": "gpu_nvidia"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "ppotlBBVz"
         },
         "definition": "label_values(gpu_nvidia_usage, exported_job)",
         "description": "",
@@ -1692,6 +1501,10 @@
           "selected": false,
           "text": "None",
           "value": ""
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "ppotlBBVz"
         },
         "definition": "label_values(gpu_nvidia_usage, gpu_nvidia_mem)",
         "hide": 2,
@@ -1719,6 +1532,6 @@
   "timezone": "",
   "title": "多机器聚合监控",
   "uid": "bRZsn9A7z",
-  "version": 80,
+  "version": 21,
   "weekStart": ""
 }
