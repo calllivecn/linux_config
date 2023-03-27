@@ -1,0 +1,11 @@
+[Unit]
+Description=prometheus server
+
+[Service]
+Type=simple
+ExecStart=%h/monitor/prometheus/prometheus --storage.tsdb.retention=90d
+ExecReload=kill -1 $MAINPID
+WorkingDirectory=%h/monitor/prometheus
+
+[Install]
+WantedBy=default.target

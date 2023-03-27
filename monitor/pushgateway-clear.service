@@ -1,0 +1,11 @@
+[Unit]
+Description=pushgateway clear metrics
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=%h/monitor/pushgateway-clear.sh
+ExecStop=/usr/bin/kill $MAINPID
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,12 @@
+# /etc/systemd/system/pushgateway.service
+[Unit]
+Description=prometheus pushgateway
+
+[Service]
+Type=simple
+ExecStart=%h/monitor/pushgateway/pushgateway
+ExecReload=kill -1 $MAINPID
+WorkingDirectory=%h/monitor/pushgateway
+
+[Install]
+WantedBy=default.target
