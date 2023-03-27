@@ -1,0 +1,10 @@
+# /etc/systemd/system/node_exporter.service
+[Unit]
+Description=prometheus node_exporter
+
+[Service]
+Type=simple
+ExecStart=%h/monitor/node_exporter/node_exporter
+
+[Install]
+WantedBy=default.target
