@@ -1,0 +1,10 @@
+[Unit]
+Description=pushgateway nvidia gpu.sh
+
+
+[Service]
+Type=simple
+ExecStart=%h/monitor/gpu-nvidia.sh
+
+[Install]
+WantedBy=default.target
