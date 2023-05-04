@@ -15,3 +15,8 @@ sudo cryptsetup luksChangeKey /dev/sda3 -S 0
 Enter passphrase to be changed:
 Enter new passphrase:
 Verify passphrase:
+
+
+
+
+# 如何创建加密
