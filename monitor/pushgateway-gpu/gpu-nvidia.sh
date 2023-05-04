@@ -2,6 +2,9 @@
 # date 2022-01-09 06:26:25
 # author calllivecn <c-all@qq.com>
 
+
+# drive version 530 需要修改下, 字段的位置改变了。
+
 . "$(dirname ${0})/libfuncs.sh"
 
 MY_JOB="gpu_nvidia"
@@ -17,15 +20,16 @@ pushgateway(){
 	power_usage=${power_usage%W}
 
 	power_cap=$(echo "$runtime_info" | awk '{print $7}')
+	power_cap=${power_cap%|}
 	power_cap=${power_cap%W}
 	
-	memory_usage=$(echo "$runtime_info" | awk '{print $9}')
+	memory_usage=$(echo "$runtime_info" | awk '{print $8}')
 	memory_usage=${memory_usage%MiB}
 	
-	memory_total=$(echo "$runtime_info" | awk '{print $11}')
+	memory_total=$(echo "$runtime_info" | awk '{print $10}')
 	memory_total=${memory_total%MiB}
 	
-	gpu_usage=$(echo "$runtime_info" | awk '{print $13}')
+	gpu_usage=$(echo "$runtime_info" | awk '{print $12}')
 	gpu_usage=${gpu_usage%\%}
 	
 context="
@@ -38,6 +42,8 @@ gpu_nvidia_usage $gpu_usage
 "
 	echo "$context" | curl -s --data-binary @- "${PUSHGATEWAY}/metrics/job/${MY_JOB}/nodename/${NODENAME}" || true
 }
+
+#pushgateway;exit 0
 
 while :
 do
