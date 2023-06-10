@@ -1,7 +1,7 @@
 
 1. 修改密码
 
-sudo cryptsetup --verbose open --test-passphrase /dev/sda3
+sudo cryptsetup --verbose --test-passphrase open /dev/sda3
 
 成功返当前输入的密码在哪个slot:
 Enter passphrase for /dev/sda3: 
@@ -9,7 +9,7 @@ Key slot 0 unlocked.
 Command successful.
 
 2. 修改指定slot 位的密码:
-sudo cryptsetup luksChangeKey /dev/sda3 -S 0
+sudo cryptsetup -S 0 luksChangeKey /dev/sda3 
 
 成功会返回:
 Enter passphrase to be changed:
