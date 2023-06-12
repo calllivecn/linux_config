@@ -16,6 +16,9 @@
 # 查看安装的拓展包
 4. vboxmanage list extpacks
 
+# 安装的拓展包
+5. vboxmanage extpack install <*.vbox-extpack>
+
 
 ############################
 #
