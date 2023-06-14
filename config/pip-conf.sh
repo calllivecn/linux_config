@@ -2,6 +2,8 @@
 # date 2020-04-26 11:02:05
 # author calllivecn <c-all@qq.com>
 
+# 清华
+# https://pypi.tuna.tsinghua.edu.cn/simple
 
 # 配置系统源
 sudo pip3 config --global set global.index-url https://mirrors.aliyun.com/pypi/simple/
