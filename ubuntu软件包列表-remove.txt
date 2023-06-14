@@ -5,4 +5,8 @@ gnome-shell-extension-ubuntu-dock
 software-properties-gtk
 ubuntu-release-upgrader-gtk
 ubuntu-release-upgrader-core
+update-notifier-common
 network-manager-config-connectivity-ubuntu
+
+# 22.04
+ubuntu-advantage-tools
