@@ -56,11 +56,11 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\W\$ '
-fi
+# if [ "$color_prompt" = yes ]; then
+#     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
+# else
+#     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\W\$ '
+# fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
@@ -122,8 +122,8 @@ alias temp='watch -n 1 sensors'
 # systemctl alias
 alias scl='sudo systemctl'
 alias scls='scl status'
-alias jl='journalctl'
-alias jlu='journalctl --user'
+alias jl='journalctl -o short-iso'
+alias jlu='jl --user'
 alias scu='systemctl --user'
 
 alias ls='ls --color=auto'
@@ -136,12 +136,6 @@ alias grep='grep --color=auto'
 
 alias ip='ip -c'
 
-## docker command
-
-alias pm='podman'
-alias plf='dl --tail 30 -f'
-alias pd='dk network'
-
 recode(){
 	local ok='☺ ' err='☹ ' prompt='☘ ' returncode
 	if [ $1 -eq 0 ];then
@@ -152,8 +146,9 @@ recode(){
 	echo "$returncode"
 }
 
-PS1='${?:NO}-\u@\h:\W\$ '
-PS1='\[\033[01;32m\]$(recode $?)-\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]☘ '
+#PS1='${?:NO}-\u@\h:\W\$ '
+#PS1='\[\033[01;32m\]$(recode $?)-\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]☘ '
+PS1='$(recode $?)-\u@\h:\W☘ '
 
 p(){ ps -ef |grep -v grep |grep "$1"; }
 
@@ -251,7 +246,6 @@ for hashsum in md5sum sha1sum sha224dum sha256sum sha384sum sha512sum
 do
 	eval "${hashsum%sum}check"'(){ '"$hashsum"' "$1" | grep -i "$2" ; }'
 done
-
 unset hashsum
 
 
@@ -262,7 +256,5 @@ fi
 
 
 export PYTHONSTARTUP=~/.pythonrc
-export PIP_DOWNLOAD_CACHE=~/work/py3_library-cache
+#export PIP_DOWNLOAD_CACHE=~/work/py3_library-cache
 
-# added by Anaconda3 installer
-#export PATH="/home/zx/anaconda3/bin:$PATH"
