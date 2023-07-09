@@ -5,8 +5,11 @@
 # 清华
 # https://pypi.tuna.tsinghua.edu.cn/simple
 
+# 阿里
+# https://mirrors.aliyun.com/pypi/simple/
+
 # 配置系统源
-sudo pip3 config --global set global.index-url https://mirrors.aliyun.com/pypi/simple/
+sudo pip3 config --global set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
 # 添加额外的地址
 #sudo pip3 config --global set global.extra-index-url https://mirrors.aliyun.com/pypi/simple/
