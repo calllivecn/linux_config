@@ -1,25 +1,17 @@
 set ports {
 	type inet_service
-	elements = { 22, 445, 5900, 6789, 9999,
-		     10000, 25565 }
+	elements = { 22 }
 }
 
 set nets {
 	type ipv4_addr
 	flags interval
 	elements = {
-		192.168.9.0/24, 192.168.10.0/24, 10.1.1.0/24, 10.1.2.0/24
+		192.168.9.0/24, 192.168.10.0/24
 	}
 }
 
 chain zx {
-	ct state established,related counter accept
-	icmpv6 type { echo-request, time-exceeded } counter drop
-	ip6 nexthdr ipv6-icmp counter accept comment "这样也行 ip protocol ipv6-icmp counter accept; 需要在 ct state invalid 前面。"
-	ip daddr 192.168.100.0/24 counter accept comment "也需要在 ct state invalid 前面。(这里有128字符限制)"
-	ct state invalid counter drop
-	iif "lo" counter accept
-	icmp type { echo-request, time-exceeded } counter accept
 
 	ip saddr @nets tcp dport @ports counter accept
 }
