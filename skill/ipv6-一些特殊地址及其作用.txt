@@ -1,0 +1,19 @@
+除了FF02::1、FF02::2、FF02::16等地址，IPv6还有许多其他有特定作用的地址，包括：
+
+FF02::1: All Nodes（所有节点）
+FF02::2: All Routers（所有路由器）
+FF02::3: All Designated Routers（所有指定路由器）
+FF02::5: All Multicast Nodes（所有多播节点）
+FF02::6: All Multicast Routers（所有多播路由器）
+FF02::7: LLMNR（Link Local Multicast Name Resolution）
+FF02::8: Multicast Listener Discovery（MLD）
+FF02::9: IPv6 Router Advertisement（RA）
+FF02::A: IPv6 Neighbor Solicitation（NS）
+FF02::B: IPv6 Neighbor Advertisement（NA）
+FF02::C: DHCPv6 Multicast Server（DHCPv6 多播服务器）
+FF02::D: DHCPv6 Multicast Client（DHCPv6 多播客户端）
+FF02::E: IPv6 Router Solicitation（RS）
+FF02::F: IPv6 Router Advertisement（RA）
+这些地址用于各种目的，例如在链路上发现其他节点、进行路由、进行多播通讯等。
+
+
