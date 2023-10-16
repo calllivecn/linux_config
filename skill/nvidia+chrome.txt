@@ -1,0 +1,23 @@
+#!/bin/bash
+# date 2023-10-16 09:20:18
+# author calllivecn <c-all@qq.com>
+
+
+
+# 测试可行
+# For Chrome on Wayland:
+echo '/usr/bin/google-chrome-stable --gtk-version=4 --enable-features=UseOzonePlatform --ozone-platform=wayland --use-gl=desktop --enable-features=VaapiVideoDecoder --enable-accelerated-video-decode "$1"' | sudo tee /usr/local/bin/google-chrome-adwaita
+sudo chmod +x /usr/local/bin/google-chrome-adwaita
+sudo sed -i 's@/usr/bin/google-chrome-stable@/usr/local/bin/google-chrome-adwaita@g' /usr/share/applications/google-chrome.desktop
+
+# For Chrome on X11:
+echo '/usr/bin/google-chrome-stable --gtk-version=4 --enable-features=VaapiVideoDecoder --enable-accelerated-video-decode "$1"' | sudo tee /usr/local/bin/google-chrome-adwaita
+sudo chmod +x /usr/local/bin/google-chrome-adwaita
+sudo sed -i 's@/usr/bin/google-chrome-stable@/usr/local/bin/google-chrome-adwaita@g' /usr/share/applications/google-chrome.desktop
+
+# For Chrome on Nvidia:
+echo 'export __NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia && /usr/bin/google-chrome-stable --gtk-version=4 "$1"' | sudo tee /usr/local/bin/google-chrome-adwaita
+sudo chmod +x /usr/local/bin/google-chrome-adwaita
+sudo sed -i 's@/usr/bin/google-chrome-stable@/usr/local/bin/google-chrome-adwaita@g' /usr/share/applications/google-chrome.desktop
+
+
