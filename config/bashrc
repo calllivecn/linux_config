@@ -224,8 +224,22 @@ xiyou(){
     # $HOME/.config/xiyou :
     # http_proxy="http://127.0.0.1:8080"
     # https_proxy="http://127.0.0.1:8080"
+	
+	local proxy conf
+
+	if [ "$1"x != x ];then
+		conf="$HOME/.config/xiyou-${1}"
+		if [ ! -r "$conf" ];then
+			echo "没有找到${conf}"
+			return
+		fi
+	else
+		conf="$HOME/.config/xiyou"
+	fi
+
+	proxy="$(grep -oP '(?<=http_proxy=")(.*)(?=")' ${conf})"
+	
 	set -x
-	local proxy="$(grep -oP '(?<=http_proxy=")(.*)(?=")' $HOME/.config/xiyou)"
 	if [ -n "$http_proxy" ];then
 		unset http_proxy
 	else
@@ -255,6 +269,6 @@ if [ "$TERM"x == "linux"x ];then
 fi
 
 
-export PYTHONSTARTUP=~/.pythonrc
+#export PYTHONSTARTUP=~/.pythonrc
 #export PIP_DOWNLOAD_CACHE=~/work/py3_library-cache
 
