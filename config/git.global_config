@@ -22,11 +22,6 @@
 	date = format:%Y-%m-%d %H:%M:%S
 	#date = local
 
-#[http]
-#	proxy = socks5://192.168.13.104:10000
-#[https]
-#	proxy = socks5://192.168.13.104:10000
-
 [credential]
 	helper = store --file ~/.ssh/.git-credentials
 	#helper = store.py --cfg ~/.ssh/.git-store.json
