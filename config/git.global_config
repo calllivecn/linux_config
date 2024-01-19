@@ -5,12 +5,15 @@
 	editor = vim
 	quotepath = false
 [alias]
+	# git log --pretty=format:'%h %ad | %s%d [%ae]' --graph --date=short
+	# git log --pretty=format:'%h %ad | %s%d [%ae]' --graph --date=short
+	# for '%an 是author_name  %ae 是 author_email  %cn 是 commiter_name %ce 是 commiter_email'
 	s = status
 	cm = commit
 	b = branch
 	lg = log --graph --name-status
 	l = log -n 20 --graph --name-status
-	la = l --all
+	la = lg --all
 	lgo = log --graph --pretty=oneline --abbrev-commit
 	ch = checkout
 	tree = lg --decorate --simplify-by-decoration --all
@@ -21,6 +24,12 @@
 [log]
 	date = format:%Y-%m-%d %H:%M:%S
 	#date = local
+	format = "%h - %s%n| Author: %an <%ae>%n| Committer: %cn <%ce>%n| Date: %ad%n"
+
+#[http]
+#	proxy = socks5://192.168.13.104:10000
+#[https]
+#	proxy = socks5://192.168.13.104:10000
 
 [credential]
 	helper = store --file ~/.ssh/.git-credentials
