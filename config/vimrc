@@ -47,31 +47,31 @@ autocmd BufReadPost,BufNewFile *.go :map <F6> :w<CR>:%!gofmt %<CR>
 
 
 " auto insert file header
-function File_sh()
-	call setline(1,"#!/bin/bash")
-	call setline(2,'# date ' . strftime("%Y-%m-%d %H:%M:%S"))
-	call setline(3,'# author calllivecn <c-all@qq.com>')
-	:$
-endfunction
-
-autocmd BufNewFile *.sh :call File_sh()
-
-function File_py()
-	call setline(1,"#!/usr/bin/env python3")
-	call setline(2,"# coding=utf-8")
-	call setline(3,'# date ' . strftime("%Y-%m-%d %H:%M:%S"))
-	call setline(4,'# author calllivecn <c-all@qq.com>')
-	:set expandtab softtabstop=4
-	:$
-endfunction
-autocmd BufNewFile *.py :call File_py()
-
-function File_go()
-	call setline(1, "/*")
-	call setline(2,'# date ' . strftime("%Y-%m-%d %H:%M:%S"))
-	call setline(3,'# author calllivecn <c-all@qq.com>')
-	call setline(4, "*/")
-	:$
-endfunction
-
-autocmd BufNewFile *.go :call File_go()
+" function File_sh()
+" 	call setline(1,"#!/bin/bash")
+" 	call setline(2,'# date ' . strftime("%Y-%m-%d %H:%M:%S"))
+" 	call setline(3,'# author calllivecn <calllivecn@outlook.com>')
+" 	:$
+" endfunction
+" 
+" autocmd BufNewFile *.sh :call File_sh()
+" 
+" function File_py()
+" 	call setline(1,"#!/usr/bin/env python3")
+" 	call setline(2,"# coding=utf-8")
+" 	call setline(3,'# date ' . strftime("%Y-%m-%d %H:%M:%S"))
+" 	call setline(4,'# author calllivecn <c-all@qq.com>')
+" 	:set expandtab softtabstop=4
+" 	:$
+" endfunction
+" autocmd BufNewFile *.py :call File_py()
+" 
+" function File_go()
+" 	call setline(1, "/*")
+" 	call setline(2,'# date ' . strftime("%Y-%m-%d %H:%M:%S"))
+" 	call setline(3,'# author calllivecn <c-all@qq.com>')
+" 	call setline(4, "*/")
+" 	:$
+" endfunction
+" 
+" autocmd BufNewFile *.go :call File_go()
