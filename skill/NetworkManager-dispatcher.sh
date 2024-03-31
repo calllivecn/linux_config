@@ -1,6 +1,6 @@
 #!/bin/bash
 # date 2022-03-16 16:21:00
-# author calllivecn <c-all@qq.com>
+# author calllivecn <calllivecn@outlook.com>
 
 
 [ -z "$CONNECTION_UUID" ] && exit 0

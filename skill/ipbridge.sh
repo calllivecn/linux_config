@@ -1,6 +1,6 @@
 #!/bin/bash
 # date 2020-07-23 10:13:11
-# author calllivecn <c-all@qq.com>
+# author calllivecn <calllivecn@outlook.com>
 
 
 HELP='Usage: ipbridge.sh <br_name> [slave1 [slave2...]]'

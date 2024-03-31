@@ -1,6 +1,6 @@
 #!/bin/bash
 # date 2021-10-23 17:20:38
-# author calllivecn <c-all@qq.com>
+# author calllivecn <calllivecn@outlook.com>
 
 display_number=
 

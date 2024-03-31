@@ -1,6 +1,6 @@
 #!/bin/bash
 # date 2022-01-09 10:22:08
-# author calllivecn <c-all@qq.com>
+# author calllivecn <calllivecn@outlook.com>
 
 
 # define varible

@@ -1,6 +1,6 @@
 #!/bin/bash
 # date 2022-06-05 14:44:23
-# author calllivecn <c-all@qq.com>
+# author calllivecn <calllivecn@outlook.com>
 
 example(){
 	baseurl=localhost:9091

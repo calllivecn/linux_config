@@ -1,6 +1,6 @@
 #!/bin/bash
 # date 2022-08-16 08:26:03
-# author calllivecn <c-all@qq.com>
+# author calllivecn <calllivecn@outlook.com>
 
 # 使用 ffmpeg -hide_banner -devices 查看支持的设备。
 # 1. ffmpeg -hide_banner -h demuxer=<device name> 查看参数

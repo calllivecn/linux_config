@@ -16,3 +16,7 @@ jupyter
 # 操作mp3 ,pip install git+https://github.com/jiaaro/pydub.git@master
 pydub
 ffmpeg
+
+
+qrcode
+

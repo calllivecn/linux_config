@@ -1,6 +1,6 @@
 #!/bin/bash
 # date 2022-08-16 06:17:03
-# author calllivecn <c-all@qq.com>
+# author calllivecn <calllivecn@outlook.com>
 
 USER="zx:zxcvbnm"
 URL="https://${USER}@localhost:8080"

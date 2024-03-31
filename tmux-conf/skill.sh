@@ -1,6 +1,6 @@
 #!/bin/bash
 # date 2023-01-08 13:45:00
-# author calllivecn <c-all@qq.com>
+# author calllivecn <calllivecn@outlook.com>
 
 
 # 新建一个会话
