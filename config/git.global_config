@@ -22,7 +22,7 @@
 [pull]
 	rebase = false
 [log]
-	date = format:%Y-%m-%d %H:%M:%S
+	date = format:%Y-%m-%d %H:%M:%S %z
 	#date = local
 	format = "%h - %s%n| Author: %an <%ae>%n| Committer: %cn <%ce>%n| Date: %ad%n"
 
