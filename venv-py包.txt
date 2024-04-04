@@ -20,3 +20,7 @@ ffmpeg
 
 qrcode
 
+
+# 查看包的依赖
+pipdeptree
+
