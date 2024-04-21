@@ -4,7 +4,7 @@ Description=prometheus node_exporter
 
 [Service]
 Type=simple
-ExecStart=%h/monitor/node_exporter/node_exporter
+ExecStart=%h/.local/bin/node_exporter
 
 [Install]
 WantedBy=default.target
