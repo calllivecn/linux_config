@@ -164,7 +164,7 @@ jfsutils
 xfsprogs
 
 ### 磁盘加密工具
-cryptsetup-bin
+cryptsetup cryptsetup-initramfs
 
 ## Linux中安装xdotool模拟击键和鼠标移动
 xdotool
