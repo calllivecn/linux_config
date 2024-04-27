@@ -3,15 +3,18 @@ w3m
 curl
 
 openssh-server
+mosh
 
 fbterm
-fcitx-frontend-fbterm
-fcitx-table-wubi
 
-# 新的可以在wayland里使用的
-fcitx5
-fcitx5-module-wayland
-fcitx5-chinese-addons
+#   这些在24.04默认安装了
+#   fcitx-frontend-fbterm
+#   fcitx-table-wubi
+#   
+#   # 新的可以在wayland里使用的
+#   fcitx5
+#   fcitx5-module-wayland
+#   fcitx5-chinese-addons
 
 ################
 #
@@ -54,7 +57,8 @@ pv
 tmux
 # 锁定终端
 vlock
-mlocate
+# mlocate 24.04 之后为plocate
+plocate
 
 # 文件恢复工具包
 extundelete
