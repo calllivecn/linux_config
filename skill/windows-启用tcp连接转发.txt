@@ -1,0 +1,30 @@
+使用 netsh 进行 TCP 端口转发
+!请注意，您需要以管理员权限运行 netsh 命令才能创建、查看或删除端口转发规则。
+
+以下是如何使用 netsh 在 Windows 11 上转发 TCP 端口的步骤：
+
+打开命令提示符。 您可以通过按 Windows 键 + R 打开“运行”对话框，然后键入 cmd 并按 Enter 来执行此操作。
+使用以下命令创建端口转发规则：
+
+netsh interface portproxy add v4tov4 listenport=8080 connectaddress=192.168.1.100 connectport=80
+
+此命令将把所有到达本地端口 8080 的流量转发到 IP 地址 192.168.1.100 上的端口 80。您可以根据需要更改端口号和 IP 地址。
+
+要查看现有的端口转发规则，请使用以下命令：
+netsh interface portproxy show v4tov4
+
+要删除端口转发规则，请使用以下命令：
+netsh interface portproxy delete v4tov4 listenport=8080 connectaddress=192.168.1.100 connectport=80
+
+ipv6 to ipv4
+netsh interface portproxy add v6tov4 listenaddress=[::1]:8080 connectaddress=192.168.1.100 connectport=80
+
+要删除端口转发规则，请使用以下命令：
+netsh interface portproxy delete v6tov4 listenaddress=[::1]:8080 connectaddress=192.168.1.100 connectport=80
+
+
+注意事项
+
+您需要以管理员权限运行 netsh 命令才能创建、查看或删除端口转发规则。
+确保您的计算机已启用 IPv6。
+防火墙可能阻止端口转发。您可能需要配置防火墙以允许端口转发流量。
