@@ -6,4 +6,5 @@
 sudo snap set system proxy.http="http://10.1.3.254:9999"
 sudo snap set system proxy.https="http://10.1.3.254:9999"
 
-
+# 查看
+# sudo snap get system proxy
