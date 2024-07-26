@@ -36,7 +36,7 @@ xorriso
 # 一个在RAM和交换空间均低于10％，Earlyoom向oom_score最大的进程发出SIGTERM。
 # 如果RAM和交换空间都低于5％，则Earlyoom将SIGKILL发送给具有最大oom_score的进程。
 #这个想法是要尽快从内存不足的情况中恢复，而不是使用户不得不关闭电源而没有其他选择的典型的完整系统挂起。
-earlyoom
+#earlyoom # 在ubuntu22.04 开始已经被 systemd-oomd 替代了
 
 # wireguard
 wireguard-tools
@@ -44,19 +44,19 @@ wireguard-tools
 # 刻录光盘 wodim, 或者使用 xorriso -as cdrecord -eject -v dev=/dev/sr0 your.iso
 #wodim
 
-# 通过adb 连接安卓屏幕
-scrcpy
+# 通过adb 连接安卓屏幕,  默认仓库都太旧了。自己编译吧！
+#scrcpy
 
 vim
 git
 python3-pip
 python3-tk
-lftp
+#lftp
 sysstat
 pv
 tmux
 # 锁定终端
-vlock
+#vlock
 # mlocate 24.04 之后为plocate
 plocate
 
@@ -115,9 +115,6 @@ stow
 ## 命令行音乐播放器
 cmus
 
-# google emoji 字体
-#fonts-noto-color-emoji
-
 vlc
 gimp
 #qBittorrent or transmission-gtk or 
@@ -133,11 +130,11 @@ gnome-tweaks
 ffmpeg
 cpulimit
 
+# google emoji 字体
+#fonts-noto-color-emoji
+
 # 中、日、韩字体
 fonts-noto-cjk-extra
-
-# markdown 编辑器（去官网下deb包安装）(https://remarkableapp.github.io/linux/download.html) 不支持 19.04。。。
-#remarkable
 
 
 ## 终端录制工具   pip3 install termtosvg, example: termtosvg output.svg
@@ -159,9 +156,6 @@ tigervnc-standalone-server
 timeshift
 
 # onlyoffice desktop 需要去官网下载deb包安装.
-
-# 字典 翻译 添加youdao翻译url http://dict.youdao.com/search?q=%GDWORD%ue=utf8
-#goldendict
 
 ### filesystem support bfs jfs xfs
 jfsutils
@@ -200,4 +194,4 @@ debsums
 fceux
 
 # proxychains 例子："proxychains wget https://www.youtube.com"
-proxychains
+#proxychains

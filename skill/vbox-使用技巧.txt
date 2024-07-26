@@ -41,6 +41,8 @@
     在虚拟机系统里执行：
             碎片整理： sudo dd if=/dev/zero of=zero.fill
             删除碎片文件： sudo rm -f zero.fill
+	windows 系列：当前目录下有 vbox-comp-disk.py
+
   完成指令后关闭虚拟机。
 二、宿主机以管理员模式打开命令提示符，执行以下命令：（）
         cd 虚拟机安装的目录。
