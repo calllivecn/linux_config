@@ -1,6 +1,6 @@
-efibootmgr   //显示efi的启动项
+1. efibootmgr   //显示efi的启动项
 
-删除一个引导项
+2. 删除一个引导项
 # efibootmgr -b 0001 -B
 
 其中 0001是要删除的引导项编号，通过 efibootmgr命令可以直接查看。输出如下所示：
@@ -18,7 +18,7 @@ Boot0089* ubuntu
 
 其中， Boot0001中的 0001就是编号，对应的引导项是 ubuntu
 
-添加一个引导项
+3. 添加一个引导项
 #efibootmgr -c -w -L "BootOptionName" -d /dev/sda -p 1 -l \\EFI\\asianux\\elilo.efi
 
 其中-d 参数后面是系统所在的硬盘设备名称，例如/dev/hda、/dev/hdb
@@ -28,3 +28,7 @@ Boot0089* ubuntu
 
 例如：/EFI/asianux/elilo.efi
 应写成：\\EFI\\asianux\\elilo.efi。
+
+
+4. 修改引导顺序
+efibootmgr -o 0000,0004
