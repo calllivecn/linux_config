@@ -1,6 +1,7 @@
 
 1. cp /usr/share/applications/chrome-xxx.desktop ~/.local/share/application/
 	修改几个对应的 Exec=
+	# 添加 --gtk-version=4 是可以让fcitx5 输入法工作
 	Exec=google-chrome-stable --gtk-version=4 --ozone-platform=wayland
 
 2. 更新桌面文件数据库
