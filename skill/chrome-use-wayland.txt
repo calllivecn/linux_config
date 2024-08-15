@@ -1,7 +1,7 @@
 
 1. cp /usr/share/applications/chrome-xxx.desktop ~/.local/share/application/
 	修改几个对应的 Exec=
-	Exec=google-chrome-stable --enable-features=UseOzonePlatform --ozone-platform=wayland
+	Exec=google-chrome-stable --gtk-version=4 --ozone-platform=wayland
 
 2. 更新桌面文件数据库
 	update-desktop-database ~/.local/share/applications
@@ -9,3 +9,4 @@
 3. 还有几个一起的命令
 	desktop-file-edit command是一个编辑桌面文件的工具
 	使用desktop-file-install command安装 .desktop 文件
+
