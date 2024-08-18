@@ -7,6 +7,11 @@
 # 无头启动
 1. vboxmanage startvm <虚拟机名> --type headless 
 
+# 关机, 虚拟机如果不响应关机信号. 就直接关电源
+2. vboxmanage controlvm <虚拟机名> acpipowerbutton
+
+# 直接关电源
+3. vboxmanage controlvm <虚拟机名> poweroff
 
 ############################
 #
@@ -15,8 +20,14 @@
 #
 ############################
 
-1. VBoxManage setproperty vrdeextpack VNC
-2. VBoxManage modifyvm "VM name" --vrdeproperty VNCPassword="密码"
+# 打开虚拟机的 远程桌面
+0. vboxmanage controlvm <vm name> vrde on
+
+# 设置远程桌面端口（如13389）：
+1. vboxmanage controlvm <vm name> vrdeport 3381
+2. VBoxManage setproperty vrdeextpack VNC
+
+3. VBoxManage modifyvm "VM name" --vrdeproperty VNCPassword="密码"
 
 # 修改回RDP协议
 3.1. VBoxManage setproperty vrdeextpack null
