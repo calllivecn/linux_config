@@ -5,6 +5,10 @@
 # 需要跑虚拟机的机器这样安装
 apt install virt-manager libvirt-daemon-system ovmf qemu-system-x86
 
+# 把当前用户添加到 libvirt, kvm
+sudo gpasswd -a zx libvirt
+sudo gpasswd -a zx kvm
+
 # 虚拟化
 virt-manager
 
