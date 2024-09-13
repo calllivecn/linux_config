@@ -1,0 +1,106 @@
+# qemu-kvm-只安装virt-manager客户端
+
+## 远程轻客户端少安装点
+ - ~~apt install --no-install-recommends virt-manager libvirt-daemon-system ovmf qemu-system-x86~~
+
+
+## 需要跑虚拟机的机器这样安装
+- apt install virt-manager libvirt-daemon-system ovmf qemu-system-x86
+
+
+## 把当前用户添加到 libvirt, kvm
+
+- sudo gpasswd -a zx libvirt
+- sudo gpasswd -a zx kvm
+
+
+## 虚拟化工具
+
+- virt-manager
+
+
+## libvirtd 虚拟机 UEFI 引导包
+
+- ovmf
+
+
+- virtio 驱动 https://docs.fedoraproject.org/en-US/quick-docs/creating-windows-virtual-machines-using-virtio-drivers/index.html
+- 新地址(手动下载)：https://github.com/virtio-win/virtio-win-pkg-scripts/blob/master/README.md
+- 新地址直接下载ISO：https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso
+
+
+## ISO内容 ISO用于在Windows guest虚拟机中安装半虚拟驱动程序。该virtio-win/*.iso包含在RPM包含以下位：
+
+```
+ NetKVM/ -Virtio网络驱动程序
+ 
+ viostor/ -Virtio块驱动程序
+ 
+ vioscsi/ -Virtio小型计算机系统接口（SCSI）驱动程序
+ 
+ viorng/ -Virtio RNG驱动程序
+ 
+ vioser/ -Virtio串行驱动程序
+ 
+ Balloon/ -Virtio内存气球驱动程序
+ 
+ qxl/-适用于Windows 7和更低版本的QXL图形驱动程序。（构建virtio-win-0.1.103-1及更高版本）
+ 
+ qxldod/-适用于Windows 8和更高版本的QXL图形驱动程序。（构建virtio-win-0.1.103-2及更高版本）
+ 
+ pvpanic/- QEMU pvpanic设备驱动程序（编译为Virtio-WIN-0.1.103-2及更高版本）
+ 
+ guest-agent/ -QEMU Guest Agent 32位和64位MSI安装程序
+ 
+ qemupciserial/- QEMU PCI串行设备驱动程序
+ 
+ *.vfd 在Windows XP安装过程中使用的VFD软盘映像
+```
+
+
+## 一些问题
+1. VNC协议鼠标不同步; 解决方案：
+	1) virsh edit <vm name>
+	2) 找到input <input type='mouse' bus='ps2'/>;
+	修改为<input type='tablet' bus='usb'/>
+
+2. UEFI引导方式安装，虚拟机会无法使用快照。还没找到解决方案
+
+3. wifi下的网络配置目前，只会使用NAT。但这样防火墙(nftables)就得开放了。
+   不过使用有线桥接是可以的。
+
+
+4. 手动导出一个虚拟机：
+	1) virsh dumpxml <vm name> > <vm name>.xml
+	2) vim <vm name>.xml 修改uuid。
+	3) 在新机器导入的时候，修改相应的disk路径。
+
+5. 导出虚拟机:
+	1) virsh define --file /etc/libvirt/qemu/<vm name>.xml # 可能需要sudo
+	2) 修改对应该的 网络，disk 路径，UEFI，等配置。
+
+
+
+
+
+## 从virtualbox 迁移 win10 到 kvm, （不行还是启动不了）
+
+1. 进行转换之前，您应该能够在Windows VM上运行sysprep。这告诉Windows在加载之前检查驱动程序，因为它们会更改。
+	使用什么选项运行sysprep？
+	注意：sysprep会删除计算机专用的ID，例如产品密钥和域成员身份。因此，sysprep主要用于克隆，但不适用于迁移。
+
+
+
+
+
+## 显卡直通 查看当前目录下的(kvm-显卡直通.md)文件。
+
+```shell
+for d in /sys/kernel/iommu_groups/*/devices/*; do n=${d#*/iommu_groups/*}; n=${n%%/*}; printf 'IOMMU Group %s ' "$n"; lspci -nns "${d##*/}"; done;
+```
+
+1. virt-manager 操作 kvm虚拟机中鼠标不同步的问题
+	在/etc/libvirt/qemu下找到对应的xml配置文件
+	
+	在<devices>标签下添加
+	<input type='tablet' bus='usb'/>
