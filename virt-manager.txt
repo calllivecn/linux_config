@@ -1,5 +1,9 @@
 # qemu-kvm-只安装virt-manager客户端
-apt install --no-install-recommends virt-manager ovmf qemu-system-x86
+# 远程轻客户端少安装点
+#apt install --no-install-recommends virt-manager libvirt-daemon-system ovmf qemu-system-x86
+
+# 需要跑虚拟机的机器这样安装
+apt install virt-manager libvirt-daemon-system ovmf qemu-system-x86
 
 # 虚拟化
 virt-manager
@@ -73,3 +77,16 @@ ovmf
 1. 进行转换之前，您应该能够在Windows VM上运行sysprep。这告诉Windows在加载之前检查驱动程序，因为它们会更改。
 	使用什么选项运行sysprep？
 	注意：sysprep会删除计算机专用的ID，例如产品密钥和域成员身份。因此，sysprep主要用于克隆，但不适用于迁移。
+
+
+
+
+
+# 显卡直通 查看当前目录下的(kvm-显卡直通.md)文件。
+
+for d in /sys/kernel/iommu_groups/*/devices/*; do n=${d#*/iommu_groups/*}; n=${n%%/*}; printf 'IOMMU Group %s ' "$n"; lspci -nns "${d##*/}"; done;
+1. virt-manager 操作 kvm虚拟机中鼠标不同步的问题
+	在/etc/libvirt/qemu下找到对应的xml配置文件
+	
+	在<devices>标签下添加
+	<input type='tablet' bus='usb'/>
