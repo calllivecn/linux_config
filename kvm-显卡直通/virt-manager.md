@@ -81,16 +81,11 @@
 
 
 
-
-
 ## 从virtualbox 迁移 win10 到 kvm, （不行还是启动不了）
 
 1. 进行转换之前，您应该能够在Windows VM上运行sysprep。这告诉Windows在加载之前检查驱动程序，因为它们会更改。
 	使用什么选项运行sysprep？
 	注意：sysprep会删除计算机专用的ID，例如产品密钥和域成员身份。因此，sysprep主要用于克隆，但不适用于迁移。
-
-
-
 
 
 ## 显卡直通 查看当前目录下的(kvm-显卡直通.md)文件。
@@ -104,3 +99,4 @@ for d in /sys/kernel/iommu_groups/*/devices/*; do n=${d#*/iommu_groups/*}; n=${n
 	
 	在<devices>标签下添加
 	<input type='tablet' bus='usb'/>
+
