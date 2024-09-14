@@ -1,5 +1,7 @@
 # 实测在 amd-cpu 5800X  nvidia 3080TI GPU 成功
 
+## libvirt + qemu 的hooks 说明：[hooks](https://libvirt.org/hooks.html#etc-libvirt-hooks-qemu)
+
 这四个文件是需要放到 /etc/libvirt/hooks/ 下的
 
 - vm.conf
