@@ -2,13 +2,7 @@
 
 set -x
 
-CWD=$(cd $(dirname "$0");pwd)
-cd $CWD
-
-# 加载配置
-source vm.conf
-
-sleep 10
+sleep 5
 
 modprobe -r vfio_pci
 modprobe -r vfio
@@ -17,17 +11,25 @@ modprobe -r vfio_iommu_type1
 # ubuntu24.04 没有这个
 #modprobe -r vfio_virqfd
 
-PCI_IDS_len=${#NVIDIA_PCI_IDS[@]}
-for PCI_ID in $(seq 0 $PCI_IDS_len)
-do
-	virsh nodedev-reattach "${NVIDIA_PCI_IDS[$PCI_ID]}"
-done
+#PCI_IDS_len=${#NVIDIA_PCI_IDS[@]}
+#for PCI_ID in $(seq 0 $PCI_IDS_len)
+#do
+#	virsh nodedev-reattach "${NVIDIA_PCI_IDS[$PCI_ID]}"
+#done
 
+sleep 5
 
-#echo 1 > /etc/class/vtconsole/vtcon0/bind
-#echo 1 > /etc/class/vtconsole/vtcon1/bind
+virsh nodedev-reattach pci_0000_07_00_0
+virsh nodedev-reattach pci_0000_07_00_1
+
+sleep 5
+
+echo 1 > /sys/class/vtconsole/vtcon0/bind
+echo 1 > /sys/class/vtconsole/vtcon1/bind
 
 echo efi-framebuffer.0 > /sys/bus/platform/drivers/efi-framebuffer/bind
+
+sleep 5
 
 modprobe nvidia
 modprobe nvidia_modeset
@@ -37,7 +39,7 @@ modprobe drm_kms_helper
 modprobe i2c_nvidia_gpu
 modprobe drm
 
-sleep 10
+sleep 5
 
 systemctl start "$DISPLAY_MANAGER"
 
