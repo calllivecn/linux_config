@@ -7,6 +7,9 @@
 ## 需要跑虚拟机的机器这样安装
 - apt install virt-manager libvirt-daemon-system ovmf qemu-system-x86
 
+- virtiofsd 宿主机共享目录到虚拟机: 需要在宿主机安装
+- windows系列虚拟需要安装: virtio-win-guest-tools.exe
+
 
 ## 把当前用户添加到 libvirt, kvm
 
@@ -55,6 +58,48 @@
  qemupciserial/- QEMU PCI串行设备驱动程序
  
  *.vfd 在Windows XP安装过程中使用的VFD软盘映像
+```
+
+## AI 的回答
+
+```text
+VirtIO-win 目录结构详解
+virtio-win 目录是用于在 Windows 虚拟机中安装 VirtIO 驱动的资源集合。该目录下的子目录和文件对应着不同的 VirtIO 设备驱动。
+
+目录结构解析
+amd64、i386: 这两个目录分别包含了 64 位和 32 位平台的驱动程序。
+Balloon: 虚拟内存气球驱动，用于动态调整虚拟机内存大小。
+cert: 证书相关的文件，可能用于某些特定的安全功能。
+data: 可能包含一些配置文件或数据文件。
+fwcfg: 固件配置相关的文件。
+guest-agent: 虚拟机客户机代理，用于提供虚拟机与宿主机之间的通信。
+NetKVM: 网络驱动，提供虚拟网络设备。
+pvpanic: 虚拟机崩溃时的内核转储相关。
+qemufwcfg: QEMU 固件配置相关。
+qemupciserial: QEMU PCI 串口相关。
+qxl: QXL 显示驱动，用于图形显示。
+qxldod: QXL 显示驱动相关的文件。
+smbus: SMBus 总线驱动。
+sriov: SR-IOV（Single Root I/O Virtualization）相关驱动。
+viofs: VirtIO 文件系统驱动。
+viogpudo: VirtIO GPU 驱动。
+vioinput: VirtIO 输入设备驱动。
+viomem: VirtIO 内存访问驱动。
+viorng: VirtIO 随机数生成器驱动。
+vioscsi: VirtIO SCSI 驱动。
+vioserial: VirtIO 串口驱动。
+viostor: VirtIO 存储驱动。
+驱动功能概述
+网络: NetKVM 提供虚拟网卡驱动。
+存储: vioscsi 和 viostor 提供虚拟磁盘驱动。
+显示: qxl 和 qxldod 提供虚拟显示驱动。
+输入: vioinput 提供虚拟输入设备驱动（如鼠标、键盘）。
+其他: 还有许多其他驱动，如虚拟内存气球驱动、虚拟串口驱动等，用于支持虚拟机中的各种硬件设备。
+MSI 文件说明
+virtio-win-gt-x64.msi、virtio-win-gt-x86.msi: 这是 Windows 安装程序，用于安装 VirtIO 驱动。
+virtio-win-guest-tools.exe: 这是虚拟机客户机工具的安装程序，提供了额外的功能，如共享文件夹等。
+安装方法
+通常，你可以将 virtio-win 目录中的 ISO 镜像挂载到 Windows 虚拟机中，然后运行其中的安装程序。具体步骤可能因虚拟机软件和 Windows 版本而略有不同。
 ```
 
 
