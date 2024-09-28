@@ -1,0 +1,11 @@
+[Unit]
+Description=nvidia-smi-exporter
+
+
+[Service]
+Type=simple
+ExecStart=%h/monitor/nvidia-smi-exporter smi.toml
+WorkingDirectory=%h/monitor
+
+[Install]
+WantedBy=default.target
