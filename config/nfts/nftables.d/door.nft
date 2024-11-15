@@ -1,0 +1,77 @@
+table inet door {
+	set ports {
+		type inet_service
+		elements = { 8886 }
+	}
+
+	set door6_1 {
+		type ipv6_addr
+		size 0xffffffff
+		flags dynamic,timeout
+		timeout 1m
+	}
+
+	set door6_2 {
+		type ipv6_addr
+		size 0xffffffff
+		flags dynamic,timeout
+		timeout 1h
+	}
+
+	set door4_1 {
+		type ipv4_addr
+		size 0xffffffff
+		flags dynamic,timeout
+		timeout 1m
+	}
+
+	set door4_2 {
+		type ipv4_addr
+		size 0xffffffff
+		flags dynamic,timeout
+		timeout 1h
+	}
+
+    set whitelist4 {
+        type ipv4_addr
+		flags interval
+		elements = {
+			10.1.2.0/24, 
+			10.1.3.0/24, 
+			192.168.8.0/24,
+		}
+    }
+
+    set whitelist6 {
+        type ipv6_addr
+		flags interval
+		elements = {
+			fc00::/7,
+			fe80::/10
+		}
+    }
+
+    chain input {
+        type filter hook input priority -6; policy accept;
+		ct state established counter accept
+		ct state related counter accept
+
+		ip6 saddr @whitelist6 counter accept
+		ip saddr @whitelist4 counter accept
+
+		tcp dport { 1998, 1024 } goto doors
+		tcp dport @ports  goto doors
+
+	}
+
+	chain doors {
+        ip6 nexthdr tcp ct state new tcp dport 1998 ip6 saddr != @door6_1 add @door6_1 { ip6 saddr } counter drop
+        ip6 nexthdr tcp ct state new tcp dport 1024 ip6 saddr @door6_1 ip6 saddr != @door6_2 add @door6_2 { ip6 saddr } counter drop
+        tcp dport @ports ip6 saddr != @door6_2 counter drop
+
+        ip protocol tcp ct state new tcp dport 1998 add @door4_1 { ip saddr } counter drop
+        ip protocol tcp ct state new tcp dport 1024 ip saddr @door4_1 add @door4_2 { ip saddr } counter drop
+
+        tcp dport @ports ip saddr != @door4_2 counter drop
+    }
+}
