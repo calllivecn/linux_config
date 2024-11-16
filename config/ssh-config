@@ -1,23 +1,14 @@
-Host tenw
-	User zx
-	HostName 10.1.2.1
-	Port 8886
-
 Host ten4
 	User zx
 	#HostName 116.211.193.85
-	Hostname mc.calllive.cc
-	Port 8886
-
-Host ali6
-	User zx
-	HostName ipv6.calllive.cc
 	Port 8886
 
 Host aliw
 	User zx
 	HostName 10.1.1.1
 	Port 8886
+	ServerAliveInterval 27
+	ServerAliveCountMax 7
 
 Host openwrt
 	User root
