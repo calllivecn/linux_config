@@ -6,7 +6,7 @@ cd $CWD
 
 # 加载配置
 source vm.conf
-
+source log.sh
 
 OBJECT="$1"
 OPERATION="$2"
@@ -15,13 +15,15 @@ OPERATION="$2"
 if [ "$OBJECT" = "$VM_NAME" ]; then
 	case "$OPERATION" in
         "prepare")
-            #systemctl start libvirt-nosleep@"$OBJECT"  2>&1 |awk '{print strftime("%Y-%m-%d_%H:%M:%S:"),$0}' | tee -a /var/log/libvirt/custom_hooks.log
-			bash vfio-startup.sh 2>&1 |awk '{print strftime("%Y-%m-%d_%H:%M:%S:"),$0}' >> /var/log/libvirt/custom_hooks.log
+			log "${VM_NAME} 启动前执行..."
+			timeout 180s bash vfio-startup.sh
+			log "${VM_NAME} 启动前执行... 结束"
 			;;
 
         "release")
-            #systemctl stop libvirt-nosleep@"$OBJECT"  2>&1 |awk '{print strftime("%Y-%m-%d_%H:%M:%S:"),$0}' | tee -a /var/log/libvirt/custom_hooks.log  
-            bash vfio-down.sh 2>&1 |awk '{print strftime("%Y-%m-%d_%H:%M:%S:"),$0}' >> /var/log/libvirt/custom_hooks.log
+			log "${VM_NAME} 结束后执行..."
+            timeout 180s bash vfio-down.sh
+			log "${VM_NAME} 结束后执行... 结束"
             ;;
 	esac
 fi

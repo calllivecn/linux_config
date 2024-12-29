@@ -2,9 +2,7 @@
 
 set -x
 
-modprobe -r vfio
-modprobe -r vfio_iommu_type1
-modprobe -r vfio_pci
+modprobe -r -a vfio vfio_iommu_type1 vfio_pci
 # ubuntu24.04 没有这个
 #modprobe -r vfio_virqfd
 
@@ -19,25 +17,21 @@ sleep 5
 virsh nodedev-reattach pci_0000_07_00_0
 virsh nodedev-reattach pci_0000_07_00_1
 
-sleep 5
+#sleep 5
+# 测试不用这个
+# echo 1 > /sys/class/vtconsole/vtcon0/bind
+# echo 1 > /sys/class/vtconsole/vtcon1/bind
+# echo efi-framebuffer.0 > /sys/bus/platform/drivers/efi-framebuffer/bind
 
-echo 1 > /sys/class/vtconsole/vtcon0/bind
-echo 1 > /sys/class/vtconsole/vtcon1/bind
-
-echo efi-framebuffer.0 > /sys/bus/platform/drivers/efi-framebuffer/bind
-
-sleep 5
-
-modprobe nvidia
-modprobe nvidia_modeset
-modprobe nvidia_uvm
-modprobe nvidia_drm
-#modprobe drm_kms_helper
-#modprobe i2c_nvidia_gpu
-#modprobe drm
-
+#modprobe nvidia
+#modprobe nvidia_modeset
+#modprobe nvidia_uvm
+#modprobe nvidia_drm
 # N卡的声音驱动, 这里也是使用的intel的。lspci -nnk |grep -A 4 -i nvidia。 可以查看到当前使用的驱动。
-modprobe snd_hda_intel
+#modprobe snd_hda_intel
+
+# update: 2024-12-29, 一次加载
+modprobe -a nvidia nvidia_modeset nvidia_uvm nvidia_drm snd_hda_intel
 
 sleep 5
 
