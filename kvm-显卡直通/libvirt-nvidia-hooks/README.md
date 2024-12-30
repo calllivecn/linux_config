@@ -6,6 +6,7 @@
 
 - vm.conf
 - qemu
+- log.sh
 - vfio-startup.sh
 - vfio-down.sh
 

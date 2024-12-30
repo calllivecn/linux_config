@@ -11,6 +11,10 @@ source log.sh
 OBJECT="$1"
 OPERATION="$2"
 
+log "进入 qemu hook 脚本, 参数：$@"
+log "VM_NAME: $VM_NAME"
+log "DISPLAY_MANAGER: $DISPLAY_MANAGER"
+log "NVIDIA_PCI_IDS: ${NVIDIA_PCI_IDS[@]}"
 
 if [ "$OBJECT" = "$VM_NAME" ]; then
 	case "$OPERATION" in
