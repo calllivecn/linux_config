@@ -13,5 +13,5 @@ qemu-img create -O qcow2 -o compression_type=zstd <disk-name.qcow2> <size>
 - 同时可以在磁盘写入空之后，convert 一次减小磁盘文件大小。
 
 ```shell
-qemu-img convert -O qcow2 -o compression_type=zstd old_disk_name.qcow2 
+qemu-img convert -O qcow2 -o compression_type=zstd old_disk_name.qcow2 new_disk_name.qcow2
 ```
