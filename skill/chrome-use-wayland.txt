@@ -11,3 +11,8 @@
 	desktop-file-edit command是一个编辑桌面文件的工具
 	使用desktop-file-install command安装 .desktop 文件
 
+
+
+# 启动时指定代理+指定不同的用户
+google-chrome --profile-directory="Profile 1" --proxy-server="http://127.0.0.1:9999"
+
