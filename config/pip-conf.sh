@@ -24,7 +24,8 @@ sudo pip3 config --global set global.index-url https://pypi.tuna.tsinghua.edu.cn
 # 设置当前用户的 pip 缴存目录， 默认是 ~/.cache/pip
 #pip config set global.cache-dir /home/pip-cache
 
-
+# 查看当前系统配置文件的位置
+#pip config list -v
 
 # conda 配置源
 
