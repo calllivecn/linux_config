@@ -60,3 +60,5 @@ aiofiles
 # 由于使用caio的2.0.0版，包含 linux libaio 和两个基于线程的实现（基于 c 和纯 python）实现根据系统兼容性自动选择。
 aiofile
 
+# 创建二维码
+qrcode
