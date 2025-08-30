@@ -18,8 +18,16 @@ fi
 
 
 # set PATH so it includes user's private bin directories
-PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+pathmunge () {
+    case ":$PATH:" in
+        *":$1:"*) ;;
+        *) PATH="$1:$PATH" ;;
+    esac
+}
 
+pathmunge "$HOME/.local/bin"
+pathmunge "$HOME/bin"
+export PATH
 
 # java envirment
 #export JAVA_HOME=$HOME/ProgramLanguage/jre1.8.0_162
