@@ -13,11 +13,14 @@ log "NVIDIA_PCI_IDS: ${NVIDIA_PCI_IDS[@]}"
 log "systemctl stop $DISPLAY_MANAGER"
 systemctl stop "$DISPLAY_MANAGER"
 
+log "systemctl stop nvidia-persistenced.service"
+systemctl stop nvidia-persistenced.service
+
 log "sleep 5"
 sleep 5
 
 log "kill 还在使用 /dev/nvidia0 的进程"
-for pid in $(lsof /dev/nvidia0 |awk '{print $2}' | tail -n +2)
+for pid in $(lsof /dev/nvidia0 |tail -n +2 |awk '{PIDS[$2]++} END{for(pid in PIDS) {print pid}}')
 do
     kill "$pid"
 done
