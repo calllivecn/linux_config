@@ -6,18 +6,11 @@
 
 # the default umask is set in /etc/profile; for setting the umask
 # for ssh logins, install and configure the libpam-umask package.
-#umask 022
-
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
+umask 022
 
 
 # set PATH so it includes user's private bin directories
+#export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 pathmunge () {
     case ":$PATH:" in
         *":$1:"*) ;;
@@ -28,6 +21,8 @@ pathmunge () {
 pathmunge "$HOME/.local/bin"
 pathmunge "$HOME/bin"
 export PATH
+
+
 
 # java envirment
 #export JAVA_HOME=$HOME/ProgramLanguage/jre1.8.0_162
@@ -43,6 +38,18 @@ export PATH
 #export PATH=$PATH:$GOROOT/bin
 
 # go path work dirs
-export GOPATH=$HOME/work/gopath
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOBIN
+#export GOPATH=$HOME/work/gopath
+#export GOBIN=$GOPATH/bin
+#export PATH=$PATH:$GOBIN
+
+
+# zx add 这放最后
+# if running bash
+if [ -n "$BASH_VERSION" ]; then
+    # include .bashrc if it exists
+    if [ -f "$HOME/.bashrc" ]; then
+	. "$HOME/.bashrc"
+    fi
+fi
+
+
