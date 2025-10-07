@@ -41,6 +41,8 @@
 # 安装的拓展包
 5. vboxmanage extpack install <*.vbox-extpack>
 
+# 更新拓展包前需要先卸载
+6. vboxmanage extpack uninstall "Oracle VirtualBox Extension Pack"
 
 ############################
 #
