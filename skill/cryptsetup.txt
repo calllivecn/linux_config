@@ -8,7 +8,7 @@ cryptsetup luksFormat /dev/sda1
 
 0. 检测是否某个密码有效，也可以使用 cryptsetup open --test-passphrase 来测试
 
-echo "your_password" | cryptsetup open --test-passphrase /dev/your_device
+echo "your_password" | cryptsetup open --key-file - --test-passphrase /dev/your_device
 
 1. 修改密码
 
