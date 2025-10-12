@@ -1,4 +1,8 @@
-要创建 **LUKS1** 和 **LUKS2 + PBKDF2** 的加密设备，可以使用 `cryptsetup` 工具。以下是详细说明和命令。
+
+
+# 要创建 **LUKS1** 和 **LUKS2 + PBKDF2** 的加密设备，可以使用 `cryptsetup` 工具。以下是详细说明和命令。
+
+## *虽然在grub2 2.06+ 就支持解密 luks2+PBKDF2， 但是ubutnu直到 25.10 都没有在grub2 支持上。*
 
 ---
 
