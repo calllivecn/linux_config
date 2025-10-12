@@ -1,0 +1,12 @@
+[Unit]
+Description=从 grub2 cryptomount 中计数
+#After=multi-user.target
+#requires=multi-user.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/etc/grub-count.sh
+
+[Install]
+WantedBy=multi-user.target
