@@ -1,3 +1,10 @@
+# 如何创建加密
+
+cryptsetup luksFormat /dev/sda1
+# 会提示输入密码
+
+---
+
 
 0. 检测是否某个密码有效，也可以使用 cryptsetup open --test-passphrase 来测试
 
@@ -32,4 +39,13 @@ sudo cryptsetup luksKillSlot /dev/your_device 0
 sudo cryptsetup luksAddKey --key-slot 0 /dev/your_device
 
 
-# 如何创建加密
+# GRUB 使用 cryptoumount -k <keyfile> 文件解密时很慢，所有可以使用专用的一个低强度 slot：
+
+- 添加一个新密码（或密钥文件）到 slot 4，使用低迭代次数
+
+```shell
+sudo cryptsetup luksAddKey --key-slot 4 --pbkdf-force-iterations 10000 /dev/nvme0n1p5
+这样 GRUB 解锁只需 ~0.1 秒（而非 10 秒）。
+其他 slot 仍保持高强度用于日常登录。
+```
+
