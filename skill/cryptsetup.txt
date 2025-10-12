@@ -21,4 +21,15 @@ Enter new passphrase:
 Verify passphrase:
 
 
+## 假设你想让新密码放在 slot 0
+
+- 1. 先删除 slot 0（需要其他 slot 的密码授权）
+
+sudo cryptsetup luksKillSlot /dev/your_device 0
+
+- 2. 立即添加新密码，并指定它使用 slot 0
+
+sudo cryptsetup luksAddKey --key-slot 0 /dev/your_device
+
+
 # 如何创建加密
