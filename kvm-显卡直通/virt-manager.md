@@ -105,9 +105,11 @@ virtio-win-guest-tools.exe: 这是虚拟机客户机工具的安装程序，提�
 
 ## 一些问题
 1. VNC协议鼠标不同步; 解决方案：
+	```html
 	1) virsh edit <vm name>
 	2) 找到input <input type='mouse' bus='ps2'/>;
 	修改为<input type='tablet' bus='usb'/>
+	```
 
 2. UEFI引导方式安装，虚拟机会无法使用快照。还没找到解决方案
 
@@ -142,6 +144,53 @@ for d in /sys/kernel/iommu_groups/*/devices/*; do n=${d#*/iommu_groups/*}; n=${n
 1. virt-manager 操作 kvm虚拟机中鼠标不同步的问题
 	在/etc/libvirt/qemu下找到对应的xml配置文件
 	
+	```html
 	在<devices>标签下添加
 	<input type='tablet' bus='usb'/>
+	```
 
+
+## 临时为正在运行的vm添加直通USB
+
+- 1. 获取 U 盘的 vendor/product ID
+
+```shell
+lsusb
+# 示例输出：Bus 002 Device 005: ID 0781:5581 SanDisk Corp. Ultra
+记下 0781:5581（vendor:product）。
+```
+
+- 2. 创建一个临时 XML 片段（如 usb.xml）
+
+```xml
+<hostdev mode='subsystem' type='usb'>
+  <source>
+    <vendor id='0x0781'/>
+    <product id='0x5581'/>
+  </source>
+</hostdev>
+```
+### 注意：0x 前缀是必须的。
+
+- 3. 热插设备到运行中的虚拟机
+
+```shell
+virsh attach-device <虚拟机名称> usb.xml --live
+# 例如：
+virsh attach-device win10 usb.xml --live
+# --live 表示只对当前运行的实例生效，不保存到配置。
+```
+
+- 4. 移除设备（热拔）
+
+```shell
+virsh detach-device <虚拟机名称> usb.xml --live
+#注意：detach 时也需要提供相同的 XML 内容（或使用 --persistent 等选项）。
+```
+
+- 四、注意事项
+
+    权限问题：确保 QEMU 进程有权限访问 USB 设备（通常需要将用户加入 plugdev 或 kvm 组，或通过 udev 规则授权）。
+    设备独占：直通后宿主机将无法访问该 U 盘，直到虚拟机释放。
+    稳定性：频繁热插拔可能在某些客户机 OS 中导致异常，建议安全弹出后再移除。
+    替代方案：如果只是传文件，也可以考虑使用 virtio-serial、共享文件夹、或网络传输，避免 USB 直通复杂性。
