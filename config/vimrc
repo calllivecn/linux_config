@@ -5,6 +5,7 @@ set autoindent
 set number
 "set expandtab
 set softtabstop=4
+set cursorline
 
 
 "source ~/.vim/test.vim
