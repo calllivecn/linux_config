@@ -8,3 +8,5 @@ sudo snap set system proxy.https="http://10.1.3.254:9999"
 
 # 查看
 # sudo snap get system proxy
+# 删除
+# sudo snap unset system proxy proxy.http
