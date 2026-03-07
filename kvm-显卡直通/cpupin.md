@@ -15,6 +15,6 @@
     <emulatorpin cpuset='6-7,14-15'/>
   </cputune>
  ...
-   <cpu mode='host-passthrough' check='partial' migratable='on'>
+  <cpu mode='host-passthrough' check='partial' migratable='on'>
     <topology sockets='1' dies='1' cores='6' threads='2'/>
   </cpu>
