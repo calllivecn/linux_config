@@ -1,3 +1,0 @@
-# 修改成以下镜像网站， 加速。
-
-git clone https://github.com.cnpmjs.org/biaochenxuying/awesome-books.git
