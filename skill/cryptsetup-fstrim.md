@@ -56,6 +56,24 @@ luks-uuid      UUID=xxxx...  none          luks,discard
 
 ```
 
+如果分区是 LUKS2 格式（现在的发行版默认基本都是），可以使用以下命令将 allow-discards 永久写入元数据:
+
+```bash
+# 请将 /dev/nvme0n1pX 替换为你的物理加密分区
+sudo cryptsetup --persistent --allow-discards refresh <mapping_name>
+
+# 或者，如果想在未打开设备时直接写入：
+sudo cryptsetup --persistent --allow-discards open /dev/nvme0n1pX <mapping_name>
+```
+
+验证是否成功写入 Header：
+运行 luksDump 查看元数据：
+
+```bash
+sudo cryptsetup luksDump /dev/nvme0n1pX
+```
+在输出结果的 Flags: 字段中，如果看到了 allow-discards，说明它已经直接“长”在设备上了。
+
 ### 2.3 更新 Initramfs (关键步骤)
 
 如果你的**根分区 (`/`)** 使用了加密，必须重新生成 initramfs，否则引导阶段的 `systemd-cryptsetup` 不会应用新选项。
