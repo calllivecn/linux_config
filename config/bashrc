@@ -195,6 +195,18 @@ xiyou(){
 	set +x
 }
 
+jln(){
+    local cn
+    if [ -n "$1" ];then
+        cn="$1"
+        shift
+    else
+        echo "需要一个容器名，做为参数"
+        return 1
+    fi
+    journalctl --user -o short-iso CONTAINER_NAME="$cn" "$@"
+}
+
 
 #校验合函数生成
 for hashsum in md5sum sha1sum sha224dum sha256sum sha384sum sha512sum
@@ -215,4 +227,5 @@ fi
 #fi
 
 alias ffmpeg='ffmpeg -hide_banner'
-
+alias podman='TMPDIR=/home/zx/.local/share/containers/tmp podman'
+alias httpx='httpx --http2 -h "User-Agent" "vii/1.0"'
