@@ -2,6 +2,8 @@ bind R source /etc/tmux.conf
 set-option -g status-keys vi
 set-option -g display-time 5000
 
+set -g mouse off
+
 # 设置状态栏右边
 set -g status-right "#h [%Y-%m-%d %H:%M:%S]"
 
