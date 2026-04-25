@@ -7,7 +7,7 @@
 ```shell
 $ nmcli con add con-name br0 ifname br0 type bridge
 
-$ nmcli con add con-name br0-eth0 ifname eth0 master br0
+$ nmcli con add con-name br0-eth0 ifname eth0 master br0 type ethernet
 
 $ nmcli con br0 up
 ```
