@@ -125,6 +125,7 @@ transmission-gtk
 gnome-characters
 
 remmina
+remmina-plugin-spice
 
 gnome-tweaks
 ffmpeg
