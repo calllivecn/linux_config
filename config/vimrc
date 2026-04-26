@@ -7,6 +7,9 @@ set number
 set softtabstop=4
 set cursorline
 
+" 禁用所有模式下的鼠标支持
+set mouse=
+
 
 "source ~/.vim/test.vim
 
