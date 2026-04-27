@@ -162,6 +162,8 @@ timeshift
 jfsutils
 xfsprogs
 
+inotify-tools
+
 ### 磁盘加密工具
 cryptsetup cryptsetup-initramfs
 
