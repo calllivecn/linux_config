@@ -170,8 +170,8 @@ cryptsetup cryptsetup-initramfs
 ## Linux中安装xdotool模拟击键和鼠标移动
 xdotool
 
-# wayland 录屏
-wf-recorder
+# wayland 录屏 在 Gnome 中使用不了
+# wf-recorder
 
 
 # sqlite3 GUI tools
