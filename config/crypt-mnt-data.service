@@ -8,7 +8,7 @@ PartOf=mnt-data.mount
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-Environment="UUID=2e865de8-ba45-4dba-9665-39b6f99e86ea" "NAME=data"
-ExecStart=/usr/sbin/cryptsetup -d /etc/luks/data.keyfile open /dev/disk/by-uuid/${UUID} ${NAME}
-ExecStop=/usr/sbin/cryptsetup close /dev/mapper/${NAME}
+Environment="UUID=6c9628f6-bbaf-4c0f-8442-d587ba521423" "NAME=data"
+ExecStart=/usr/bin/systemd-cryptsetup attach ${NAME} /dev/disk/by-uuid/${UUID} /etc/luks/keyfile.bin
+ExecStop=/usr/bin/systemd-cryptsetup detach ${NAME}
 
