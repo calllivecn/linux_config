@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>深度研究报告</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* CSS 样式将在这里插入 */
+        /* 1. 全局重置与基础设定 */
+        body {
+            line-height: 1.8;
+            color: #1f2937;
+            background-color: #FFFFFF; /*必须为纯白*/
+        }
+
+        .prose-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 80px 50px 80px 50px;
+            background-color: #FFFFFF; /*必须为纯白 不加 shadow */
+            border-radius: 12px;
+            line-height: 1.8;
+            text-align: justify;
+            word-wrap: break-word;
+        }
+
+        /* 2. 强制标题层级 (使用 !important 防止被 Tailwind 覆盖) */
+        h1.report-title {
+            font-size: 2.5rem !important; /* 40px */
+            font-weight: 800;
+            color: #000000;
+            line-height: 1.2;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.8rem !important; /* 29px */
+            font-weight: 700;
+            color: #111;
+            margin-top: 2.5rem !important; /* 强制大间距，隔开上一章 */
+            margin-bottom: 1.5rem !important;
+            border-bottom: 2px solid #F3F4F6;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            font-size: 1.4rem !important; /* 22px */
+            font-weight: 600;
+            color: #374151;
+            margin-top: 2rem !important;
+            margin-bottom: 1rem !important;
+        }
+
+        h4 {
+            font-size: 1.1rem !important; /* 19px */
+            font-weight: 600;
+            color: #374151;
+            margin-top: 1.5rem !important;
+            margin-bottom: 0.8rem !important;
+        }
+
+        /* 3. 正文与 Markdown 元素适配 */
+        p {
+            font-size: 1.05rem !important; /* 17px */
+            margin-bottom: 1.25em !important;
+            text-align: justify;
+            color: #333;
+        }
+
+        strong { font-weight: 700 !important; }
+
+        .prose-container ul, .prose-container ol {
+            list-style: revert; /* 必须添加！*/
+            padding-left: 1.75rem;
+            margin: 1.5em 0 !important;
+            font-size: 1.05rem;
+        }
+        .prose-container li {
+            margin-bottom: 0.8em !important;
+            padding-left: 0.5rem;
+        }
+
+        /* 4. 组件容器美化 */
+        .widget-box {
+            border: 1px solid #E5E7EB;
+            border-radius: 10px;
+            background: #FAFAFA;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            margin: 2rem 0;
+            overflow: auto;
+            max-width: 100%;
+        }
+        .widget-header {
+            background: #F9FAFB;
+            padding: 10px 16px;
+            border-bottom: 1px solid #E5E7EB;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #4B5563;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.05em;
+        }
+        .widget-body {
+            padding: 20px;
+            font-size: 0.95rem;
+        }
+
+        /* 5. 图表容器限制 */
+        .chart-container {
+            position: relative;
+            height: 250px; /* 强制锁定高度 */
+            width: 100%;
+        }
+        .table-container{
+            overflow: auto;
+        }
+
+        /* 6. 技术分析组件专用样式 */
+        .indicator-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; margin-top: 1.5rem; text-align: center; }
+        .indicator-item { background: #F9FAFB; padding: 1rem; border-radius: 8px; border: 1px solid #F3F4F6; }
+        .indicator-label { font-size: 0.75rem; color: #6B7280; margin-bottom: 0.25rem; }
+        .indicator-value { font-size: 1.25rem; font-weight: 700; color: #111827; }
+        .indicator-signal { font-size: 0.7rem; font-weight: 700; padding: 2px 6px; border-radius: 99px; }
+        .signal-buy { background-color: #D1FAE5; color: #065F46; }
+        .signal-sell { background-color: #FEE2E2; color: #991B1B; }
+        .signal-neutral { background-color: #E5E7EB; color: #374151; }
+
+        /* 7. 移动端调整：自行添加其他组件的适配 */
+        @media (max-width: 768px) {
+          .prose-container {
+              padding: 20px;
+              margin: 20px auto;
+              line-height: 1.7;
+          }
+          h1.report-title {
+              font-size: 1.8rem !important;
+          }
+          h2 {
+              font-size: 1.25rem !important;
+          }
+          h3 {
+              font-size: 1.1rem !important;
+          }
+          h4 {
+              font-size: 1rem !important;
+          }
+          p {
+              font-size: 0.95rem !important;
+          }
+          .prose-container ul, .prose-container ol {
+              padding-left: 1rem;
+              font-size: 0.95rem;
+          }
+        }
+        
+        /* 8. 自定义添加样式 */
+        pre {
+            background-color: #1F2937;
+            color: #E5E7EB;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5em 0 !important;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        code {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+        .prose-container pre {
+            padding: 1.5rem;
+        }
+        .prose-container p > code, .prose-container li > code {
+            background-color: #E5E7EB;
+            color: #B91C1C;
+            padding: 0.2em 0.4em;
+            font-size: 0.85em;
+            border-radius: 4px;
+        }
+        .widget-box .widget-body pre {
+            padding: 1rem;
+            margin: 0 !important;
+        }
+        xml {
+            display: block;
+            background-color: #1F2937;
+            color: #E5E7EB;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5em 0 !important;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        xml code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="prose-container">
+        <!-- 所有报告内容将在这里生成 -->
+        <header class="flex flex-col items-center text-center">
+            <div class="flex gap-3 mb-8">
+                <span class="px-3 py-1 bg-black text-white text-xs font-bold uppercase tracking-widest rounded">Deep Research</span>
+                <span class="px-3 py-1 bg-blue-600 text-white text-xs font-bold uppercase tracking-widest rounded">KVM 虚拟化</span>
+            </div>
+            <h1 class="report-title">KVM显卡直通双屏方案</h1>
+            <div class="flex items-center text-sm text-gray-500 font-sans mb-4 border-t border-gray-100 pt-4 mt-4">
+                <div class="mr-8"><span class="font-bold">日期:</span><script>document.write(new Date().toLocaleDateString('zh-CN'))</script></div>
+                <div><span class="font-bold">技术领域:</span> 系统虚拟化</div>
+            </div>
+        </header>
+
+        <div class="bg-gray-800 text-white p-8 rounded-xl shadow-lg mb-4 relative overflow-hidden">
+            <h3 class="text-xl font-bold text-white flex items-center gap-3 border-b border-gray-700 pb-4 !mt-0 !mb-6">
+                <i class="fas fa-bolt text-yellow-400"></i>核心摘要
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+                <div>
+                    <div class="text-sm text-gray-400 uppercase mb-2 font-bold">方案可行性</div>
+                    <div class="text-base text-gray-200 leading-relaxed">在Ubuntu上通过KVM实现NVIDIA显卡直通至Windows虚拟机，并达成双屏输出，在技术上是可行的。</div>
+                </div>
+                <div>
+                    <div class="text-sm text-gray-400 uppercase mb-2 font-bold">核心挑战</div>
+                    <div class="text-base text-gray-200 leading-relaxed">主要挑战在于解决消费级NVIDIA显卡的驱动兼容性问题（如Windows错误43）和精确的系统配置。</div>
+                </div>
+                <div>
+                    <div class="text-sm text-gray-400 uppercase mb-2 font-bold">最终效果</div>
+                    <div class="text-base text-gray-200 leading-relaxed">宿主机与虚拟机可分别使用不同显示器，共享同一套硬件，实现接近原生性能的双GUI输出。</div>
+                </div>
+            </div>
+        </div>
+
+        <p>在Ubuntu 24.04/26.04系统上通过virt-manager/qemu-kvm虚拟机实现NVIDIA RTX 5080 Ti显卡直通到Windows 10/11虚拟机，并实现宿主机与虚拟机分别使用不同显示器的双GUI输出，<strong>技术上是可行的</strong>，但需要解决消费级NVIDIA显卡在虚拟化环境下的驱动兼容性问题（如Windows错误43）以及系统配置的精确调整。这种方案能为用户提供接近原生性能的图形处理能力，同时保留宿主机的独立显示输出，特别适合需要高性能图形工作站与Linux服务器同时运行的场景。</p>
+
+        <h2>一、技术可行性分析</h2>
+
+        <h3>1. 硬件兼容性确认</h3>
+        <ul>
+            <li><strong>CPU与主板支持</strong>：用户已确认UEFI中启用了IOMMU功能，这是实现GPU直通的必要条件。Intel CPU需支持VT-d，AMD CPU需支持AMD-Vi技术。</li>
+            <li><strong>显卡支持</strong>：NVIDIA RTX 5080 Ti属于消费级显卡，理论上支持直通。根据NVIDIA官方驱动更新记录，该型号在2025年3月的572.83版本后已获得官方支持。</li>
+            <li><strong>多显示器支持</strong>：现代主板通常具备集成显卡，可为宿主机提供独立显示输出，而直通的独立显卡则为虚拟机提供输出。</li>
+        </ul>
+
+        <h3>2. 软件环境要求</h3>
+        <ul>
+            <li><strong>宿主机系统</strong>：Ubuntu 24.04/26.04均支持KVM虚拟化技术，且内核版本（5.15+/6.0+）对vfio-pci驱动有良好支持。</li>
+            <li><strong>虚拟机管理工具</strong>：virt-manager作为KVM的图形化管理工具，提供了便捷的GPU直通配置界面。</li>
+            <li><strong>显卡驱动</strong>：Windows虚拟机需安装NVIDIA Studio驱动（推荐595.97或更高版本），而非Game Ready驱动，以规避消费级显卡的虚拟化检测限制。</li>
+        </ul>
+
+        <h3>3. 双显示器输出原理</h3>
+        <ul>
+            <li><strong>物理连接</strong>：主板集成显卡连接到宿主机显示器，直通的独立显卡连接到虚拟机显示器。</li>
+            <li><strong>虚拟化隔离</strong>：通过IOMMU技术隔离显卡资源，确保宿主机与虚拟机各自拥有独立的GPU控制权。</li>
+            <li><strong>显示管理</strong>：Windows虚拟机将直通的显卡识别为物理设备，可直接使用其输出接口。</li>
+        </ul>
+        <div class="widget-box">
+            <div class="widget-header"><i class="fas fa-shapes"></i> 概念示意图</div>
+            <div class="widget-body">
+                <div class="flex flex-col items-center justify-center">
+                    <div class="flex items-center gap-4 text-center">
+                        <div class="p-4 bg-gray-100 rounded-lg">
+                            <i class="fas fa-microchip text-3xl text-gray-700"></i>
+                            <p class="text-sm leading-snug text-center mt-2">CPU/主板</p>
+                        </div>
+                        <div class="text-gray-400 text-2xl">&rarr;</div>
+                        <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                            <i class="fas fa-memory text-3xl text-blue-600"></i>
+                            <p class="text-sm leading-snug text-center mt-2">独立显卡 (直通)</p>
+                        </div>
+                    </div>
+                    <div class="text-gray-400 text-xl mt-2">&darr;</div>
+                    <div class="p-4 bg-green-50 border border-green-200 rounded-lg mt-2">
+                        <i class="fas fa-desktop text-3xl text-green-600"></i>
+                        <p class="text-sm leading-snug text-center mt-2">Windows 虚拟机</p>
+                    </div>
+                </div>
+                <div class="text-center text-xs text-gray-500 mt-4">原理：通过IOMMU技术实现硬件资源隔离与直通</div>
+            </div>
+        </div>
+
+        <h2>二、系统配置准备</h2>
+
+        <h3>1. 宿主机系统配置</h3>
+        <pre><code># 禁用NVIDIA驱动并添加黑名单
+echo "blacklist nvidia" | sudo tee -a /etc/modprobe.d/blacklist.conf
+echo "blacklist nouveau" | sudo tee -a /etc/modprobe.d/blacklist.conf
+echo "options nouveau modeset=0" | sudo tee -a /etc/modprobe.d/blacklist.conf
+
+# 启用VFIO驱动
+echo "vfio" | sudo tee -a /etc/modules
+echo "vfio_iommu_type1" | sudo tee -a /etc/modules
+echo "vfio_vIRQfd" | sudo tee -a /etc/modules
+echo "vfio-pci" | sudo tee -a /etc/modules
+
+# 配置GRUB参数
+sudo nano /etc/default/grub
+# 在GRUB_CMDLINE_LINUX行添加以下参数
+GRUB_CMDLINE_LINUX="intel_iommu=on iommu=pt vfio_iommu_type1.allow_unsafeinterrupts=1 vfio_pci.disable_vga=1 video=efifb:off"</code></pre>
+
+        <h3>2. 检查IOMMU组隔离</h3>
+        <pre><code># 查看GPU的PCI地址
+lspci -nn | grep -i nvidia
+
+# 检查IOMMU组结构
+shopt -s nullglob
+for g in /sys/kernel/iommu_groups/*; do
+    echo "IOMMU Group ${g##*/}:"
+    for d in $g/devices/*; do
+        echo -e "$(lspci -nns ${d##*/})"
+    done
+done</code></pre>
+
+        <h3>3. 配置驱动绑定</h3>
+        <pre><code># 创建vfio配置文件
+sudo nano /etc/modprobe.d/vfio.conf
+# 添加以下内容（以RTX 5080 Ti为例）
+options vfio-pci ids=10de:2684,10de:22ba,10de:1ad6,10de:1ad7 disable_vga=1
+# 更新系统
+sudo update-initramfs -u
+sudo update-grub
+sudo reboot</code></pre>
+
+        <h3>4. 确认Secure Boot状态</h3>
+        <pre><code># 查看Secure Boot状态
+mokutil --sb-state
+# 如果开启，需在BIOS中关闭或导入MOK密钥</code></pre>
+
+        <h2>三、virt-manager虚拟机配置</h2>
+
+        <h3>1. 创建虚拟机基础配置</h3>
+        <ul>
+            <li>使用virt-manager创建新虚拟机，选择Windows 11 ISO镜像。</li>
+            <li>CPU模式选择"host-passthrough"，确保虚拟机直接使用物理CPU特性。</li>
+            <li>内存分配建议至少8GB，根据需要可增加。</li>
+            <li>存储分配建议至少100GB，使用virtio磁盘格式。</li>
+        </ul>
+
+        <h3>2. 添加PCI设备直通</h3>
+        <ul>
+            <li>在虚拟机配置界面，选择"硬件" → "添加" → "PCI设备"。</li>
+            <li>找到并选择NVIDIA RTX 5080 Ti的PCI设备（主设备通常为VGA控制器，副设备包括音频、USB控制器等）。</li>
+            <li>确保选择"启用直通"选项。</li>
+        </ul>
+
+        <h3>3. 修改虚拟机XML配置（高级）</h3>
+        <pre><code># 停止虚拟机
+virsh shutdown &lt;虚拟机名称&gt;
+# 编辑虚拟机XML配置
+virsh edit &lt;虚拟机名称&gt;</code></pre>
+        添加以下内容到XML配置中：
+        <xml><code>&lt;features&gt;
+  &lt;acpi/&gt;
+  &lt;apic/&gt;
+  &lt;hyperv&gt;
+    &lt;vendor_id state='on' value='NV43FIX'/&gt;
+  &lt;/hyperv&gt;
+  &lt;kvm&gt;
+    &lt;hidden state='on'/&gt;
+  &lt;/kvm&gt;
+&lt;/features&gt;</code></xml>
+        <div class="my-8 p-6 bg-gray-50 rounded-lg border-l-4 border-gray-700">
+            <div class="flex items-baseline gap-4">
+                <i class="fas fa-cogs mt-1"></i>
+                <h4 class="font-bold uppercase mb-2 !mt-0 !mb-1">关键配置</h4>
+            </div>
+            <p class="mt-2 !mb-0 leading-relaxed">在虚拟机XML配置中添加 <code>&lt;hyperv&gt;&lt;vendor_id state='on' value='NV43FIX'/&gt;&lt;/hyperv&gt;</code> 和 <code>&lt;kvm&gt;&lt;hidden state='on'/&gt;&lt;/kvm&gt;</code> 是解决驱动兼容性问题（如错误43）的关键步骤。</p>
+        </div>
+
+        <h3>4. 配置显示输出</h3>
+        <ul>
+            <li>在虚拟机配置中，选择"显示" → "类型" → "SPICE"。</li>
+            <li>确保宿主机集成显卡正常工作（用于宿主机显示）。</li>
+            <li>虚拟机将使用直通的独立显卡输出到外接显示器。</li>
+        </ul>
+
+        <h2>四、Windows虚拟机驱动安装</h2>
+
+        <h3>1. 安装前准备</h3>
+        <ul>
+            <li><strong>使用DDU工具清理驱动</strong>：在虚拟机首次启动后，安装Display Driver Uninstaller (DDU)工具，彻底清除任何残留的NVIDIA驱动。</li>
+            <li><strong>进入安全模式</strong>：通过Windows启动设置进入安全模式，避免驱动冲突。</li>
+        </ul>
+
+        <h3>2. 安装NVIDIA Studio驱动</h3>
+        <ul>
+            <li><strong>下载驱动</strong>：从NVIDIA官网下载最新Studio驱动（推荐595.97或更高版本），而非Game Ready驱动。</li>
+            <li><strong>安装选项</strong>：在安装过程中选择"自定义安装"，并勾选"执行清洁安装"选项。</li>
+            <li><strong>安装完成后</strong>：重启虚拟机，确保显卡驱动正常加载。</li>
+        </ul>
+
+        <h3>3. 配置多显示器</h3>
+        <ul>
+            <li><strong>物理连接</strong>：将独立显卡的视频输出接口（HDMI/DP）连接到外接显示器。</li>
+            <li><strong>Windows显示设置</strong>：在虚拟机内进入"设置" → "系统" → "显示"，确认已识别外接显示器并配置为扩展模式。</li>
+        </ul>
+
+        <h2>五、常见问题与解决方案</h2>
+
+        <h3>1. Windows虚拟机启动后无视频输出</h3>
+        <ul>
+            <li><strong>原因</strong>：宿主机驱动未完全卸载，或IOMMU组隔离不完整。</li>
+            <li><strong>解决方案</strong>：
+                <ul>
+                    <li>确保宿主机已正确禁用NVIDIA驱动并绑定到vfio-pci。</li>
+                    <li>检查IOMMU组隔离，确保所有相关设备（GPU、音频、USB控制器）均在同一组内。</li>
+                    <li>在虚拟机XML配置中添加<code>&lt;hyperv&gt;&lt;vendor_id state='on' value='NV43FIX'/&gt;&lt;/hyperv&gt;</code>参数。</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h3>2. 设备管理器显示"代码43"错误</h3>
+        <ul>
+            <li><strong>原因</strong>：NVIDIA消费级驱动检测到虚拟化环境。</li>
+            <li><strong>解决方案</strong>：
+                <ul>
+                    <li>在宿主机GRUB参数中添加<code>vfio_pci.disable_vga=1</code>。</li>
+                    <li>在虚拟机XML配置中添加<code>&lt;kvm&gt;&lt;hidden state='on'/&gt;&lt;/kvm&gt;</code>参数。</li>
+                    <li>使用DDU工具在安全模式下彻底清除驱动，再安装Studio驱动。</li>
+                </ul>
+            </li>
+        </ul>
+        <div class="my-8 p-6 bg-yellow-50 rounded-lg border-l-4 border-yellow-400">
+            <div class="flex items-baseline gap-4">
+                <i class="fas fa-exclamation-triangle mt-1 text-yellow-500"></i>
+                <h4 class="font-bold uppercase mb-2 !mt-0 !mb-1">错误代码43</h4>
+            </div>
+            <p class="mt-2 !mb-0 leading-relaxed">“代码43”错误是NVIDIA消费级驱动在虚拟化环境中的典型报错。通过修改GRUB参数和虚拟机XML配置，可以有效规避此问题。</p>
+        </div>
+
+        <h3>3. 宿主机无法使用集成显卡</h3>
+        <ul>
+            <li><strong>原因</strong>：BIOS中未正确配置显示输出优先级。</li>
+            <li><strong>解决方案</strong>：
+                <ul>
+                    <li>在BIOS中设置集成显卡为"Primary Display"。</li>
+                    <li>确保宿主机操作系统（Ubuntu）正确识别并使用集成显卡。</li>
+                </ul>
+            </li>
+        </ul>
+
+        <h2>六、性能优化与注意事项</h2>
+
+        <h3>1. 性能优化</h3>
+        <ul>
+            <li><strong>启用大页内存</strong>：在宿主机上配置HugePages，可提升GPU直通性能。</li>
+            <li><strong>关闭不必要的Windows服务</strong>：在虚拟机内禁用不必要的后台服务，减少资源占用。</li>
+            <li><strong>更新宿主机内核</strong>：使用最新稳定版内核，确保对vfio-pci驱动的支持。</li>
+        </ul>
+
+        <h3>2. 注意事项</h3>
+        <ul>
+            <li><strong>驱动版本兼容性</strong>：定期检查NVIDIA Studio驱动更新，确保与虚拟机环境兼容。</li>
+            <li><strong>系统稳定性</strong>：GPU直通可能导致宿主机系统在异常关机后不稳定，建议使用专业级显卡（如NVIDIA网格系列）替代消费级显卡。</li>
+            <li><strong>功耗管理</strong>：虚拟机内GPU的功耗管理由虚拟机控制，可能影响宿主机的电源策略。</li>
+            <li><strong>多显示器支持</strong>：部分应用程序可能需要额外配置才能在多显示器环境下正常工作。</li>
+        </ul>
+        <div class="my-8 p-6 bg-gray-50 rounded-lg border-l-4 border-gray-700">
+            <div class="flex items-baseline gap-4">
+                <i class="fas fa-info-circle mt-1"></i>
+                <h4 class="font-bold uppercase mb-2 !mt-0 !mb-1">关键结论</h4>
+            </div>
+            <p class="mt-2 !mb-0 leading-relaxed">虽然该方案技术上可行，但由于消费级显卡的驱动限制，可能影响系统稳定性。对于生产环境，建议使用专业级显卡（如NVIDIA网格系列）以获得更好的兼容性和支持。</p>
+        </div>
+
+        <h2>七、总结</h2>
+        <p><strong>在Ubuntu 24.04/26.04系统上，通过virt-manager/qemu-kvm虚拟机实现NVIDIA RTX 5080 Ti显卡直通到Windows 10/11虚拟机，并实现双显示器输出，技术上是可行的</strong>。这种方案能为用户提供接近原生性能的图形处理能力，同时保留宿主机的独立显示输出。</p>
+        <p>然而，由于NVIDIA消费级显卡在虚拟化环境下的驱动兼容性问题，需要采取特殊配置（如修改虚拟机XML参数、使用特定驱动版本）来规避检测限制。此外，宿主机需保留集成显卡用于显示，确保物理连接正确。</p>
+        <p><strong>最终效果</strong>：宿主机通过集成显卡连接到主显示器，运行Ubuntu系统；虚拟机通过直通的RTX 5080 Ti连接到外接显示器，运行Windows系统并拥有完整的GPU性能。用户可在两台显示器上分别操作宿主机和虚拟机，实现双GUI输出的使用需求。这种方案特别适合需要在高性能图形工作站与Linux服务器之间切换的用户场景。</p>
+        <div class="widget-box">
+            <div class="widget-header"><i class="fas fa-sitemap"></i> 最终拓扑</div>
+            <div class="widget-body">
+                <div class="flex flex-col items-center justify-center">
+                    <div class="p-4 bg-gray-100 rounded-lg w-full text-center">
+                        <p class="font-bold text-gray-800">宿主机 (Ubuntu)</p>
+                        <p class="text-sm text-gray-600">通过集成显卡输出到主显示器</p>
+                    </div>
+                    <div class="text-gray-400 text-2xl my-2">&harr;</div>
+                    <div class="p-4 bg-blue-50 border border-blue-200 rounded-lg w-full text-center">
+                        <p class="font-bold text-blue-800">Windows 虚拟机</p>
+                        <p class="text-sm text-blue-600">通过直通的RTX 5080 Ti输出到外接显示器</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
